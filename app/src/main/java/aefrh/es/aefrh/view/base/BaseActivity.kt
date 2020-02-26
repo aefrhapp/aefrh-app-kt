@@ -1,6 +1,5 @@
 package aefrh.es.aefrh.view.base
 
-import aefrh.es.aefrh.view_model.BaseViewModel
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil

@@ -10,11 +10,16 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.lifecycle.Observer
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
+import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+
+    private val vModel: MainViewModel by viewModel()
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -30,7 +35,62 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
 
+//        vModel.loadCats()
+        initViewModel()
+//        observeViewModel()
+
     }
+
+    private fun initViewModel() {
+
+        // Observe catsList and update our adapter if we get new one from API
+        vModel.epocaList.observe(this, Observer { epocaList ->
+
+            for(item in epocaList) {
+                Timber.e("Epoca: $item")
+            }
+
+//            catAdapter.updateData(newCatsList!!)
+        })
+        // Observe showLoading value and display or hide our activity's progressBar
+//        vModel.showLoading.observe(this, Observer { showLoading ->
+//            mainProgressBar.visibility = if (showLoading!!) View.VISIBLE else View.GONE
+//        })
+        // Observe showError value and display the error message as a Toast
+        vModel.showError.observe(this, Observer { showError ->
+            Timber.e("showError: $showError")
+            Toast.makeText(this, showError, Toast.LENGTH_SHORT).show()
+        })
+
+    }
+
+
+
+//    private fun observeViewModel() {
+//        vModel.error.observe(
+//            this,
+//            Observer { errorMessage ->
+//                showErrorState(errorMessage)
+//            }
+//        )
+//
+//        vModel.epocaList.observe(
+//            this,
+//            Observer { epocaList ->
+//
+////                for(item in epocaList) {
+////                    Timber.e("Epoca: $item")
+////                }
+//
+////                if (noteList.isNotEmpty()) {
+////                    (imv_satellite_animation.drawable as AnimationDrawable).stop()
+////                    imv_satellite_animation.visibility = View.INVISIBLE
+////                    rec_list_fragment.visibility = View.VISIBLE
+////                }
+//            }
+//        )
+//
+//    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -82,5 +142,8 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         intentWeb.data = Uri.parse(url)
         startActivity(intentWeb)
     }
+
+    private fun showErrorState(errorMessage: String?) = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
+
 
 }
