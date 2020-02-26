@@ -4,8 +4,8 @@ import aefrh.es.aefrh.BuildConfig
 import aefrh.es.aefrh.data.EpocaApi
 import aefrh.es.aefrh.data.EpocaDataSource
 import aefrh.es.aefrh.data.EpocaRepository
+import aefrh.es.aefrh.presentation.main.MainViewModel
 import aefrh.es.aefrh.usecases.GetEpocas
-import aefrh.es.aefrh.view.main.MainViewModel
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import org.koin.android.viewmodel.dsl.viewModel

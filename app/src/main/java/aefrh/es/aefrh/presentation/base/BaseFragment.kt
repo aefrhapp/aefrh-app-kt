@@ -1,4 +1,4 @@
-package aefrh.es.aefrh.view.base
+package aefrh.es.aefrh.presentation.base
 
 import android.os.Bundle
 import android.view.LayoutInflater

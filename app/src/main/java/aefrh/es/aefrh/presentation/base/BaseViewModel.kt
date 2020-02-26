@@ -1,4 +1,4 @@
-package aefrh.es.aefrh.view.base
+package aefrh.es.aefrh.presentation.base
 
 import androidx.lifecycle.ViewModel
 import kotlinx.coroutines.CoroutineScope
@@ -6,7 +6,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.Job
 import kotlin.coroutines.CoroutineContext
 
-abstract class BaseViewModel : ViewModel(), CoroutineScope {
+abstract class BaseViewModel: ViewModel(), CoroutineScope {
 
     // Coroutine's background job
     val job = Job()

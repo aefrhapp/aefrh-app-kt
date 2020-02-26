@@ -1,9 +1,9 @@
-package aefrh.es.aefrh.view.splash
+package aefrh.es.aefrh.presentation.splash
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.ActivitySplashBinding
-import aefrh.es.aefrh.view.base.BaseActivity
-import aefrh.es.aefrh.view.main.MainActivity
+import aefrh.es.aefrh.presentation.base.BaseActivity
+import aefrh.es.aefrh.presentation.main.MainActivity
 import android.content.Intent
 import android.os.Handler
 import androidx.databinding.ViewDataBinding
@@ -11,13 +11,13 @@ import androidx.databinding.ViewDataBinding
 class SplashActivity : BaseActivity() {
 
     private lateinit var binding: ActivitySplashBinding
-
-    override fun getLayout(): Int {
-        return R.layout.activity_splash
-    }
+    override val layout: Int = R.layout.activity_splash
 
     override fun initUI(binding: ViewDataBinding?) {
         this.binding = binding as ActivitySplashBinding
+    }
+
+    override fun onCreate() {
 
         Handler().postDelayed({
             // Start activity

@@ -1,4 +1,4 @@
-package aefrh.es.aefrh.view.base
+package aefrh.es.aefrh.presentation.base
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
@@ -17,6 +17,7 @@ abstract class BaseActivity : AppCompatActivity(), BaseInterFace, LifecycleOwner
         if (layoutIdRes != 0) {
             val binding = DataBindingUtil.setContentView(this, layoutIdRes) as ViewDataBinding
             initUI(binding)
+            onCreate()
         }
     }
 

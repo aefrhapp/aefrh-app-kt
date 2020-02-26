@@ -1,15 +1,16 @@
-package aefrh.es.aefrh.view.main
+package aefrh.es.aefrh.presentation.main
 
 import aefrh.es.aefrh.R
+import aefrh.es.aefrh.databinding.ActivityMainBinding
+import aefrh.es.aefrh.presentation.base.BaseActivity
 import android.content.Intent
 import android.net.Uri
-import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -17,14 +18,17 @@ import kotlinx.android.synthetic.main.content_main.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity: BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private val vModel: MainViewModel by viewModel()
+    private lateinit var binding: ActivityMainBinding
+    override val layout: Int = R.layout.activity_main
 
-    override fun onCreate(savedInstanceState: Bundle?) {
+    override fun initUI(binding: ViewDataBinding?) {
+        this.binding = binding as ActivityMainBinding
+    }
 
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    override fun onCreate() {
 
         setSupportActionBar(toolbar)
         val toggle = ActionBarDrawerToggle(
@@ -35,27 +39,23 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
 
-//        vModel.loadCats()
         initViewModel()
-//        observeViewModel()
 
     }
 
     private fun initViewModel() {
 
-        // Observe catsList and update our adapter if we get new one from API
         vModel.epocaList.observe(this, Observer { epocaList ->
-
             for(item in epocaList) {
                 Timber.e("Epoca: $item")
             }
-
-//            catAdapter.updateData(newCatsList!!)
         })
+
         // Observe showLoading value and display or hide our activity's progressBar
 //        vModel.showLoading.observe(this, Observer { showLoading ->
 //            mainProgressBar.visibility = if (showLoading!!) View.VISIBLE else View.GONE
 //        })
+
         // Observe showError value and display the error message as a Toast
         vModel.showError.observe(this, Observer { showError ->
             Timber.e("showError: $showError")
@@ -63,34 +63,6 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         })
 
     }
-
-
-
-//    private fun observeViewModel() {
-//        vModel.error.observe(
-//            this,
-//            Observer { errorMessage ->
-//                showErrorState(errorMessage)
-//            }
-//        )
-//
-//        vModel.epocaList.observe(
-//            this,
-//            Observer { epocaList ->
-//
-////                for(item in epocaList) {
-////                    Timber.e("Epoca: $item")
-////                }
-//
-////                if (noteList.isNotEmpty()) {
-////                    (imv_satellite_animation.drawable as AnimationDrawable).stop()
-////                    imv_satellite_animation.visibility = View.INVISIBLE
-////                    rec_list_fragment.visibility = View.VISIBLE
-////                }
-//            }
-//        )
-//
-//    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -142,8 +114,5 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         intentWeb.data = Uri.parse(url)
         startActivity(intentWeb)
     }
-
-    private fun showErrorState(errorMessage: String?) = Toast.makeText(this, errorMessage, Toast.LENGTH_SHORT).show()
-
 
 }
