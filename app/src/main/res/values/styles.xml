@@ -1,11 +1,42 @@
 <resources>
 
-    <!-- Base application theme. -->
+    <!--********************************** BASE APP **********************************-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
+
+    <style name="AppTheme.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <!--********************************** BASE APP **********************************-->
+
+
+    <!--********************************** TEXT VIEWS **********************************-->
+    <style name="tvMain" parent="@android:style/Widget.TextView">
+        <item name="android:layout_width">wrap_content</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:lineSpacingExtra">3sp</item>
+    </style>
+
+    <style name="tvToolbar" parent="tvMain">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+    </style>
+
+    <style name="tvNavigation" parent="tvMain">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+
+    <style name="tv15" parent="tvMain">
+        <item name="android:textSize">15sp</item>
+    </style>
+    <!--********************************** TEXT VIEWS **********************************-->
+
 
 </resources>

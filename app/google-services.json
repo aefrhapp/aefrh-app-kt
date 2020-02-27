@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "641681246156",
+    "firebase_url": "https://maximal-kingdom-220611.firebaseio.com",
+    "project_id": "maximal-kingdom-220611",
+    "storage_bucket": "maximal-kingdom-220611.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:641681246156:android:e2335da29d28ca77387f69",
+        "android_client_info": {
+          "package_name": "aefrh.es.aefrh"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "641681246156-efl34rvu8d933vemlse20idefepljudg.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "aefrh.es.aefrh",
+            "certificate_hash": "6ebe658b423745fa8a24c01332cd7d0ed44b30e8"
+          }
+        },
+        {
+          "client_id": "641681246156-aku5m5mgadi2hl0e72e5a7ui37vqbgpj.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyB64135mb9Vbn2NWSqMSFi7kQUdjyPvC1Q"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "641681246156-aku5m5mgadi2hl0e72e5a7ui37vqbgpj.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
