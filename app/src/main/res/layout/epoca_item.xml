@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <variable
+            name="clickListener"
+            type="android.view.View.OnClickListener"/>
+        <variable
+            name="epoca"
+            type="aefrh.es.aefrh.domain.Epoca"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:onClick="@{clickListener}">
+
+        <ImageView
+            android:id="@+id/imEpoca"
+            android:layout_width="64dp"
+            android:layout_height="64dp"
+            android:scaleType="centerInside"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvName"
+            style="@style/tvTitle"
+            android:layout_marginStart="16dp"
+            android:maxLines="2"
+            android:text="@{epoca.nombre}"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@+id/imEpoca"
+            app:layout_constraintTop_toTopOf="parent" />
+
+<!--        <View-->
+<!--            style="@style/lineHorizontal"-->
+<!--            android:layout_marginStart="112dp"-->
+<!--            android:layout_alignParentBottom="true" />-->
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

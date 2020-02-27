@@ -4,7 +4,7 @@ import aefrh.es.aefrh.BuildConfig
 import aefrh.es.aefrh.data.EpocaApi
 import aefrh.es.aefrh.data.EpocaDataSource
 import aefrh.es.aefrh.data.EpocaRepository
-import aefrh.es.aefrh.presentation.main.MainViewModel
+import aefrh.es.aefrh.presentation.epocas.EpocasViewModel
 import aefrh.es.aefrh.usecases.GetEpocas
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
@@ -33,8 +33,8 @@ val viewModelModule = module {
     // Create Use Case
     single { GetEpocas(epocaRepository = get()) }
 
-    // Specific viewModel pattern to tell Koin how to build MainViewModel
-    viewModel { MainViewModel(epocaUseCase = get()) }
+    // Specific viewModel pattern to tell Koin how to build View Models
+    viewModel { EpocasViewModel(epocaUseCase = get()) }
 
 }
 
