@@ -1,9 +1,9 @@
 package aefrh.es.aefrh.presentation.main
 
 import aefrh.es.aefrh.domain.Epoca
+import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseViewModel
 import aefrh.es.aefrh.usecases.GetEpocas
-import aefrh.es.aefrh.usecases.UseCaseResult
 import androidx.lifecycle.MutableLiveData
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -39,9 +39,9 @@ class MainViewModel(
             // Hide progressBar once the operation is done on the MAIN (default) thread
             showLoading.value = false
 
-            when (result) {
-                is UseCaseResult.Success -> epocaList.value = result.data
-                is UseCaseResult.Error -> showError.value = result.exception.message
+            when (result.status) {
+                Status.SUCCESS -> epocaList.value = result.data
+                else -> showError.value = result.message
             }
 
         }

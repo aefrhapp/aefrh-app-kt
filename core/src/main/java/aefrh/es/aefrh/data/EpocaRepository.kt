@@ -1,16 +1,16 @@
 package aefrh.es.aefrh.data
 
 import aefrh.es.aefrh.domain.Epoca
-import aefrh.es.aefrh.usecases.UseCaseResult
+import aefrh.es.aefrh.domain.Resource
 
 class EpocaRepository(private val epocaApi: EpocaApi): EpocaDataSource {
 
-    override suspend fun getAll(): UseCaseResult<List<Epoca>> {
+    override suspend fun getAll(): Resource<List<Epoca>> {
         return try {
             val result = epocaApi.getEpocas().await()
-            UseCaseResult.Success(result.result)
+            Resource.success(result.result)
         } catch (ex: Exception) {
-            UseCaseResult.Error(ex)
+            Resource.error(ex)
         }
     }
 
