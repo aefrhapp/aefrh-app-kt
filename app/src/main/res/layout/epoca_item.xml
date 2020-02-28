@@ -12,38 +12,44 @@
             type="aefrh.es.aefrh.domain.Epoca"/>
     </data>
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:gravity="center"
+        android:padding="16dp"
         android:onClick="@{clickListener}">
 
-        <ImageView
-            android:id="@+id/imEpoca"
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:scaleType="centerInside"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"
-            app:imageUrl="@{epoca.imagen.url}" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingLeft="16dp"
+            android:paddingRight="16dp"
+            android:background="@drawable/container_rounded_16_gold">
 
-        <TextView
-            android:id="@+id/tvName"
-            style="@style/tvTitle"
-            android:layout_width="0dp"
-            android:layout_marginStart="32dp"
-            android:maxLines="2"
-            android:text="@{epoca.nombre}"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toEndOf="@+id/imEpoca"
-            app:layout_constraintTop_toTopOf="parent" />
+            <ImageView
+                android:id="@+id/imEpoca"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:scaleType="centerInside"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:imageUrl="@{epoca.imagen.url}" />
 
-<!--        <View-->
-<!--            style="@style/lineHorizontal"-->
-<!--            android:layout_marginStart="112dp"-->
-<!--            android:layout_alignParentBottom="true" />-->
+            <TextView
+                android:id="@+id/tvName"
+                style="@style/tvTitle"
+                android:layout_width="0dp"
+                android:layout_marginStart="32dp"
+                android:maxLines="2"
+                android:text="@{epoca.nombre}"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@+id/imEpoca"
+                app:layout_constraintTop_toTopOf="parent" />
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </RelativeLayout>
 
 </layout>
