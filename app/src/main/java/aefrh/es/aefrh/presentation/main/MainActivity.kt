@@ -11,16 +11,12 @@ import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.databinding.ViewDataBinding
-import androidx.lifecycle.Observer
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
-import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class MainActivity: BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private val vModel: MainViewModel by viewModel()
     private lateinit var binding: ActivityMainBinding
     override val layout: Int = R.layout.activity_main
 
@@ -38,29 +34,6 @@ class MainActivity: BaseActivity(), NavigationView.OnNavigationItemSelectedListe
         drawer_layout.addDrawerListener(toggle)
         toggle.syncState()
         nav_view.setNavigationItemSelectedListener(this)
-
-        initViewModel()
-
-    }
-
-    private fun initViewModel() {
-
-        vModel.epocaList.observe(this, Observer { epocaList ->
-            for(item in epocaList) {
-                Timber.e("Epoca: $item")
-            }
-        })
-
-        // Observe showLoading value and display or hide our activity's progressBar
-//        vModel.showLoading.observe(this, Observer { showLoading ->
-//            mainProgressBar.visibility = if (showLoading!!) View.VISIBLE else View.GONE
-//        })
-
-        // Observe showError value and display the error message as a Toast
-        vModel.showError.observe(this, Observer { showError ->
-            Timber.e("showError: $showError")
-            Toast.makeText(this, showError, Toast.LENGTH_SHORT).show()
-        })
 
     }
 
