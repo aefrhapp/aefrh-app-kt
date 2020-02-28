@@ -2,20 +2,21 @@
 <layout
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".presentation.fiesta.FragmentFiesta">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".presentation.fiestas.FragmentFiestas">
 
-    <FrameLayout
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/backgroundAzul">
+        android:layout_height="match_parent">
 
-        <TextView
-            android:id="@+id/tvFiesta"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/quienSomos" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_fiestas"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:listitem="@layout/fiesta_item" />
 
-    </FrameLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
 </layout>

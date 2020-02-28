@@ -51,15 +51,10 @@ class EpocasListAdapter: ListAdapter<Epoca, EpocasListAdapter.ViewHolder>(VideoD
 }
 
 private class VideoDiffCallback : DiffUtil.ItemCallback<Epoca>() {
-
     override fun areItemsTheSame(oldItem: Epoca, newItem: Epoca): Boolean {
         return oldItem.Id == newItem.Id
     }
-
     override fun areContentsTheSame(oldItem: Epoca, newItem: Epoca): Boolean {
-        return oldItem.Id == newItem.Id
-                && oldItem.Nombre == oldItem.Nombre
-                && oldItem.Icono == oldItem.Icono
+        return oldItem == newItem
     }
-
 }

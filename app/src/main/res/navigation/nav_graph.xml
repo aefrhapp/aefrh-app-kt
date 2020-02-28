@@ -23,7 +23,7 @@
 
     <fragment
         android:id="@+id/fragmentFiesta"
-        android:name="aefrh.es.aefrh.presentation.fiesta.FragmentFiesta"
+        android:name="aefrh.es.aefrh.presentation.fiestas.FragmentFiestas"
         android:label="fragment_fiesta"
         tools:layout="@layout/fragment_fiesta" >
         <argument
