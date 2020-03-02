@@ -12,7 +12,6 @@ object UiUtil {
     fun loadImage(view: ImageView, imageUrl: String?, placeholder: Drawable? = null) {
         Glide.with(view.context)
             .load(imageUrl)
-//            .apply(RequestOptions.circleCropTransform())
             .error(placeholder)
             .into(view)
     }

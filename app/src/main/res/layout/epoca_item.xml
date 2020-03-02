@@ -12,19 +12,19 @@
             type="aefrh.es.aefrh.domain.Epoca"/>
     </data>
 
-    <RelativeLayout
+    <androidx.cardview.widget.CardView
+        style="@style/CardView.Light"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        android:padding="16dp"
-        android:onClick="@{clickListener}">
+        android:layout_marginBottom="16dp"
+        app:cardBackgroundColor="@color/backgroundDorado"
+        app:cardCornerRadius="8dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:paddingLeft="16dp"
-            android:paddingRight="16dp"
-            android:background="@drawable/container_rounded_16_gold">
+            android:layout_height="wrap_content"
+            android:padding="16dp"
+            android:layout_gravity="center_vertical">
 
             <ImageView
                 android:id="@+id/imEpoca"
@@ -50,6 +50,46 @@
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </RelativeLayout>
+    </androidx.cardview.widget.CardView>
+
+<!--    <RelativeLayout-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content"-->
+<!--        android:gravity="center"-->
+<!--        android:padding="16dp"-->
+<!--        android:onClick="@{clickListener}">-->
+
+<!--        <androidx.constraintlayout.widget.ConstraintLayout-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="match_parent"-->
+<!--            android:paddingLeft="16dp"-->
+<!--            android:paddingRight="16dp"-->
+<!--            android:background="@drawable/container_rounded_16_gold">-->
+
+<!--            <ImageView-->
+<!--                android:id="@+id/imEpoca"-->
+<!--                android:layout_width="64dp"-->
+<!--                android:layout_height="64dp"-->
+<!--                android:scaleType="centerInside"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintStart_toStartOf="parent"-->
+<!--                app:layout_constraintTop_toTopOf="parent"-->
+<!--                app:imageUrl="@{epoca.imagen.url}" />-->
+
+<!--            <TextView-->
+<!--                android:id="@+id/tvName"-->
+<!--                style="@style/tvTitle"-->
+<!--                android:layout_width="0dp"-->
+<!--                android:layout_marginStart="32dp"-->
+<!--                android:maxLines="2"-->
+<!--                android:text="@{epoca.nombre}"-->
+<!--                app:layout_constraintBottom_toBottomOf="parent"-->
+<!--                app:layout_constraintEnd_toEndOf="parent"-->
+<!--                app:layout_constraintStart_toEndOf="@+id/imEpoca"-->
+<!--                app:layout_constraintTop_toTopOf="parent" />-->
+
+<!--        </androidx.constraintlayout.widget.ConstraintLayout>-->
+
+<!--    </RelativeLayout>-->
 
 </layout>
