@@ -27,7 +27,7 @@ class EpocasListAdapter: ListAdapter<Epoca, EpocasListAdapter.ViewHolder>(VideoD
         getItem(position).let { epoca ->
             with(holder) {
                 itemView.tag = epoca
-                bind(createOnClickListener(epoca.Id), epoca)
+                bind(createOnClickListener(epoca.id), epoca)
             }
         }
     }
@@ -52,7 +52,7 @@ class EpocasListAdapter: ListAdapter<Epoca, EpocasListAdapter.ViewHolder>(VideoD
 
 private class VideoDiffCallback : DiffUtil.ItemCallback<Epoca>() {
     override fun areItemsTheSame(oldItem: Epoca, newItem: Epoca): Boolean {
-        return oldItem.Id == newItem.Id
+        return oldItem.id == newItem.id
     }
     override fun areContentsTheSame(oldItem: Epoca, newItem: Epoca): Boolean {
         return oldItem == newItem

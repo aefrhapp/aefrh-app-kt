@@ -8,5 +8,5 @@ import retrofit2.http.Query
 
 interface FiestaApi {
     @GET("Fiestas")
-    fun getFiestaByEpocaId(@Query("where") jsonString: String): Deferred<JSONResponse<Fiesta>>
+    fun getFiestaByEpocaId(@Query("where") jsonString: String, @Query("include") include: String = "Informacion"): Deferred<JSONResponse<Fiesta>>
 }

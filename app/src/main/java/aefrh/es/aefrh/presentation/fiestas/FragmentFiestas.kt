@@ -2,15 +2,9 @@ package aefrh.es.aefrh.presentation.fiestas
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.presentation.base.BaseFragment
-import aefrh.es.aefrh.presentation.epocas.EpocasListAdapter
-import aefrh.es.aefrh.presentation.epocas.EpocasViewModel
-import aefrh.es.aefrh.utils.SpanningLinearLayoutManager
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
-import androidx.recyclerview.widget.LinearLayoutManager
-import kotlinx.android.synthetic.main.fragment_epocas.*
-import kotlinx.android.synthetic.main.fragment_fiesta.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 

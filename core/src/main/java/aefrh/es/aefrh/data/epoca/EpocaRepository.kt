@@ -1,7 +1,5 @@
 package aefrh.es.aefrh.data.epoca
 
-import aefrh.es.aefrh.data.epoca.EpocaApi
-import aefrh.es.aefrh.data.epoca.EpocaDataSource
 import aefrh.es.aefrh.domain.Epoca
 import aefrh.es.aefrh.domain.Resource
 

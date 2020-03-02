@@ -8,8 +8,8 @@
             name="clickListener"
             type="android.view.View.OnClickListener"/>
         <variable
-            name="epoca"
-            type="aefrh.es.aefrh.domain.Epoca"/>
+            name="fiesta"
+            type="aefrh.es.aefrh.domain.Fiesta"/>
     </data>
 
     <RelativeLayout
@@ -27,14 +27,14 @@
             android:background="@drawable/container_rounded_16_gold">
 
             <ImageView
-                android:id="@+id/imEpoca"
+                android:id="@+id/imFiesta"
                 android:layout_width="64dp"
                 android:layout_height="64dp"
                 android:scaleType="centerInside"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent"
-                app:imageUrl="@{epoca.imagen.url}" />
+                app:imageUrl="@{fiesta.imagen_principal.url}" />
 
             <TextView
                 android:id="@+id/tvName"
@@ -42,10 +42,10 @@
                 android:layout_width="0dp"
                 android:layout_marginStart="32dp"
                 android:maxLines="2"
-                android:text="@{epoca.nombre}"
+                android:text="@{fiesta.nombre}"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toEndOf="@+id/imEpoca"
+                app:layout_constraintStart_toEndOf="@+id/imFiesta"
                 app:layout_constraintTop_toTopOf="parent" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>

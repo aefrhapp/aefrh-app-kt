@@ -4,9 +4,11 @@ import com.google.gson.annotations.SerializedName
 
 data class Fiesta(
     @SerializedName("objectId")
-    val Id: String,
+    val id: String,
     @SerializedName("Nombre")
-    val Nombre: String,
+    val nombre: String,
     @SerializedName("Imagen_principal")
-    val Imagen_principal: Imagen
+    val imagen_principal: Imagen,
+    @SerializedName("Informacion")
+    val informacion: Informacion
 )
