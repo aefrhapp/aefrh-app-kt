@@ -4,15 +4,15 @@ import com.google.gson.annotations.SerializedName
 
 data class Epoca(
     @SerializedName("objectId")
-    val Id: String,
+    val id: String,
     @SerializedName("Nombre")
-    val Nombre: String,
+    val nombre: String,
     @SerializedName("Orden")
-    val Orden: Int,
+    val orden: Int,
     @SerializedName("Activo")
-    val Activo: Boolean,
+    val activo: Boolean,
     @SerializedName("Icono")
-    val Icono: Imagen,
+    val icono: Imagen,
     @SerializedName("Imagen")
-    val Imagen: Imagen
+    val imagen: Imagen
 )

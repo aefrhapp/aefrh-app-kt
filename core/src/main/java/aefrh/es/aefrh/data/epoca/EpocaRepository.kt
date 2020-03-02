@@ -1,9 +1,10 @@
-package aefrh.es.aefrh.data
+package aefrh.es.aefrh.data.epoca
 
 import aefrh.es.aefrh.domain.Epoca
 import aefrh.es.aefrh.domain.Resource
 
-class EpocaRepository(private val epocaApi: EpocaApi): EpocaDataSource {
+class EpocaRepository(private val epocaApi: EpocaApi):
+    EpocaDataSource {
 
     override suspend fun getAll(): Resource<List<Epoca>> {
         return try {
