@@ -8,9 +8,13 @@ import android.net.Uri
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
-import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.view.GravityCompat
 import androidx.databinding.ViewDataBinding
+import androidx.navigation.findNavController
+import androidx.navigation.ui.AppBarConfiguration
+import androidx.navigation.ui.navigateUp
+import androidx.navigation.ui.onNavDestinationSelected
+import androidx.navigation.ui.setupActionBarWithNavController
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
@@ -18,6 +22,8 @@ import kotlinx.android.synthetic.main.content_main.*
 class MainActivity: BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var appBarConfiguration: AppBarConfiguration;
+
     override val layout: Int = R.layout.activity_main
 
     override fun initUI(binding: ViewDataBinding?) {
@@ -26,13 +32,20 @@ class MainActivity: BaseActivity(), NavigationView.OnNavigationItemSelectedListe
 
     override fun onCreate() {
 
+        // Toolbar
         setSupportActionBar(toolbar)
-        val toggle = ActionBarDrawerToggle(
-            this, drawer_layout, toolbar, 0, 0
-        )
 
-        drawer_layout.addDrawerListener(toggle)
-        toggle.syncState()
+        //configure nav controller
+        val navController = findNavController(R.id.nav_host)
+
+        // setup action bar && nav controller
+        appBarConfiguration = AppBarConfiguration(
+            navController.graph,
+            drawer_layout
+        )
+        setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // Drawer layout listener
         nav_view.setNavigationItemSelectedListener(this)
 
     }
@@ -67,18 +80,20 @@ class MainActivity: BaseActivity(), NavigationView.OnNavigationItemSelectedListe
         return super.onCreateOptionsMenu(menu)
     }
 
+    override fun onSupportNavigateUp() = findNavController(R.id.nav_host).navigateUp(appBarConfiguration)
+
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
+
+        when (item.itemId) {
             R.id.action_espana -> {
                 goToBrowser("https://www.fiestashistoricas.es/")
-                true
             }
             R.id.action_europa -> {
                 goToBrowser("http://www.cefmh.eu/")
-                true
             }
-            else -> super.onOptionsItemSelected(item)
         }
+        return item.onNavDestinationSelected(findNavController(R.id.nav_host))
+                || super.onOptionsItemSelected(item)
     }
 
     private fun goToBrowser(url: String?) {

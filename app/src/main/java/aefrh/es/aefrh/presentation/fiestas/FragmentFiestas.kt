@@ -2,13 +2,11 @@ package aefrh.es.aefrh.presentation.fiestas
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.presentation.base.BaseFragment
-import aefrh.es.aefrh.utils.SpanningLinearLayoutManager
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_fiesta.*
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class FragmentFiestas: BaseFragment() {
 
@@ -39,9 +37,6 @@ class FragmentFiestas: BaseFragment() {
 
         vModel.fiestas.observe(viewLifecycleOwner, Observer {
             val result = it.data
-            for(item in result!!) {
-                Timber.e("Fiesta: $item")
-            }
             if (!result.isNullOrEmpty()) adapter.submitList(result)
         })
 

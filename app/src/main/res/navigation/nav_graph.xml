@@ -9,7 +9,7 @@
     <fragment
         android:id="@+id/fragmentEpocas"
         android:name="aefrh.es.aefrh.presentation.epocas.FragmentEpocas"
-        android:label="fragment_epocas"
+        android:label="@string/epocas"
         tools:layout="@layout/fragment_epocas" >
         <action
             android:id="@+id/action_fragmentEpocas_to_fragmentFiesta"
@@ -24,7 +24,7 @@
     <fragment
         android:id="@+id/fragmentFiesta"
         android:name="aefrh.es.aefrh.presentation.fiestas.FragmentFiestas"
-        android:label="fragment_fiesta"
+        android:label="@string/fiestas"
         tools:layout="@layout/fragment_fiesta" >
         <argument
             android:name="FIESTA_ID"
