@@ -12,8 +12,8 @@
         android:label="@string/epocas"
         tools:layout="@layout/fragment_epocas" >
         <action
-            android:id="@+id/action_fragmentEpocas_to_fragmentFiesta"
-            app:destination="@id/fragmentFiesta"
+            android:id="@+id/action_fragmentEpocas_to_fragmentFiestaList"
+            app:destination="@id/fragmentFiestaList"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -22,15 +22,15 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fragmentFiesta"
-        android:name="aefrh.es.aefrh.presentation.fiestas.FragmentFiestas"
+        android:id="@+id/fragmentFiestaList"
+        android:name="aefrh.es.aefrh.presentation.fiestas.list.FragmentFiestasList"
         android:label="@string/fiestas"
-        tools:layout="@layout/fragment_fiesta" >
+        tools:layout="@layout/fragment_fiesta_list" >
         <argument
             android:name="FIESTA_ID"
             app:argType="string" />
         <action
-            android:id="@+id/action_fragmentFiesta_to_fragmentFiestaDetails"
+            android:id="@+id/action_fragmentFiestaList_to_fragmentFiestaDetails"
             app:destination="@id/fragmentFiestaDetails"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
@@ -40,7 +40,7 @@
     </fragment>
     <fragment
         android:id="@+id/fragmentFiestaDetails"
-        android:name="aefrh.es.aefrh.presentation.fiestas.FragmentFiestaDetails"
+        android:name="aefrh.es.aefrh.presentation.fiestas.details.FragmentFiestaDetails"
         android:label="@string/historia"
         tools:layout="@layout/fragment_fiesta_details">
         <argument

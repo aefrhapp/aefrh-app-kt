@@ -1,31 +1,36 @@
-package aefrh.es.aefrh.presentation.fiestas
+package aefrh.es.aefrh.presentation.fiestas.list
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.presentation.base.BaseFragment
+import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
 import android.view.View
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.fragment_fiesta.*
+import kotlinx.android.synthetic.main.fragment_fiesta_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class FragmentFiestas: BaseFragment() {
+class FragmentFiestasList: BaseFragment() {
 
     private val vModel: FiestasViewModel by viewModel()
-    private var safeArgs: FragmentFiestasArgs? = null
+    private var safeArgs: FragmentFiestasListArgs? = null
 
     override fun getLayoutId(): Int {
-        return R.layout.fragment_fiesta
+        return R.layout.fragment_fiesta_list
     }
 
     override fun onViewsInitialized(binding: ViewDataBinding, view: View) {
 
         arguments?.let {
-            safeArgs = FragmentFiestasArgs.fromBundle(it)
+            safeArgs =
+                FragmentFiestasListArgs.fromBundle(
+                    it
+                )
         }
 
         vModel.getFiestas(safeArgs?.fiestaid)
 
-        val adapter = FiestasListAdapter()
+        val adapter =
+            FiestasListAdapter()
         rv_fiestas.apply {
             this.adapter = adapter
             postponeEnterTransition()
