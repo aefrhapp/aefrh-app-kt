@@ -7,6 +7,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
@@ -33,8 +34,8 @@ class FiestasListAdapter: ListAdapter<Fiesta, FiestasListAdapter.ViewHolder>(Vid
 
     private fun createOnClickListener(epocaId: String): View.OnClickListener {
         return View.OnClickListener {
-//            val directions = FragmentEpocasDirections.actionFragmentEpocasToFragmentFiesta(epocaId)
-//            it.findNavController().navigate(directions)
+            val directions = FragmentFiestasDirections.actionFragmentFiestaToFragmentFiestaDetails(epocaId)
+            it.findNavController().navigate(directions)
         }
     }
 

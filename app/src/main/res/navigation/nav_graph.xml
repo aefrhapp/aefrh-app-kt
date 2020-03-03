@@ -29,6 +29,23 @@
         <argument
             android:name="FIESTA_ID"
             app:argType="string" />
+        <action
+            android:id="@+id/action_fragmentFiesta_to_fragmentFiestaDetails"
+            app:destination="@id/fragmentFiestaDetails"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="false" />
+    </fragment>
+    <fragment
+        android:id="@+id/fragmentFiestaDetails"
+        android:name="aefrh.es.aefrh.presentation.fiestas.FragmentFiestaDetails"
+        android:label="@string/historia"
+        tools:layout="@layout/fragment_fiesta_details">
+        <argument
+            android:name="FIESTA_ID"
+            app:argType="string" />
     </fragment>
 
 </navigation>
