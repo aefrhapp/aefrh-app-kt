@@ -34,6 +34,7 @@
                     android:id="@+id/tvNombre"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:text="@{fiesta.nombre}"
                     style="@style/tvTitle" />
 
                 <TextView
@@ -41,6 +42,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
+                    android:text="@{fiesta.titulo}"
                     style="@style/tvSubTitle" />
 
                 <TextView
@@ -48,6 +50,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="24dp"
+                    android:text="@{fiesta.contenido}"
                     style="@style/tvContent" />
 
             </LinearLayout>

@@ -17,9 +17,17 @@ class FiestasViewModel(
         Resource.loading(emptyList<Fiesta>())
     }
 
+    val fiesta = MutableLiveData<Resource<Fiesta>>()
+
     fun getFiestas(epocaId: String?) {
         viewModelScope.launch(Dispatchers.IO) {
             fiestas.postValue(epocaId?.let { fiestaUseCase.invoke(it) })
+        }
+    }
+
+    fun getFiestaById(fiestaId: String?) {
+        viewModelScope.launch(Dispatchers.IO) {
+            fiesta.postValue(fiestaId?.let { fiestaUseCase.getFiestaById(it) })
         }
     }
 
