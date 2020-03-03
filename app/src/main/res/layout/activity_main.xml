@@ -22,7 +22,7 @@
             android:layout_gravity="start"
             android:background="@color/colorPrimary"
             app:itemHorizontalPadding="48dp"
-            app:itemTextAppearance="@style/tvNavigation"
+            app:itemTextAppearance="@style/tvDrawer"
             app:headerLayout="@layout/nav_header_main"
             app:menu="@menu/menu_main_drawer" />
 
