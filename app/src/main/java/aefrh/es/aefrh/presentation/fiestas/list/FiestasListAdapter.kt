@@ -1,4 +1,4 @@
-package aefrh.es.aefrh.presentation.fiestas
+package aefrh.es.aefrh.presentation.fiestas.list
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FiestaItemBinding
@@ -7,11 +7,14 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class FiestasListAdapter: ListAdapter<Fiesta, FiestasListAdapter.ViewHolder>(VideoDiffCallback()) {
+class FiestasListAdapter: ListAdapter<Fiesta, FiestasListAdapter.ViewHolder>(
+    VideoDiffCallback()
+) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -33,8 +36,11 @@ class FiestasListAdapter: ListAdapter<Fiesta, FiestasListAdapter.ViewHolder>(Vid
 
     private fun createOnClickListener(epocaId: String): View.OnClickListener {
         return View.OnClickListener {
-//            val directions = FragmentEpocasDirections.actionFragmentEpocasToFragmentFiesta(epocaId)
-//            it.findNavController().navigate(directions)
+            val directions =
+                FragmentFiestasListDirections.actionFragmentFiestaListToFragmentFiestaDetails(
+                    epocaId
+                )
+            it.findNavController().navigate(directions)
         }
     }
 

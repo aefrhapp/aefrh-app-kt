@@ -4,4 +4,5 @@ import aefrh.es.aefrh.data.fiesta.FiestaDataSource
 
 class GetFiestas(private val fiestaRepository: FiestaDataSource) {
     suspend operator fun invoke(epocaId: String) = fiestaRepository.getAllByEpocaId(epocaId)
+    suspend fun getFiestaById(fiestaId: String) = fiestaRepository.getFiestaById(fiestaId)
 }

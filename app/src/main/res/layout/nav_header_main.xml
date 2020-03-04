@@ -22,7 +22,7 @@
         android:layout_marginStart="16dp"
         android:text="@string/federation_name"
         android:textColor="@android:color/white"
-        style="@style/tv15"
+        style="@style/tvContent"
         app:layout_constrainedWidth="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

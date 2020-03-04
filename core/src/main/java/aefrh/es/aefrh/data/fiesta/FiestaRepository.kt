@@ -16,4 +16,13 @@ class FiestaRepository(private val fiestaApi: FiestaApi):
         }
     }
 
+    override suspend fun getFiestaById(fiestaId: String): Resource<Fiesta> {
+        return try {
+            val result = fiestaApi.getFiestaById(fiestaId).await()
+            Resource.success(result)
+        } catch (ex: Exception) {
+            Resource.error(ex)
+        }
+    }
+
 }
