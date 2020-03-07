@@ -1,9 +1,13 @@
 package aefrh.es.aefrh.presentation.epocas
 
 import aefrh.es.aefrh.R
+import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.SpanningLinearLayoutManager
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
+import android.widget.Toast
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -32,8 +36,22 @@ class FragmentEpocas: BaseFragment() {
         }
 
         vModel.epocas.observe(viewLifecycleOwner, Observer {
-            val result = it.data
-            if (!result.isNullOrEmpty()) adapter.submitList(result)
+
+            when(it.status) {
+                Status.LOADING -> {
+                    pb_epocas.visibility = VISIBLE
+                }
+                Status.ERROR -> {
+                    pb_epocas.visibility = GONE
+                    Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                }
+                else -> {
+                    pb_epocas.visibility = GONE
+                    val result = it.data
+                    if (!result.isNullOrEmpty()) adapter.submitList(result)
+                }
+            }
+
         })
 
     }
