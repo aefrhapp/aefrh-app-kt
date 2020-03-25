@@ -13,30 +13,27 @@ import kotlinx.android.synthetic.main.fragment_fiesta_details.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class FragmentFiestaDetails: BaseFragment() {
+class FiestaDetailsFragment : BaseFragment<FragmentFiestaDetailsBinding, FiestasViewModel>() {
 
-    private val vModel: FiestasViewModel by viewModel()
-    private var safeArgs: FragmentFiestaDetailsArgs? = null
+    override val viewModel: FiestasViewModel by viewModel()
+    override fun getLayoutResId() = R.layout.fragment_fiesta_details
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_fiesta_details
-    }
+//    private var safeArgs: FragmentFiestaDetailsArgs? = null
 
-    override fun onViewsInitialized(binding: ViewDataBinding, view: View) {
+    override fun init(view: View) {
 
-        arguments?.let {
-            safeArgs =
-                FragmentFiestaDetailsArgs.fromBundle(
-                    it
-                )
-        }
+//        arguments?.let {
+//            safeArgs =
+//                FragmentFiestaDetailsArgs.fromBundle(
+//                    it
+//                )
+//        }
 
-        vModel.getFiestaById(safeArgs?.fiestaid)
-        vModel.fiesta.observe(viewLifecycleOwner, Observer { result ->
+//        viewModel.getFiestaById(safeArgs?.fiestaid)
+        viewModel.fiesta.observe(viewLifecycleOwner, Observer { result ->
 
             val fiesta = result.data
-            binding.setVariable(BR.fiesta, fiesta)
-            binding.executePendingBindings()
+            bindingObject.fiesta = fiesta
 
             // Show images in slider
             slider_details.apply {

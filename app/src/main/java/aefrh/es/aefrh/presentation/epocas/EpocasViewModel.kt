@@ -9,9 +9,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class EpocasViewModel(
-    private val epocaUseCase: GetEpocas
-): BaseViewModel() {
+class EpocasViewModel(private val epocaUseCase: GetEpocas): BaseViewModel() {
 
     val epocas = MutableLiveData<Resource<List<Epoca>>>().apply {
         Resource.loading(emptyList<Epoca>())

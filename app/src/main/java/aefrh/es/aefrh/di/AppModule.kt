@@ -9,6 +9,7 @@ import aefrh.es.aefrh.data.fiesta.FiestaDataSource
 import aefrh.es.aefrh.data.fiesta.FiestaRepository
 import aefrh.es.aefrh.presentation.epocas.EpocasViewModel
 import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
+import aefrh.es.aefrh.presentation.splash.SplashViewModel
 import aefrh.es.aefrh.usecases.GetEpocas
 import aefrh.es.aefrh.usecases.GetFiestas
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -22,10 +23,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 import java.util.concurrent.TimeUnit
 
 val viewModelModule = module {
-
-    //
-    // TODO -> Could merge all Fiesta && Epoca in single Use Case and avoid repeat instances.
-    //
 
     // Retrofit
     single {
@@ -53,6 +50,7 @@ val viewModelModule = module {
     single { GetFiestas(fiestaRepository = get()) }
 
     // Specific viewModel pattern to tell Koin how to build View Models
+    viewModel { SplashViewModel() }
     viewModel { EpocasViewModel(epocaUseCase = get()) }
     viewModel { FiestasViewModel(fiestaUseCase = get()) }
 

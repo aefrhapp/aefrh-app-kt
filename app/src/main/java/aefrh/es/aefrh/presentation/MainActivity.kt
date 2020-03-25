@@ -1,15 +1,14 @@
-package aefrh.es.aefrh.presentation.main
+package aefrh.es.aefrh.presentation
 
 import aefrh.es.aefrh.R
-import aefrh.es.aefrh.databinding.ActivityMainBinding
-import aefrh.es.aefrh.presentation.base.BaseActivity
 import android.content.Intent
 import android.net.Uri
+import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
-import androidx.databinding.ViewDataBinding
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.navigateUp
@@ -19,18 +18,14 @@ import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.content_main.*
 
-class MainActivity: BaseActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
-    private lateinit var binding: ActivityMainBinding
-    private lateinit var appBarConfiguration: AppBarConfiguration;
+    private lateinit var appBarConfiguration: AppBarConfiguration
 
-    override val layout: Int = R.layout.activity_main
+    override fun onCreate(savedInstanceState: Bundle?) {
 
-    override fun initUI(binding: ViewDataBinding?) {
-        this.binding = binding as ActivityMainBinding
-    }
-
-    override fun onCreate() {
+        super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
 
         // Toolbar
         setSupportActionBar(toolbar)
@@ -80,7 +75,8 @@ class MainActivity: BaseActivity(), NavigationView.OnNavigationItemSelectedListe
         return super.onCreateOptionsMenu(menu)
     }
 
-    override fun onSupportNavigateUp() = findNavController(R.id.nav_host).navigateUp(appBarConfiguration)
+    override fun onSupportNavigateUp() = findNavController(R.id.nav_host)
+        .navigateUp(appBarConfiguration)
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 

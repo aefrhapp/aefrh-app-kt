@@ -1,9 +1,12 @@
 package aefrh.es.aefrh.presentation.fiestas.list
 
 import aefrh.es.aefrh.R
+import aefrh.es.aefrh.databinding.FragmentFiestaDetailsBinding
+import aefrh.es.aefrh.databinding.FragmentFiestaListBinding
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
+import aefrh.es.aefrh.presentation.splash.SplashViewModel
 import android.view.View
 import android.widget.Toast
 import androidx.databinding.ViewDataBinding
@@ -12,24 +15,22 @@ import kotlinx.android.synthetic.main.fragment_epocas.*
 import kotlinx.android.synthetic.main.fragment_fiesta_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
 
-class FragmentFiestasList: BaseFragment() {
+class FiestaListFragment : BaseFragment<FragmentFiestaListBinding, FiestasViewModel>() {
 
-    private val vModel: FiestasViewModel by viewModel()
-    private var safeArgs: FragmentFiestasListArgs? = null
+    override val viewModel: FiestasViewModel by viewModel()
+    override fun getLayoutResId() = R.layout.fragment_fiesta_list
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_fiesta_list
-    }
+//    private var safeArgs: FragmentFiestaListArgs? = null
 
-    override fun onViewsInitialized(binding: ViewDataBinding, view: View) {
+    override fun init(view: View) {
 
-        arguments?.let {
-            safeArgs =
-                FragmentFiestasListArgs.fromBundle(
-                    it
-                )
-        }
-        vModel.getFiestas(safeArgs?.fiestaid)
+//        arguments?.let {
+//            safeArgs =
+//                FragmentFiestaListArgs.fromBundle(
+//                    it
+//                )
+//        }
+//        viewModel.getFiestas(safeArgs?.fiestaid)
 
         val adapter = FiestasListAdapter()
         rv_fiestas.apply {
@@ -41,7 +42,7 @@ class FragmentFiestasList: BaseFragment() {
             }
         }
 
-        vModel.fiestas.observe(viewLifecycleOwner, Observer {
+        viewModel.fiestas.observe(viewLifecycleOwner, Observer {
 
             when(it.status) {
                 Status.LOADING -> {

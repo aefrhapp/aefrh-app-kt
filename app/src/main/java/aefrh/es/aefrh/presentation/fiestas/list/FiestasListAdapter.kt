@@ -36,11 +36,8 @@ class FiestasListAdapter: ListAdapter<Fiesta, FiestasListAdapter.ViewHolder>(
 
     private fun createOnClickListener(epocaId: String): View.OnClickListener {
         return View.OnClickListener {
-            val directions =
-                FragmentFiestasListDirections.actionFragmentFiestaListToFragmentFiestaDetails(
-                    epocaId
-                )
-            it.findNavController().navigate(directions)
+//            val directions = FragmentFiestasListDirections.actionFragmentFiestaListToFragmentFiestaDetails(epocaId)
+//            it.findNavController().navigate(directions)
         }
     }
 

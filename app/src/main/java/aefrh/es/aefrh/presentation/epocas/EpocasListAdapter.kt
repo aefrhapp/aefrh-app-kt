@@ -34,12 +34,12 @@ class EpocasListAdapter: ListAdapter<Epoca, EpocasListAdapter.ViewHolder>(VideoD
 
     private fun createOnClickListener(epocaId: String): View.OnClickListener {
         return View.OnClickListener {
-            val directions = FragmentEpocasDirections.actionFragmentEpocasToFragmentFiestaList(epocaId)
-            it.findNavController().navigate(directions)
+//            val directions = FragmentEpocasDirections.actionFragmentEpocasToFragmentFiestaList(epocaId)
+//            it.findNavController().navigate(directions)
         }
     }
 
-    class ViewHolder(val binding: EpocaItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: EpocaItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(listener: View.OnClickListener, value: Epoca) {
             with(binding) {
                 this.epoca = value
