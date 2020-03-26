@@ -8,6 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/ToolbarTheme</item>
         <item name="android:statusBarColor">@color/colorStatusBar</item>
+        <item name="android:textColorPrimary">@color/colorBackground</item>
+        <item name="android:textColorSecondary">@color/colorBackground</item>
     </style>
 
     <style name="SplashTheme" parent="AppTheme">
