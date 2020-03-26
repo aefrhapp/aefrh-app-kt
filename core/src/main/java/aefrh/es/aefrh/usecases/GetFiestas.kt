@@ -1,8 +1,8 @@
 package aefrh.es.aefrh.usecases
 
-import aefrh.es.aefrh.data.fiesta.FiestaDataSource
+import aefrh.es.aefrh.data.parse.ParseRepository
 
-class GetFiestas(private val fiestaRepository: FiestaDataSource) {
-    suspend operator fun invoke(epocaId: String) = fiestaRepository.getAllByEpocaId(epocaId)
-    suspend fun getFiestaById(fiestaId: String) = fiestaRepository.getFiestaById(fiestaId)
+class GetFiestas(private val parseRepository: ParseRepository) {
+    suspend operator fun invoke(epocaId: String) = parseRepository.getAllByEpocaId(epocaId)
+    suspend fun getFiestaById(fiestaId: String) = parseRepository.getFiestaById(fiestaId)
 }
