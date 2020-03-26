@@ -1,28 +1,24 @@
 package aefrh.es.aefrh.presentation.epocas
 
 import aefrh.es.aefrh.R
+import aefrh.es.aefrh.databinding.FragmentEpocasBinding
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.SpanningLinearLayoutManager
 import android.view.View
-import android.view.View.GONE
-import android.view.View.VISIBLE
 import android.widget.Toast
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_epocas.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
-class FragmentEpocas: BaseFragment() {
+class EpocasFragment: BaseFragment<FragmentEpocasBinding, EpocasViewModel>() {
 
-    private val vModel: EpocasViewModel by viewModel()
+    override val viewModel: EpocasViewModel by viewModel()
+    override fun getLayoutResId() = R.layout.fragment_epocas
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_epocas
-    }
-
-    override fun onViewsInitialized(binding: ViewDataBinding, view: View) {
+    override fun init(view: View) {
 
         val adapter = EpocasListAdapter()
         rv_epocas.apply {
@@ -35,24 +31,26 @@ class FragmentEpocas: BaseFragment() {
             }
         }
 
-        vModel.epocas.observe(viewLifecycleOwner, Observer {
+        viewModel.epocas.observe(this, Observer {
 
             when(it.status) {
                 Status.LOADING -> {
-                    pb_epocas.visibility = VISIBLE
+                    showProgress()
                 }
                 Status.ERROR -> {
-                    pb_epocas.visibility = GONE
+                    hideProgress()
                     Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                    Timber.e(it.message)
                 }
                 else -> {
-                    pb_epocas.visibility = GONE
+                    hideProgress()
                     val result = it.data
                     if (!result.isNullOrEmpty()) adapter.submitList(result)
                 }
             }
 
         })
+
 
     }
 

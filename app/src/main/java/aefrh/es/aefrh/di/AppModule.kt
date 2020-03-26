@@ -23,10 +23,6 @@ import java.util.concurrent.TimeUnit
 
 val viewModelModule = module {
 
-    //
-    // TODO -> Could merge all Fiesta && Epoca in single Use Case and avoid repeat instances.
-    //
-
     // Retrofit
     single {
         createWebService<EpocaApi>(

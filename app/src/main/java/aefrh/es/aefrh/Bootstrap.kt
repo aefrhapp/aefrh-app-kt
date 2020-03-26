@@ -7,7 +7,7 @@ import org.koin.android.ext.koin.androidLogger
 import org.koin.core.context.startKoin
 import timber.log.Timber
 
-class App : Application() {
+class Bootstrap : Application() {
 
     override fun onCreate() {
         super.onCreate()
@@ -19,7 +19,7 @@ class App : Application() {
         // Adding Koin modules to our application
         startKoin {
             androidLogger()
-            androidContext(this@App)
+            androidContext(this@Bootstrap)
             modules(listOf(viewModelModule))
         }
 

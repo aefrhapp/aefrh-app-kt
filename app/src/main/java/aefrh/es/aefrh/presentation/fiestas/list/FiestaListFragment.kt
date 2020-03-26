@@ -1,35 +1,28 @@
 package aefrh.es.aefrh.presentation.fiestas.list
 
 import aefrh.es.aefrh.R
+import aefrh.es.aefrh.databinding.FragmentFiestaListBinding
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
 import android.view.View
 import android.widget.Toast
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
-import kotlinx.android.synthetic.main.fragment_epocas.*
 import kotlinx.android.synthetic.main.fragment_fiesta_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
-class FragmentFiestasList: BaseFragment() {
+class FiestaListFragment : BaseFragment<FragmentFiestaListBinding, FiestasViewModel>() {
 
-    private val vModel: FiestasViewModel by viewModel()
-    private var safeArgs: FragmentFiestasListArgs? = null
+    override val viewModel: FiestasViewModel by viewModel()
+    override fun getLayoutResId() = R.layout.fragment_fiesta_list
 
-    override fun getLayoutId(): Int {
-        return R.layout.fragment_fiesta_list
-    }
+    private var safeArgs: FiestaListFragmentArgs? = null
 
-    override fun onViewsInitialized(binding: ViewDataBinding, view: View) {
+    override fun init(view: View) {
 
-        arguments?.let {
-            safeArgs =
-                FragmentFiestasListArgs.fromBundle(
-                    it
-                )
-        }
-        vModel.getFiestas(safeArgs?.fiestaid)
+        arguments?.let { safeArgs = FiestaListFragmentArgs.fromBundle(it) }
+        viewModel.getFiestas(safeArgs?.fiestaid)
 
         val adapter = FiestasListAdapter()
         rv_fiestas.apply {
@@ -41,18 +34,19 @@ class FragmentFiestasList: BaseFragment() {
             }
         }
 
-        vModel.fiestas.observe(viewLifecycleOwner, Observer {
+        viewModel.fiestas.observe(this, Observer {
 
             when(it.status) {
                 Status.LOADING -> {
-                    pb_fiestas_list.visibility = View.VISIBLE
+                    showProgress()
                 }
                 Status.ERROR -> {
-                    pb_fiestas_list.visibility = View.GONE
+                    hideProgress()
                     Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                    Timber.e(it.message)
                 }
                 else -> {
-                    pb_fiestas_list.visibility = View.GONE
+                    hideProgress()
                     val result = it.data
                     if (!result.isNullOrEmpty()) adapter.submitList(result)
                 }

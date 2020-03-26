@@ -4,13 +4,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/fragmentEpocas">
+    app:startDestination="@id/epocasFragment">
 
     <fragment
-        android:id="@+id/fragmentEpocas"
-        android:name="aefrh.es.aefrh.presentation.epocas.FragmentEpocas"
+        android:id="@+id/epocasFragment"
+        android:name="aefrh.es.aefrh.presentation.epocas.EpocasFragment"
         android:label="@string/epocas"
-        tools:layout="@layout/fragment_epocas" >
+        tools:layout="@layout/fragment_epocas">
         <action
             android:id="@+id/action_fragmentEpocas_to_fragmentFiestaList"
             app:destination="@id/fragmentFiestaList"
@@ -23,9 +23,9 @@
 
     <fragment
         android:id="@+id/fragmentFiestaList"
-        android:name="aefrh.es.aefrh.presentation.fiestas.list.FragmentFiestasList"
+        android:name="aefrh.es.aefrh.presentation.fiestas.list.FiestaListFragment"
         android:label="@string/fiestas"
-        tools:layout="@layout/fragment_fiesta_list" >
+        tools:layout="@layout/fragment_fiesta_list">
         <argument
             android:name="FIESTA_ID"
             app:argType="string" />
@@ -38,9 +38,10 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="false" />
     </fragment>
+
     <fragment
         android:id="@+id/fragmentFiestaDetails"
-        android:name="aefrh.es.aefrh.presentation.fiestas.details.FragmentFiestaDetails"
+        android:name="aefrh.es.aefrh.presentation.fiestas.details.FiestaDetailsFragment"
         android:label="@string/historia"
         tools:layout="@layout/fragment_fiesta_details">
         <argument

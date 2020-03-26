@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout
+<layout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
-    tools:context=".presentation.fiestas.details.FragmentFiestaDetails">
+    tools:context=".presentation.fiestas.details.FiestaDetailsFragment">
 
     <data>
         <variable
@@ -14,48 +14,65 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <LinearLayout
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical">
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/size_24">
 
             <com.custom.sliderimage.logic.SliderImage
                 android:id="@+id/slider_details"
-                android:layout_width="match_parent"
-                android:layout_height="270dp" />
+                android:layout_width="0dp"
+                android:layout_height="0dp"
+                app:layout_constraintBottom_toTopOf="@+id/tvNombre"
+                app:layout_constraintDimensionRatio="16:9"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <LinearLayout
+            <TextView
+                android:id="@+id/tvNombre"
+                style="@style/TextTitle"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_margin="24dp">
+                android:layout_marginStart="@dimen/size_24"
+                android:layout_marginTop="@dimen/size_24"
+                android:layout_marginEnd="@dimen/size_24"
+                android:text="@{fiesta.nombre}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/slider_details" />
 
-                <TextView
-                    android:id="@+id/tvNombre"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@{fiesta.nombre}"
-                    style="@style/tvTitle" />
+            <TextView
+                android:id="@+id/tvTitulo"
+                style="@style/TextSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{fiesta.titulo}"
+                android:layout_marginTop="@dimen/size_8"
+                android:layout_marginStart="@dimen/size_24"
+                android:layout_marginEnd="@dimen/size_24"
+                app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
 
-                <TextView
-                    android:id="@+id/tvTitulo"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="8dp"
-                    android:text="@{fiesta.titulo}"
-                    style="@style/tvSubTitle" />
+            <TextView
+                android:id="@+id/tvContenido"
+                style="@style/TextDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{fiesta.contenido}"
+                android:layout_margin="@dimen/size_24"
+                app:layout_constraintTop_toBottomOf="@+id/tvTitulo" />
 
-                <TextView
-                    android:id="@+id/tvContenido"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="24dp"
-                    android:text="@{fiesta.contenido}"
-                    style="@style/tvContent" />
+            <ProgressBar
+                android:id="@+id/progress"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            </LinearLayout>
-
-        </LinearLayout>
+        </androidx.constraintlayout.widget.ConstraintLayout>
 
     </androidx.core.widget.NestedScrollView>
 
