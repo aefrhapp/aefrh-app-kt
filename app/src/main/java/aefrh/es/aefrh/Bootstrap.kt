@@ -1,5 +1,8 @@
 package aefrh.es.aefrh
 
+import aefrh.es.aefrh.di.repositoryModule
+import aefrh.es.aefrh.di.retrofitModule
+import aefrh.es.aefrh.di.useCaseModule
 import aefrh.es.aefrh.di.viewModelModule
 import android.app.Application
 import org.koin.android.ext.koin.androidContext
@@ -20,7 +23,7 @@ class Bootstrap : Application() {
         startKoin {
             androidLogger()
             androidContext(this@Bootstrap)
-            modules(listOf(viewModelModule))
+            modules(listOf(retrofitModule, repositoryModule, useCaseModule, viewModelModule))
         }
 
     }
