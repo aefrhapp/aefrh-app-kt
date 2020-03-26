@@ -5,10 +5,15 @@
     <color name="colorPrimaryDark">#000B1D</color>
     <color name="colorAccent">#AE2722</color>
 
-    <color name="subtitulo">#7E7B7B</color>
+    <color name="colorBackground">#FFFFFF</color>
+    <color name="colorStatusBar">@color/colorPrimaryDark</color>
+
+        <color name="subtitulo">#7E7B7B</color>
 
     <color name="backgroundDorado">#FFF6E1</color>
-    <color name="backgroundGris">#F0F0F0</color>
-    <color name="backgroundAzul">#EBF4FF</color>
+    <color name="backgroundToolbar">#001A46</color>
+
+    <!--    <color name="backgroundGris">#F0F0F0</color>-->
+<!--    <color name="backgroundAzul">#EBF4FF</color>-->
 
 </resources>

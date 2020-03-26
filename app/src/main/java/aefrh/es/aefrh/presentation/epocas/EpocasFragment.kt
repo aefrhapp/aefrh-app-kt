@@ -37,15 +37,15 @@ class EpocasFragment: BaseFragment<FragmentEpocasBinding, EpocasViewModel>() {
 
             when(it.status) {
                 Status.LOADING -> {
-                    pb_epocas.visibility = VISIBLE
+                    showProgress()
                 }
                 Status.ERROR -> {
-                    pb_epocas.visibility = GONE
+                    hideProgress()
                     Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
                     Timber.e(it.message)
                 }
                 else -> {
-                    pb_epocas.visibility = GONE
+                    hideProgress()
                     val result = it.data
                     if (!result.isNullOrEmpty()) adapter.submitList(result)
                 }

@@ -34,8 +34,8 @@ class EpocasListAdapter: ListAdapter<Epoca, EpocasListAdapter.ViewHolder>(VideoD
 
     private fun createOnClickListener(epocaId: String): View.OnClickListener {
         return View.OnClickListener {
-//            val directions = FragmentEpocasDirections.actionFragmentEpocasToFragmentFiestaList(epocaId)
-//            it.findNavController().navigate(directions)
+            val directions = EpocasFragmentDirections.actionFragmentEpocasToFragmentFiestaList(epocaId)
+            it.findNavController().navigate(directions)
         }
     }
 

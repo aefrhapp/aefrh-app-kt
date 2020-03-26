@@ -9,7 +9,6 @@ import aefrh.es.aefrh.data.fiesta.FiestaDataSource
 import aefrh.es.aefrh.data.fiesta.FiestaRepository
 import aefrh.es.aefrh.presentation.epocas.EpocasViewModel
 import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
-import aefrh.es.aefrh.presentation.splash.SplashViewModel
 import aefrh.es.aefrh.usecases.GetEpocas
 import aefrh.es.aefrh.usecases.GetFiestas
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
@@ -50,7 +49,6 @@ val viewModelModule = module {
     single { GetFiestas(fiestaRepository = get()) }
 
     // Specific viewModel pattern to tell Koin how to build View Models
-    viewModel { SplashViewModel() }
     viewModel { EpocasViewModel(epocaUseCase = get()) }
     viewModel { FiestasViewModel(fiestaUseCase = get()) }
 

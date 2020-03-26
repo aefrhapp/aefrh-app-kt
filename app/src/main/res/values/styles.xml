@@ -1,19 +1,27 @@
 <resources>
 
     <!--********************************** BASE APP **********************************-->
-    <style name="AppTheme" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="toolbarStyle">@style/ToolbarStyle</item>
+        <item name="android:statusBarColor">@color/colorStatusBar</item>
     </style>
 
-    <style name="AppTheme.NoActionBar">
-        <item name="windowActionBar">false</item>
-        <item name="windowNoTitle">true</item>
+    <!-- Splash Screen Theme -->
+    <style name="SplashTheme" parent="AppTheme">
+        <item name="android:windowBackground">@drawable/splash_background</item>
     </style>
     <!--********************************** BASE APP **********************************-->
 
+    <!--********************************** TOOLBAR **********************************-->
+    <style name="ToolbarStyle" parent="@style/Widget.AppCompat.Toolbar">
+        <!-- Makes the toolbar text whatever color you want for both light/dark-->
+        <item name="android:background">@color/backgroundToolbar</item>
+    </style>
+    <!--********************************** TOOLBAR **********************************-->
 
     <!--********************************** TEXT VIEWS **********************************-->
     <style name="tvDrawer" parent="TextAppearance.MaterialComponents.Body1">

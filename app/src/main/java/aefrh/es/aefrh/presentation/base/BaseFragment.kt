@@ -10,6 +10,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.databinding.library.baseAdapters.BR
+import kotlinx.android.synthetic.main.fragment_epocas.*
 
 abstract class BaseFragment<binding : ViewDataBinding, viewModel : BaseViewModel> : Fragment() {
 
@@ -39,22 +40,15 @@ abstract class BaseFragment<binding : ViewDataBinding, viewModel : BaseViewModel
     private fun doDataBinding(view: View) {
         // it is extra if you want to set life cycle owner in binding
         bindingObject.lifecycleOwner = viewLifecycleOwner
-
-        // Here your viewModel and binding variable imlementation
-//        bindingObject.setVariable(BR.viewModel, mViewModel)
-
-        // In all layout the variable name should be "viewModel"
-//        bindingObject.executePendingBindings()
-
         init(view)
     }
 
     fun hideProgress(){
-//        progress.visibility = View.GONE
+        progress.visibility = View.GONE
     }
 
     fun showProgress(){
-//        progress.visibility = View.VISIBLE
+        progress.visibility = View.VISIBLE
     }
 
     fun hideKeyboard() {

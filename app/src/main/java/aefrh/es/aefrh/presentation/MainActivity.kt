@@ -6,17 +6,16 @@ import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
+import android.view.View
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
-import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.navigateUp
-import androidx.navigation.ui.onNavDestinationSelected
-import androidx.navigation.ui.setupActionBarWithNavController
+import androidx.navigation.ui.*
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.content_main.*
 
 class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
@@ -24,26 +23,57 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
+        setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        // Toolbar
+        // Toolbar & Navigation
         setSupportActionBar(toolbar)
-
-        //configure nav controller
         val navController = findNavController(R.id.nav_host)
 
-        // setup action bar && nav controller
         appBarConfiguration = AppBarConfiguration(
             navController.graph,
-            drawer_layout
-        )
+            drawer_layout)
+
+        // This allows NavigationUI to decide what label to show in the action bar
+        // By using appBarConfig, it will also determine whether to
+        // show the up arrow or drawer menu icon
         setupActionBarWithNavController(navController, appBarConfiguration)
+
+        // In split screen mode, you can drag this view out from the left
+        // This does NOT modify the actionbar
+        nav_view?.setupWithNavController(navController)
+
+        // Set visibility for NavigationView & Toolbar
+        // We never want this elements in SignIn
+//        visibilityNavElements(navController)
 
         // Drawer layout listener
         nav_view.setNavigationItemSelectedListener(this)
 
     }
+
+    // Allows NavigationUI to support proper up navigation or the drawer layout
+    // drawer menu, depending on the situation
+    override fun onSupportNavigateUp() = findNavController(R.id.nav_host)
+        .navigateUp(appBarConfiguration)
+
+//    private fun visibilityNavElements(navController: NavController) {
+//
+//        navController.addOnDestinationChangedListener { _, destination, _ ->
+//            when (destination.id) {
+//                R.id.splashFragment -> {
+//                    toolbar?.visibility = View.GONE
+//                    drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+//                }
+//                else -> {
+//                    toolbar?.visibility = View.VISIBLE
+//                    drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED)
+//                }
+//            }
+//        }
+//
+//    }
 
     override fun onNavigationItemSelected(item: MenuItem): Boolean {
         when (item.itemId) {
@@ -74,9 +104,6 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         menuInflater.inflate(R.menu.menu_home, menu)
         return super.onCreateOptionsMenu(menu)
     }
-
-    override fun onSupportNavigateUp() = findNavController(R.id.nav_host)
-        .navigateUp(appBarConfiguration)
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
 

@@ -4,22 +4,10 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
-    app:startDestination="@id/splashFragment">
+    app:startDestination="@id/epocasFragment">
 
     <fragment
-        android:id="@+id/splashFragment"
-        android:name="aefrh.es.aefrh.presentation.splash.SplashFragment"
-        android:label="fragment_splash"
-        tools:layout="@layout/fragment_splash" >
-        <action
-            android:id="@+id/action_splashFragment_to_fragmentEpocas"
-            app:destination="@id/fragmentEpocas"
-            app:popUpTo="@+id/splashFragment"
-            app:popUpToInclusive="false" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/fragmentEpocas"
+        android:id="@+id/epocasFragment"
         android:name="aefrh.es.aefrh.presentation.epocas.EpocasFragment"
         android:label="@string/epocas"
         tools:layout="@layout/fragment_epocas">
@@ -31,16 +19,6 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="false" />
-    </fragment>
-
-    <fragment
-        android:id="@+id/fragmentFiestaDetails"
-        android:name="aefrh.es.aefrh.presentation.fiestas.details.FiestaDetailsFragment"
-        android:label="@string/historia"
-        tools:layout="@layout/fragment_fiesta_details">
-        <argument
-            android:name="FIESTA_ID"
-            app:argType="string" />
     </fragment>
 
     <fragment
@@ -59,6 +37,16 @@
             app:popEnterAnim="@anim/slide_in_left"
             app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fragmentFiestaDetails"
+        android:name="aefrh.es.aefrh.presentation.fiestas.details.FiestaDetailsFragment"
+        android:label="@string/historia"
+        tools:layout="@layout/fragment_fiesta_details">
+        <argument
+            android:name="FIESTA_ID"
+            app:argType="string" />
     </fragment>
 
 </navigation>
