@@ -1,4 +1,4 @@
-package aefrh.es.aefrh.domain
+package aefrh.es.aefrh.utils
 
 import com.google.gson.annotations.SerializedName
 

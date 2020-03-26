@@ -1,5 +1,6 @@
-package aefrh.es.aefrh.domain
+package aefrh.es.aefrh.utils
 
+import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.domain.Status.*
 
 data class Result<out T>(val status: Status, val data: T?, val message: String?) {

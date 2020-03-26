@@ -1,7 +1,7 @@
 package aefrh.es.aefrh.presentation.fiestas
 
 import aefrh.es.aefrh.domain.Fiesta
-import aefrh.es.aefrh.domain.Result
+import aefrh.es.aefrh.utils.Result
 import aefrh.es.aefrh.presentation.base.BaseViewModel
 import aefrh.es.aefrh.usecases.GetFiestas
 import androidx.lifecycle.LiveData
