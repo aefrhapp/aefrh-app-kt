@@ -6,6 +6,6 @@ import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
 interface EpocaApi {
-    @GET("Epocas?order=Orden")
+    @GET("Epocas?order=Orden&where={\"Activo\":true}")
     fun getEpocas(): Deferred<JSONResponse<Epoca>>
 }

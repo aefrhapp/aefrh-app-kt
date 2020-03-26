@@ -9,9 +9,10 @@
     <color name="colorStatusBar">@color/colorPrimaryDark</color>
 
     <color name="colorMainText">@color/colorPrimaryDark</color>
+    <color name="colorNavigationText">#FFFFFF</color>
     <color name="colorTextLink">#03DAC6</color>
 
-    <color name="backgroundDorado">#FFF6E1</color>
+    <color name="backgroundCard">#FFF6E1</color>
     <color name="backgroundToolbar">#001A46</color>
 <!--    <color name="colorTextToolbar">#FFFFFF</color>-->
 

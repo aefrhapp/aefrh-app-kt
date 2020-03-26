@@ -9,7 +9,7 @@ class FiestaRepository(private val fiestaApi: FiestaApi):
 
     override suspend fun getAllByEpocaId(epocaId: String): Result<List<Fiesta>> {
         return try {
-            val jsonString = "{\"Epoca\":${ParseObject(className = "Epocas", id = epocaId).get()}}"
+            val jsonString = "{\"Epoca\":${ParseObject(className = "Epocas", id = epocaId).get()}, \"Activo\":true}"
             val result = fiestaApi.getFiestaByEpocaId(jsonString).await()
             Result.success(result.result)
         } catch (ex: Exception) {

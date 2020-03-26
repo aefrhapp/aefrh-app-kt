@@ -8,8 +8,8 @@
         <item name="colorAccent">@color/colorAccent</item>
         <item name="toolbarStyle">@style/ToolbarTheme</item>
         <item name="android:statusBarColor">@color/colorStatusBar</item>
-        <item name="android:textColorPrimary">@color/colorBackground</item>
-        <item name="android:textColorSecondary">@color/colorBackground</item>
+        <item name="android:textColorPrimary">@android:color/white</item>
+        <item name="android:textColorSecondary">@android:color/white</item>
     </style>
 
     <style name="SplashTheme" parent="AppTheme">
@@ -83,12 +83,12 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:gravity">start</item>
         <item name="android:textSize">@dimen/text_size_14</item>
-        <item name="android:textColor">@color/colorBackground</item>
+        <item name="android:textColor">@color/colorNavigationText</item>
     </style>
 
     <style name="TextNavigation" parent="@style/TextDescription">
         <item name="android:textSize">@dimen/size_20</item>
-        <item name="android:textColor">@color/colorBackground</item>
+        <item name="android:textColor">@color/colorNavigationText</item>
     </style>
     <!--********************************** TEXT VIEWS **********************************-->
 
@@ -106,12 +106,12 @@
 
     <!--********************************** CONTAINERS **********************************-->
     <style name="EpocaContainer" parent="@style/CardView.Light">
-        <item name="cardBackgroundColor">@color/backgroundDorado</item>
+        <item name="cardBackgroundColor">@color/backgroundCard</item>
         <item name="cardCornerRadius">@dimen/size_8</item>
     </style>
 
     <style name="FiestaContainer" parent="@style/CardView.Light">
-        <item name="cardBackgroundColor">@color/backgroundDorado</item>
+        <item name="cardBackgroundColor">@color/backgroundCard</item>
         <item name="android:layout_marginTop">@dimen/size_16</item>
         <item name="android:layout_marginStart">@dimen/size_16</item>
         <item name="android:layout_marginEnd">@dimen/size_16</item>
