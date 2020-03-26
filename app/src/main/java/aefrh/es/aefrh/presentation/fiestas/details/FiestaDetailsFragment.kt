@@ -1,17 +1,13 @@
 package aefrh.es.aefrh.presentation.fiestas.details
 
-import aefrh.es.aefrh.BR
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentFiestaDetailsBinding
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
 import android.view.View
-import androidx.databinding.DataBindingUtil
-import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_fiesta_details.*
 import org.koin.android.viewmodel.ext.android.viewModel
-import timber.log.Timber
 
 class FiestaDetailsFragment : BaseFragment<FragmentFiestaDetailsBinding, FiestasViewModel>() {
 

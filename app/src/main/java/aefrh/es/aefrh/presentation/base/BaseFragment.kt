@@ -9,7 +9,6 @@ import android.view.inputmethod.InputMethodManager
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
-import androidx.databinding.library.baseAdapters.BR
 import kotlinx.android.synthetic.main.fragment_epocas.*
 
 abstract class BaseFragment<binding : ViewDataBinding, viewModel : BaseViewModel> : Fragment() {
