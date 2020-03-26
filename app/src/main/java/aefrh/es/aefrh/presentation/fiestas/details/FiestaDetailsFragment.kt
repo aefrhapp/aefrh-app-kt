@@ -2,12 +2,15 @@ package aefrh.es.aefrh.presentation.fiestas.details
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentFiestaDetailsBinding
+import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
 import android.view.View
+import android.widget.Toast
 import androidx.lifecycle.Observer
 import kotlinx.android.synthetic.main.fragment_fiesta_details.*
 import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
 class FiestaDetailsFragment : BaseFragment<FragmentFiestaDetailsBinding, FiestasViewModel>() {
 
@@ -21,18 +24,33 @@ class FiestaDetailsFragment : BaseFragment<FragmentFiestaDetailsBinding, Fiestas
         arguments?.let { safeArgs = FiestaDetailsFragmentArgs.fromBundle(it) }
         viewModel.getFiestaById(safeArgs?.fiestaid)
 
-        viewModel.fiesta.observe(viewLifecycleOwner, Observer { result ->
+        viewModel.fiesta.observe(this, Observer { result ->
 
-            val fiesta = result.data
-            bindingObject.fiesta = fiesta
+            when(result.status) {
+                Status.LOADING -> {
+                    showProgress()
+                }
+                Status.ERROR -> {
+                    hideProgress()
+                    Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                    Timber.e(result.message)
+                }
+                else -> {
+                    hideProgress()
 
-            // Show images in slider
-            slider_details.apply {
-                if (fiesta != null) {
-                    setItems(fiesta.imagenes.map { it.Url })
-                    addTimerToSlide(5000)
+                    val fiesta = result.data
+                    bindingObject.fiesta = fiesta
+
+                    // Show images in slider
+                    slider_details.apply {
+                        if (fiesta != null) {
+                            setItems(fiesta.imagenes.map { it.Url })
+                            addTimerToSlide(5000)
+                        }
+                    }
                 }
             }
+
 
         })
 

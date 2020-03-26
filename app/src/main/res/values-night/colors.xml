@@ -8,7 +8,8 @@
     <color name="colorBackground">#000000</color>
     <color name="colorStatusBar">@color/colorPrimaryDark</color>
 
-    <color name="subtitulo">#FFFFFF</color>
+    <color name="colorMainText">#FFFFFF</color>
+    <color name="colorTextLink">#03DAC6</color>
 
     <color name="backgroundDorado">#FFF6E1</color>
     <color name="backgroundToolbar">#2E2E2E</color>
@@ -21,9 +22,7 @@
 <!--    <color name="colorPrimaryDark">#3700B3</color>-->
 <!--    <color name="colorAccent">#03DAC6</color>-->
 
-<!--    <color name="colorMainText">#FFFFFF</color>-->
 <!--    <color name="colorAltText">#CCCCCC</color>-->
-<!--    <color name="colorTextLink">#03DAC6</color>-->
 
 <!--    <color name="colorBackground">#000000</color>-->
 <!--    <color name="colorError">#CF6679</color>-->

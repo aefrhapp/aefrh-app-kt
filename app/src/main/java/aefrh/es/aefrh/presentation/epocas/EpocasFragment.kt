@@ -31,7 +31,7 @@ class EpocasFragment: BaseFragment<FragmentEpocasBinding, EpocasViewModel>() {
             }
         }
 
-        viewModel.epocas.observe(viewLifecycleOwner, Observer {
+        viewModel.epocas.observe(this, Observer {
 
             when(it.status) {
                 Status.LOADING -> {

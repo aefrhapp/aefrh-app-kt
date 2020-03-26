@@ -34,7 +34,7 @@ class FiestaListFragment : BaseFragment<FragmentFiestaListBinding, FiestasViewMo
             }
         }
 
-        viewModel.fiestas.observe(viewLifecycleOwner, Observer {
+        viewModel.fiestas.observe(this, Observer {
 
             when(it.status) {
                 Status.LOADING -> {

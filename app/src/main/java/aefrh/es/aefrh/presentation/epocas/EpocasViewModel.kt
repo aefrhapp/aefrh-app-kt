@@ -1,9 +1,9 @@
 package aefrh.es.aefrh.presentation.epocas
 
 import aefrh.es.aefrh.domain.Epoca
-import aefrh.es.aefrh.utils.Result
 import aefrh.es.aefrh.presentation.base.BaseViewModel
 import aefrh.es.aefrh.usecases.GetEpocas
+import aefrh.es.aefrh.utils.Result
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

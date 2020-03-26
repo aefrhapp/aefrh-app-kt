@@ -41,6 +41,7 @@
         android:layout_height="match_parent"
         android:layout_gravity="start"
         android:background="@color/backgroundToolbar"
+        app:itemTextAppearance="@style/TextNavigation"
         app:headerLayout="@layout/nav_header_main"
         app:menu="@menu/menu_main_drawer" />
 
