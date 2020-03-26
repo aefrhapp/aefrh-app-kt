@@ -18,18 +18,13 @@ class FiestaDetailsFragment : BaseFragment<FragmentFiestaDetailsBinding, Fiestas
     override val viewModel: FiestasViewModel by viewModel()
     override fun getLayoutResId() = R.layout.fragment_fiesta_details
 
-//    private var safeArgs: FragmentFiestaDetailsArgs? = null
+    private var safeArgs: FiestaDetailsFragmentArgs? = null
 
     override fun init(view: View) {
 
-//        arguments?.let {
-//            safeArgs =
-//                FragmentFiestaDetailsArgs.fromBundle(
-//                    it
-//                )
-//        }
+        arguments?.let { safeArgs = FiestaDetailsFragmentArgs.fromBundle(it) }
+        viewModel.getFiestaById(safeArgs?.fiestaid)
 
-//        viewModel.getFiestaById(safeArgs?.fiestaid)
         viewModel.fiesta.observe(viewLifecycleOwner, Observer { result ->
 
             val fiesta = result.data

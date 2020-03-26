@@ -36,12 +36,12 @@ class FiestasListAdapter: ListAdapter<Fiesta, FiestasListAdapter.ViewHolder>(
 
     private fun createOnClickListener(epocaId: String): View.OnClickListener {
         return View.OnClickListener {
-//            val directions = FragmentFiestasListDirections.actionFragmentFiestaListToFragmentFiestaDetails(epocaId)
-//            it.findNavController().navigate(directions)
+            val directions = FiestaListFragmentDirections.actionFragmentFiestaListToFragmentFiestaDetails(epocaId)
+            it.findNavController().navigate(directions)
         }
     }
 
-    class ViewHolder(val binding: FiestaItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: FiestaItemBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(
             listener: View.OnClickListener,
             value: Fiesta) {

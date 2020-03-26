@@ -17,17 +17,12 @@ class FiestaListFragment : BaseFragment<FragmentFiestaListBinding, FiestasViewMo
     override val viewModel: FiestasViewModel by viewModel()
     override fun getLayoutResId() = R.layout.fragment_fiesta_list
 
-//    private var safeArgs: FragmentFiestaListArgs? = null
+    private var safeArgs: FiestaListFragmentArgs? = null
 
     override fun init(view: View) {
 
-//        arguments?.let {
-//            safeArgs =
-//                FragmentFiestaListArgs.fromBundle(
-//                    it
-//                )
-//        }
-//        viewModel.getFiestas(safeArgs?.fiestaid)
+        arguments?.let { safeArgs = FiestaListFragmentArgs.fromBundle(it) }
+        viewModel.getFiestas(safeArgs?.fiestaid)
 
         val adapter = FiestasListAdapter()
         rv_fiestas.apply {
