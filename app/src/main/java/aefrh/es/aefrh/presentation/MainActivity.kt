@@ -9,6 +9,7 @@ import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.google.android.material.navigation.NavigationView
@@ -17,6 +18,7 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
+    private lateinit var navController: NavController
 
     override fun onCreate(savedInstanceState: Bundle?) {
 
@@ -26,7 +28,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         // Toolbar & Navigation
         setSupportActionBar(toolbar)
-        val navController = findNavController(R.id.nav_host)
+        navController = findNavController(R.id.nav_host)
 
         appBarConfiguration = AppBarConfiguration(
             navController.graph,
@@ -78,7 +80,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 Toast.makeText(this, "nav_news clicked", Toast.LENGTH_SHORT).show()
             }
             R.id.nav_map -> {
-                Toast.makeText(this, "nav_map clicked", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.mapaFragment)
             }
             R.id.nav_us -> {
                 Toast.makeText(this, "nav_us clicked", Toast.LENGTH_SHORT).show()

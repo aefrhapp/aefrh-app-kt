@@ -2,7 +2,7 @@ package aefrh.es.aefrh.presentation.fiestas
 
 import aefrh.es.aefrh.domain.Fiesta
 import aefrh.es.aefrh.presentation.base.BaseViewModel
-import aefrh.es.aefrh.usecases.GetFiestas
+import aefrh.es.aefrh.usecases.FiestasUseCase
 import aefrh.es.aefrh.utils.Result
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -10,7 +10,7 @@ import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
 class FiestasViewModel(
-    private val fiestaUseCase: GetFiestas
+    private val fiestaUseCase: FiestasUseCase
 ): BaseViewModel() {
 
     private val _fiestas = MutableLiveData<Result<List<Fiesta>>>()
