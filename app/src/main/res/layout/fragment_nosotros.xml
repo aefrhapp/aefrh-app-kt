@@ -5,20 +5,84 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".presentation.nosotros.NosotrosFragment">
 
-    <androidx.constraintlayout.widget.ConstraintLayout
+    <data>
+        <variable
+            name="interno"
+            type="aefrh.es.aefrh.domain.Interno"/>
+    </data>
+
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ProgressBar
-            android:id="@+id/progress"
-            android:visibility="gone"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:paddingBottom="@dimen/size_24">
 
-    </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/imHeader"
+                style="@style/ImageDetails"
+                android:scaleType="centerInside"
+                app:imageUrl="@{interno.imagen_principal.url}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <TextView
+                android:id="@+id/tvNombre"
+                style="@style/TextTitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/size_24"
+                android:layout_marginTop="@dimen/size_24"
+                android:layout_marginEnd="@dimen/size_24"
+                android:text="@{interno.nombre}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imHeader" />
+
+            <TextView
+                android:id="@+id/tvContenido"
+                style="@style/TextDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@{interno.contenido}"
+                android:layout_margin="@dimen/size_24"
+                app:layout_constraintTop_toBottomOf="@+id/tvNombre" />
+
+            <ImageView
+                android:id="@+id/imMapaSpain"
+                style="@style/ImageDetails"
+                android:scaleType="centerInside"
+                android:layout_marginTop="@dimen/size_24"
+                app:imageUrl="@{interno.imagen_mapa_spain.url}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContenido" />
+
+            <ImageView
+                android:id="@+id/imMapaEurope"
+                style="@style/ImageDetails"
+                android:scaleType="centerInside"
+                android:layout_marginTop="@dimen/size_24"
+                app:imageUrl="@{interno.imagen_mapa_europe.url}"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imMapaSpain" />
+
+            <ProgressBar
+                android:id="@+id/progress"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+    </androidx.core.widget.NestedScrollView>
 
 </layout>

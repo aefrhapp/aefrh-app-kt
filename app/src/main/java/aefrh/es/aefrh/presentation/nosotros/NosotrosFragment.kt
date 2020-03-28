@@ -17,20 +17,21 @@ class NosotrosFragment: BaseFragment<FragmentNosotrosBinding, NosotrosViewModel>
 
     override fun init(view: View) {
 
-        viewModel.interno.observe(this, Observer {
+        viewModel.interno.observe(this, Observer { result ->
 
-            when(it.status) {
+            when(result.status) {
                 Status.LOADING -> {
                     showProgress()
                 }
                 Status.ERROR -> {
                     hideProgress()
                     Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
-                    Timber.e(it.message)
+                    Timber.e(result.message)
                 }
                 else -> {
                     hideProgress()
-                    val result = it.data
+                    val interno = result.data
+                    bindingObject.interno = interno
                 }
             }
 

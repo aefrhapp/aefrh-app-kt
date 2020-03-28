@@ -85,6 +85,9 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
             R.id.nav_us -> {
                 navController.navigate(R.id.nosotrosFragment)
             }
+            R.id.nav_contact -> {
+                Toast.makeText(this, "nav_contact clicked", Toast.LENGTH_SHORT).show()
+            }
             R.id.nav_multimedia -> {
                 Toast.makeText(this, "nav_multimedia clicked", Toast.LENGTH_SHORT).show()
             }

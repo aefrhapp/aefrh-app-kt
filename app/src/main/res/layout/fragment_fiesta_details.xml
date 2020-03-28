@@ -21,10 +21,8 @@
 
             <com.custom.sliderimage.logic.SliderImage
                 android:id="@+id/slider_details"
-                android:layout_width="0dp"
-                android:layout_height="0dp"
+                style="@style/ImageDetails"
                 app:layout_constraintBottom_toTopOf="@+id/tvNombre"
-                app:layout_constraintDimensionRatio="16:9"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />

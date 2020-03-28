@@ -20,7 +20,8 @@ class NosotrosViewModel(
     init {
         _interno.value = Result.loading()
         viewModelScope.launch {
-            _interno.value = nosotrosUseCase.invoke()
+            val result = nosotrosUseCase.invoke()
+            _interno.value = result
         }
     }
 
