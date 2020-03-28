@@ -69,8 +69,14 @@
 
     <fragment
         android:id="@+id/nosotrosFragment"
-        android:name="aefrh.es.aefrh.presentation.nosotros.NosotrosFragment"
+        android:name="aefrh.es.aefrh.presentation.interno.NosotrosFragment"
         android:label="@string/quienSomos"
         tools:layout="@layout/fragment_nosotros" />
+
+    <fragment
+        android:id="@+id/contactoFragment"
+        android:name="aefrh.es.aefrh.presentation.interno.ContactoFragment"
+        android:label="@string/contacto"
+        tools:layout="@layout/fragment_contacto" />
 
 </navigation>
