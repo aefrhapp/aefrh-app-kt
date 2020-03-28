@@ -1,16 +1,16 @@
-package aefrh.es.aefrh.presentation.nosotros
+package aefrh.es.aefrh.presentation.interno
 
 import aefrh.es.aefrh.domain.Interno
 import aefrh.es.aefrh.presentation.base.BaseViewModel
-import aefrh.es.aefrh.usecases.NosotrosUseCase
+import aefrh.es.aefrh.usecases.InternoUseCase
 import aefrh.es.aefrh.utils.Result
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.launch
 
-class NosotrosViewModel(
-    private val nosotrosUseCase: NosotrosUseCase
+class InternoViewModel(
+    private val internoUseCase: InternoUseCase
 ): BaseViewModel() {
 
     private val _interno = MutableLiveData<Result<Interno>>()
@@ -20,7 +20,7 @@ class NosotrosViewModel(
     init {
         _interno.value = Result.loading()
         viewModelScope.launch {
-            val result = nosotrosUseCase.invoke()
+            val result = internoUseCase.invoke()
             _interno.value = result
         }
     }

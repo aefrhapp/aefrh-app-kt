@@ -1,4 +1,4 @@
-package aefrh.es.aefrh.presentation.nosotros
+package aefrh.es.aefrh.presentation.interno
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentNosotrosBinding
@@ -10,9 +10,9 @@ import androidx.lifecycle.Observer
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class NosotrosFragment: BaseFragment<FragmentNosotrosBinding, NosotrosViewModel>() {
+class NosotrosFragment: BaseFragment<FragmentNosotrosBinding, InternoViewModel>() {
 
-    override val viewModel: NosotrosViewModel by viewModel()
+    override val viewModel: InternoViewModel by viewModel()
     override fun getLayoutResId() = R.layout.fragment_nosotros
 
     override fun init(view: View) {
