@@ -1,7 +1,7 @@
 package aefrh.es.aefrh.domain
 
-import com.google.gson.annotations.SerializedName
 import com.google.android.gms.maps.model.LatLng
+import com.google.gson.annotations.SerializedName
 
 data class Fiesta(
     @SerializedName("objectId")
