@@ -8,4 +8,5 @@ interface ParseRepository {
     suspend fun getAll(): Result<List<Epoca>>
     suspend fun getAllByEpocaId(epocaId: String): Result<List<Fiesta>>
     suspend fun getFiestaById(fiestaId: String): Result<Fiesta>
+    suspend fun getAllFiestas(): Result<List<Fiesta>>
 }

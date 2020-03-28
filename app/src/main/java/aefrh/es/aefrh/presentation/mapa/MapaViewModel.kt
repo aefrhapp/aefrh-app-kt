@@ -6,6 +6,8 @@ import aefrh.es.aefrh.usecases.MapaUseCase
 import aefrh.es.aefrh.utils.Result
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.viewModelScope
+import kotlinx.coroutines.launch
 
 class MapaViewModel(
     private val mapaUseCase: MapaUseCase
@@ -15,11 +17,11 @@ class MapaViewModel(
     val fiestas : LiveData<Result<List<Fiesta>>>
         get() = _fiestas
 
-//    fun getFiestas(epocaId: String?) {
-//        _fiestas.value = Result.loading()
-//        viewModelScope.launch {
-//            _fiestas.value = epocaId?.let { mapaUseCase.invoke(it) }
-//        }
-//    }
+    init {
+        _fiestas.value = Result.loading()
+        viewModelScope.launch {
+            _fiestas.value = mapaUseCase.invoke()
+        }
+    }
 
 }

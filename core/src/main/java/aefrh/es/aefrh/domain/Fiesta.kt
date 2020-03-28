@@ -1,6 +1,7 @@
 package aefrh.es.aefrh.domain
 
 import com.google.gson.annotations.SerializedName
+import com.google.android.gms.maps.model.LatLng
 
 data class Fiesta(
     @SerializedName("objectId")
@@ -16,5 +17,9 @@ data class Fiesta(
     @SerializedName("Imagenes")
     val imagenes: List<Imagen>,
     @SerializedName("Informacion")
-    val informacion: Informacion
+    val informacion: Informacion,
+    @SerializedName("Localizacion")
+    val localizacion: LatLng,
+    @SerializedName("Tipo")
+    val epoca: String
 )

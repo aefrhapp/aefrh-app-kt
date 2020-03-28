@@ -35,4 +35,13 @@ class ParseRepositoryImpl(private val parseApi: ParseApi): ParseRepository {
         }
     }
 
+    override suspend fun getAllFiestas(): Result<List<Fiesta>> {
+        return try {
+            val result = parseApi.getFiestas().await()
+            Result.success(result.result)
+        } catch (ex: Exception) {
+            Result.error(ex)
+        }
+    }
+
 }
