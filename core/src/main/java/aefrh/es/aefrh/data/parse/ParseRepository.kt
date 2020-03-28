@@ -2,6 +2,7 @@ package aefrh.es.aefrh.data.parse
 
 import aefrh.es.aefrh.domain.Epoca
 import aefrh.es.aefrh.domain.Fiesta
+import aefrh.es.aefrh.domain.Interno
 import aefrh.es.aefrh.utils.Result
 
 interface ParseRepository {
@@ -9,4 +10,5 @@ interface ParseRepository {
     suspend fun getAllByEpocaId(epocaId: String): Result<List<Fiesta>>
     suspend fun getFiestaById(fiestaId: String): Result<Fiesta>
     suspend fun getAllFiestas(): Result<List<Fiesta>>
+    suspend fun getInterno(): Result<Interno>
 }

@@ -7,9 +7,11 @@ import aefrh.es.aefrh.data.parse.ParseRepositoryImpl
 import aefrh.es.aefrh.presentation.epocas.EpocasViewModel
 import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
 import aefrh.es.aefrh.presentation.mapa.MapaViewModel
+import aefrh.es.aefrh.presentation.nosotros.NosotrosViewModel
 import aefrh.es.aefrh.usecases.EpocasUseCase
 import aefrh.es.aefrh.usecases.FiestasUseCase
 import aefrh.es.aefrh.usecases.MapaUseCase
+import aefrh.es.aefrh.usecases.NosotrosUseCase
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import org.koin.android.viewmodel.dsl.viewModel
@@ -38,12 +40,14 @@ val useCaseModule = module {
     single { EpocasUseCase(parseRepository = get()) }
     single { FiestasUseCase(parseRepository = get()) }
     single { MapaUseCase(parseRepository = get()) }
+    single { NosotrosUseCase(parseRepository = get()) }
 }
 
 val viewModelModule = module {
     viewModel { EpocasViewModel(epocaUseCase = get()) }
     viewModel { FiestasViewModel(fiestaUseCase = get()) }
     viewModel { MapaViewModel(mapaUseCase = get()) }
+    viewModel { NosotrosViewModel(nosotrosUseCase = get()) }
 }
 
 /* function to build our Retrofit service */

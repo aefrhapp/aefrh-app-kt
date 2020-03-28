@@ -2,6 +2,7 @@ package aefrh.es.aefrh.data.parse
 
 import aefrh.es.aefrh.domain.Epoca
 import aefrh.es.aefrh.domain.Fiesta
+import aefrh.es.aefrh.domain.Interno
 import aefrh.es.aefrh.utils.JSONResponse
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
@@ -21,4 +22,6 @@ interface ParseApi {
     @GET("Fiestas?where={\"Activo\":true}")
     fun getFiestas(): Deferred<JSONResponse<Fiesta>>
 
+    @GET("Interno/RQSRHiM590")
+    fun getInterno(): Deferred<Interno>
 }

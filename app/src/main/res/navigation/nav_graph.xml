@@ -67,4 +67,10 @@
             app:popUpToInclusive="false" />
     </fragment>
 
+    <fragment
+        android:id="@+id/nosotrosFragment"
+        android:name="aefrh.es.aefrh.presentation.nosotros.NosotrosFragment"
+        android:label="@string/quienSomos"
+        tools:layout="@layout/fragment_nosotros" />
+
 </navigation>
