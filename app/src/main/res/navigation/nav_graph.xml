@@ -66,5 +66,10 @@
             app:popExitAnim="@anim/slide_out_right"
             app:popUpToInclusive="false" />
     </fragment>
+    <fragment
+        android:id="@+id/nosotrosFragment"
+        android:name="aefrh.es.aefrh.presentation.nosotros.NosotrosFragment"
+        android:label="fragment_nosotros"
+        tools:layout="@layout/fragment_nosotros" />
 
 </navigation>

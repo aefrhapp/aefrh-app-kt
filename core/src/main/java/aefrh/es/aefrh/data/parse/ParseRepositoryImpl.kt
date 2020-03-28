@@ -2,6 +2,7 @@ package aefrh.es.aefrh.data.parse
 
 import aefrh.es.aefrh.domain.Epoca
 import aefrh.es.aefrh.domain.Fiesta
+import aefrh.es.aefrh.domain.Interno
 import aefrh.es.aefrh.domain.ParseObject
 import aefrh.es.aefrh.utils.Result
 
@@ -39,6 +40,15 @@ class ParseRepositoryImpl(private val parseApi: ParseApi): ParseRepository {
         return try {
             val result = parseApi.getFiestas().await()
             Result.success(result.result)
+        } catch (ex: Exception) {
+            Result.error(ex)
+        }
+    }
+
+    override suspend fun getInterno(): Result<Interno> {
+        return try {
+            val result = parseApi.getInterno().await()
+            Result.success(result)
         } catch (ex: Exception) {
             Result.error(ex)
         }
