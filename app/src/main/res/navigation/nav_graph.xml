@@ -48,11 +48,23 @@
             android:name="FIESTA_ID"
             app:argType="string" />
     </fragment>
+
     <fragment
         android:id="@+id/mapaFragment"
         android:name="aefrh.es.aefrh.presentation.mapa.MapaFragment"
         android:label="@string/mapa"
         tools:layout="@layout/fragment_mapa" >
+        <argument
+            android:name="FIESTA_ID"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_mapaFragment_to_fiestaDetailsfragment"
+            app:destination="@id/fiestaDetailsfragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="false" />
     </fragment>
 
 </navigation>

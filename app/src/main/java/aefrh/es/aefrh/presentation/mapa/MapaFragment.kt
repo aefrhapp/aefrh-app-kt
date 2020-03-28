@@ -8,6 +8,7 @@ import aefrh.es.aefrh.utils.getEpocaIcon
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -15,7 +16,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
-
 
 class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapReadyCallback {
 
@@ -46,7 +46,7 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
                     result?.forEach { fiesta ->
                         mMap.addMarker(
                             MarkerOptions().position(fiesta.localizacion)
-                                .title(fiesta.nombre)
+                                .title(String.format("%s\n%s", fiesta.nombre, fiesta.id))
                                 .snippet(fiesta.epoca)
                                 .icon(BitmapDescriptorFactory.fromResource(getEpocaIcon(fiesta.epoca)))
                         )
@@ -62,16 +62,26 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
 
         // Set map
         mMap = googleMap!!
-        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.style_json))
 
-        // Center map
+        // Set map style
+        mMap.setMapStyle(MapStyleOptions.loadRawResourceStyle(context, R.raw.style_json))
+        mMap.uiSettings.isMapToolbarEnabled = false
+        mMap.uiSettings.isZoomControlsEnabled = false
+
+        // Set info window
+        mMap.setInfoWindowAdapter(context?.let { MarkerInfoView(it) })
+        mMap.setOnInfoWindowClickListener { marker ->
+            val fiestaId = marker.title?.substringAfter('\n').toString()
+            val directions = MapaFragmentDirections.actionMapaFragmentToFiestaDetailsfragment(fiestaId)
+            findNavController().navigate(directions)
+        }
+
+        // Center map in Spain
         val cameraPosition = CameraPosition.Builder()
             .target(LatLng(40.3752455, -3.2475477))
             .zoom(5.5f)
             .build()
-        mMap.animateCamera(
-            CameraUpdateFactory.newCameraPosition(cameraPosition)
-        )
+        mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
     }
 
