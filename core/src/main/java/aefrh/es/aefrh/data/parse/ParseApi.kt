@@ -17,4 +17,8 @@ interface ParseApi {
 
     @GET("Fiestas/{id}")
     fun getFiestaById(@Path("id") fiestaId: String, @Query("include") include: String = "Informacion"): Deferred<Fiesta>
+
+    @GET("Fiestas?where={\"Activo\":true}")
+    fun getFiestas(): Deferred<JSONResponse<Fiesta>>
+
 }
