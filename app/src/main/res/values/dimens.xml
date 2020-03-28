@@ -44,5 +44,6 @@
     <dimen name="size_56">56dp</dimen>
     <dimen name="size_62">62dp</dimen>
     <dimen name="size_84">84dp</dimen>
+    <dimen name="size_100">100dp</dimen>
     <dimen name="size_120">120dp</dimen>
 </resources>

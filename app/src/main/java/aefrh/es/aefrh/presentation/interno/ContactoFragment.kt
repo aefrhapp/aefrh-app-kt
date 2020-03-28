@@ -4,11 +4,9 @@ import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentContactoBinding
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
-import android.os.Bundle
-import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
+import aefrh.es.aefrh.utils.goToBrowser
+import aefrh.es.aefrh.utils.sendEmail
 import android.view.View
-import android.view.ViewGroup
 import android.widget.Toast
 import androidx.lifecycle.Observer
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -21,6 +19,10 @@ class ContactoFragment: BaseFragment<FragmentContactoBinding, InternoViewModel>(
 
     override fun init(view: View) {
 
+        // Bind viewmodel
+        bindingObject.viewModel = viewModel
+
+        // Oberve
         viewModel.interno.observe(this, Observer { result ->
 
             when(result.status) {
@@ -39,6 +41,14 @@ class ContactoFragment: BaseFragment<FragmentContactoBinding, InternoViewModel>(
                 }
             }
 
+        })
+
+        viewModel.redesLink.observe(this, Observer {
+            context?.let { context -> goToBrowser(it, context) }
+        })
+
+        viewModel.email.observe(this, Observer {
+            context?.let { context -> sendEmail(it, context) }
         })
 
     }

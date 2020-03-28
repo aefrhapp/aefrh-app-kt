@@ -9,6 +9,9 @@
         <variable
             name="interno"
             type="aefrh.es.aefrh.domain.Interno"/>
+        <variable
+            name="viewModel"
+            type="aefrh.es.aefrh.presentation.interno.InternoViewModel"/>
     </data>
 
     <androidx.core.widget.NestedScrollView
@@ -18,29 +21,95 @@
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:paddingBottom="@dimen/size_24">
+            android:padding="@dimen/size_24">
 
-<!--            <ImageView-->
-<!--                android:id="@+id/imHeader"-->
-<!--                style="@style/ImageDetails"-->
-<!--                android:scaleType="centerInside"-->
-<!--                app:imageUrl="@{interno.imagen_principal.url}"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toTopOf="parent" />-->
+            <ImageView
+                android:id="@+id/imHeader"
+                style="@style/ImageDetails"
+                android:scaleType="centerInside"
+                android:src="@drawable/logo_espana"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-<!--            <TextView-->
-<!--                android:id="@+id/tvNombre"-->
-<!--                style="@style/TextTitle"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:layout_marginStart="@dimen/size_24"-->
-<!--                android:layout_marginTop="@dimen/size_24"-->
-<!--                android:layout_marginEnd="@dimen/size_24"-->
-<!--                android:text="@{interno.nombre}"-->
-<!--                app:layout_constraintEnd_toEndOf="parent"-->
-<!--                app:layout_constraintStart_toStartOf="parent"-->
-<!--                app:layout_constraintTop_toBottomOf="@+id/imHeader" />-->
+            <TextView
+                android:id="@+id/tvRedes"
+                style="@style/TextSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_48"
+                android:text="@string/siguenos"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imHeader" />
+
+            <ImageView
+                android:id="@+id/imFacebook"
+                style="@style/ImageRsSquare"
+                android:src="@drawable/ic_facebook"
+                android:layout_marginTop="@dimen/size_12"
+                app:onSingleClick="@{() -> viewModel.onGoToRRSS(interno.facebook)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvRedes" />
+
+            <ImageView
+                android:id="@+id/imTwitter"
+                style="@style/ImageRsSquare"
+                android:src="@drawable/ic_twitter"
+                android:layout_marginTop="@dimen/size_12"
+                android:layout_marginStart="@dimen/size_24"
+                app:onSingleClick="@{() -> viewModel.onGoToRRSS(interno.twitter)}"
+                app:layout_constraintStart_toEndOf="@+id/imFacebook"
+                app:layout_constraintTop_toBottomOf="@+id/tvRedes" />
+
+            <ImageView
+                android:id="@+id/imInstagram"
+                style="@style/ImageRsSquare"
+                android:src="@drawable/ic_instagram"
+                android:layout_marginTop="@dimen/size_12"
+                android:layout_marginStart="@dimen/size_24"
+                app:onSingleClick="@{() -> viewModel.onGoToRRSS(interno.instagram)}"
+                app:layout_constraintStart_toEndOf="@+id/imTwitter"
+                app:layout_constraintTop_toBottomOf="@+id/tvRedes" />
+
+            <ImageView
+                android:id="@+id/imYoutube"
+                style="@style/ImageRsRectangle"
+                android:src="@drawable/ic_youtube"
+                android:layout_marginTop="@dimen/size_12"
+                android:layout_marginStart="@dimen/size_24"
+                app:onSingleClick="@{() -> viewModel.onGoToRRSS(interno.youtube)}"
+                app:layout_constraintStart_toEndOf="@+id/imInstagram"
+                app:layout_constraintTop_toBottomOf="@+id/tvRedes" />
+
+            <TextView
+                android:id="@+id/tvContacto"
+                style="@style/TextSubtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/size_48"
+                android:text="@string/contact_by_email"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/imFacebook" />
+
+            <Button
+                android:id="@+id/btPresidencia"
+                style="@style/ButtonContact"
+                android:text="@string/presidencia"
+                android:layout_marginTop="@dimen/size_24"
+                app:onSingleClick="@{() -> viewModel.onSendEmail(interno.presidencia)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/tvContacto" />
+
+            <Button
+                android:id="@+id/btRedes"
+                style="@style/ButtonContact"
+                android:text="@string/rrss"
+                android:layout_marginTop="@dimen/size_12"
+                app:onSingleClick="@{() -> viewModel.onSendEmail(interno.rrss)}"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btPresidencia" />
 
             <ProgressBar
                 android:id="@+id/progress"

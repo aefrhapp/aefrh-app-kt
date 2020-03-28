@@ -6,12 +6,12 @@ import aefrh.es.aefrh.data.parse.ParseRepository
 import aefrh.es.aefrh.data.parse.ParseRepositoryImpl
 import aefrh.es.aefrh.presentation.epocas.EpocasViewModel
 import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
-import aefrh.es.aefrh.presentation.mapa.MapaViewModel
 import aefrh.es.aefrh.presentation.interno.InternoViewModel
+import aefrh.es.aefrh.presentation.mapa.MapaViewModel
 import aefrh.es.aefrh.usecases.EpocasUseCase
 import aefrh.es.aefrh.usecases.FiestasUseCase
-import aefrh.es.aefrh.usecases.MapaUseCase
 import aefrh.es.aefrh.usecases.InternoUseCase
+import aefrh.es.aefrh.usecases.MapaUseCase
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import org.koin.android.viewmodel.dsl.viewModel

@@ -17,12 +17,28 @@ class InternoViewModel(
     val interno : LiveData<Result<Interno>>
         get() = _interno
 
+    private val _redesLink = MutableLiveData<String>()
+    val redesLink : LiveData<String>
+        get() = _redesLink
+
+    private val _email = MutableLiveData<String>()
+    val email : LiveData<String>
+        get() = _email
+
     init {
         _interno.value = Result.loading()
         viewModelScope.launch {
             val result = internoUseCase.invoke()
             _interno.value = result
         }
+    }
+
+    fun onGoToRRSS(link: String) {
+        _redesLink.value = link
+    }
+
+    fun onSendEmail(email: String) {
+        _email.value = email
     }
 
 }

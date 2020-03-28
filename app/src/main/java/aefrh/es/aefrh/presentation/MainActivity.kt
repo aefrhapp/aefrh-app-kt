@@ -1,8 +1,7 @@
 package aefrh.es.aefrh.presentation
 
 import aefrh.es.aefrh.R
-import android.content.Intent
-import android.net.Uri
+import aefrh.es.aefrh.utils.goToBrowser
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem
@@ -108,21 +107,14 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         when (item.itemId) {
             R.id.action_espana -> {
-                goToBrowser("https://www.fiestashistoricas.es/")
+                goToBrowser("https://www.fiestashistoricas.es/", this)
             }
             R.id.action_europa -> {
-                goToBrowser("http://www.cefmh.eu/")
+                goToBrowser("http://www.cefmh.eu/", this)
             }
         }
         return item.onNavDestinationSelected(findNavController(R.id.nav_host))
                 || super.onOptionsItemSelected(item)
-    }
-
-    private fun goToBrowser(url: String?) {
-        val intentWeb = Intent(Intent.ACTION_VIEW)
-        intentWeb.addCategory(Intent.CATEGORY_BROWSABLE)
-        intentWeb.data = Uri.parse(url)
-        startActivity(intentWeb)
     }
 
 }
