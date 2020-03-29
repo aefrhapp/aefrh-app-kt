@@ -1,5 +1,6 @@
 package aefrh.es.aefrh.presentation
 
+import aefrh.es.aefrh.BuildConfig
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.utils.goToBrowser
 import android.os.Bundle
@@ -48,6 +49,9 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         // Drawer layout listener
         nav_view.setNavigationItemSelectedListener(this)
+
+        // Set version
+        tvVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
 
     }
 

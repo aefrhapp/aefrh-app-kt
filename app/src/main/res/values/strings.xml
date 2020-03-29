@@ -50,7 +50,7 @@
 
     <string name="quienSomos">Quiénes somos</string>
     <string name="contacto">Contacto</string>
-    <string name="version">Versión</string>
+    <string name="version">Versión %s</string>
 
     <!--EPOCAS-->
     <string name="epocas">Épocas</string>

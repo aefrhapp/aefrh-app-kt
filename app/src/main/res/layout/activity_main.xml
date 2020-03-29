@@ -43,6 +43,18 @@
         android:background="@color/backgroundToolbar"
         app:itemTextAppearance="@style/TextNavigation"
         app:headerLayout="@layout/nav_header_main"
-        app:menu="@menu/menu_main_drawer" />
+        app:menu="@menu/menu_main_drawer">
+
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/TextHeaderNavigation"
+            android:layout_margin="@dimen/size_24"
+            android:text="@string/version"
+            android:gravity="end"
+            android:layout_gravity="bottom"/>
+
+    </com.google.android.material.navigation.NavigationView>
 
 </androidx.drawerlayout.widget.DrawerLayout>
