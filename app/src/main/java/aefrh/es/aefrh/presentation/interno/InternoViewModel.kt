@@ -4,6 +4,7 @@ import aefrh.es.aefrh.domain.Interno
 import aefrh.es.aefrh.presentation.base.BaseViewModel
 import aefrh.es.aefrh.usecases.InternoUseCase
 import aefrh.es.aefrh.utils.Result
+import aefrh.es.aefrh.utils.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -25,9 +26,9 @@ class InternoViewModel(
     val email : LiveData<String>
         get() = _email
 
-    private val _videoCase = MutableLiveData<String>()
-    val videoCase : LiveData<String>
-        get() = _videoCase
+    private val _videoId = SingleLiveEvent<String>()
+    val videoId : LiveData<String>
+        get() = _videoId
 
     init {
         _interno.value = Result.loading()
@@ -45,8 +46,8 @@ class InternoViewModel(
         _email.value = email
     }
 
-    fun onGoToReproductor(videoId: String) {
-        _videoCase.value = videoId
+    fun onGoToPlayer(videoId: String) {
+        _videoId.value = videoId
     }
 
 }

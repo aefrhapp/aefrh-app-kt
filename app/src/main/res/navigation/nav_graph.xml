@@ -17,8 +17,7 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpToInclusive="false" />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -35,8 +34,7 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpToInclusive="false" />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -63,8 +61,7 @@
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpToInclusive="false" />
+            app:popExitAnim="@anim/slide_out_right" />
     </fragment>
 
     <fragment
@@ -79,29 +76,34 @@
         android:label="@string/contacto"
         tools:layout="@layout/fragment_contacto" />
 
-    <fragment
-        android:id="@+id/multimediaFragment"
-        android:name="aefrh.es.aefrh.presentation.interno.MultimediaFragment"
-        android:label="@string/multimedia"
-        tools:layout="@layout/fragment_multimedia" >
-        <action
-            android:id="@+id/action_multimediaFragment_to_reproductorFragment"
-            app:destination="@id/reproductorFragment"
-            app:enterAnim="@anim/slide_in_right"
-            app:exitAnim="@anim/slide_out_left"
-            app:popEnterAnim="@anim/slide_in_left"
-            app:popExitAnim="@anim/slide_out_right"
-            app:popUpToInclusive="false" />
-    </fragment>
+    <navigation
+        android:id="@+id/navigation_multimedia"
+        app:startDestination="@id/multimediaFragment">
 
-    <fragment
-        android:id="@+id/reproductorFragment"
-        android:name="aefrh.es.aefrh.presentation.interno.ReproductorFragment"
-        android:label="@string/video_player"
-        tools:layout="@layout/fragment_reproductor">
-        <argument
-            android:name="VIDEO_ID"
-            app:argType="string" />
-    </fragment>
+        <fragment
+            android:id="@+id/multimediaFragment"
+            android:name="aefrh.es.aefrh.presentation.interno.MultimediaFragment"
+            android:label="@string/multimedia"
+            tools:layout="@layout/fragment_multimedia">
+            <action
+                android:id="@+id/action_multimediaFragment_to_playerFragment"
+                app:destination="@id/playerFragment"
+                app:enterAnim="@anim/slide_in_right"
+                app:exitAnim="@anim/slide_out_left"
+                app:popEnterAnim="@anim/slide_in_left"
+                app:popExitAnim="@anim/slide_out_right" />
+        </fragment>
+
+        <fragment
+            android:id="@+id/playerFragment"
+            android:name="aefrh.es.aefrh.presentation.interno.PlayerFragment"
+            android:label="@string/video_player"
+            tools:layout="@layout/fragment_player">
+            <argument
+                android:name="VIDEO_ID"
+                app:argType="string" />
+        </fragment>
+
+    </navigation>
 
 </navigation>

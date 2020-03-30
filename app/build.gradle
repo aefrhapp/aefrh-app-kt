@@ -55,7 +55,7 @@ dependencies {
 
     // Outer project
     implementation project(':core')
-    compile files('libs/YouTubeAndroidPlayerApi.jar')
+    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
     // Dex
     implementation 'com.android.support:multidex:1.0.3'

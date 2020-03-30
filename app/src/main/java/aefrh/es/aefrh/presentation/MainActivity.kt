@@ -3,19 +3,24 @@ package aefrh.es.aefrh.presentation
 import aefrh.es.aefrh.BuildConfig
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.utils.goToBrowser
+import android.content.res.Resources
 import android.os.Bundle
+import android.util.Log
 import android.view.Menu
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.GravityCompat
+import androidx.drawerlayout.widget.DrawerLayout
 import androidx.navigation.NavController
+import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.navigation.ui.*
 import com.google.android.material.navigation.NavigationView
 import kotlinx.android.synthetic.main.activity_main.*
+import timber.log.Timber
 
-class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelectedListener {
+class MainActivity: AppCompatActivity() {
 
     private lateinit var appBarConfiguration: AppBarConfiguration
     private lateinit var navController: NavController
@@ -30,6 +35,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
         setSupportActionBar(toolbar)
         navController = findNavController(R.id.nav_host)
 
+        // AppBarConfiguration with the correct top-level destinations
         appBarConfiguration = AppBarConfiguration(
             navController.graph,
             drawer_layout)
@@ -45,10 +51,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
         // Set visibility for NavigationView & Toolbar
         // We never want this elements in SignIn
-//        visibilityNavElements(navController)
-
-        // Drawer layout listener
-        nav_view.setNavigationItemSelectedListener(this)
+        visibilityNavElements(navController)
 
         // Set version
         tvVersion.text = getString(R.string.version, BuildConfig.VERSION_NAME)
@@ -57,49 +60,21 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
 
     // Allows NavigationUI to support proper up navigation or the drawer layout
     // drawer menu, depending on the situation
-    override fun onSupportNavigateUp() = findNavController(R.id.nav_host)
-        .navigateUp(appBarConfiguration)
+    override fun onSupportNavigateUp() = navController.navigateUp(appBarConfiguration)
 
-//    private fun visibilityNavElements(navController: NavController) {
-//
-//        navController.addOnDestinationChangedListener { _, destination, _ ->
-//            when (destination.id) {
-//                R.id.splashFragment -> {
-//                    toolbar?.visibility = View.GONE
-//                    drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
-//                }
-//                else -> {
-//                    toolbar?.visibility = View.VISIBLE
-//                    drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED)
-//                }
-//            }
-//        }
-//
-//    }
+    private fun visibilityNavElements(navController: NavController) {
 
-    override fun onNavigationItemSelected(item: MenuItem): Boolean {
-        when (item.itemId) {
-            R.id.nav_news -> {
-                Toast.makeText(this, "nav_news clicked", Toast.LENGTH_SHORT).show()
-            }
-            R.id.nav_map -> {
-                navController.navigate(R.id.mapaFragment)
-            }
-            R.id.nav_us -> {
-                navController.navigate(R.id.nosotrosFragment)
-            }
-            R.id.nav_contact -> {
-                navController.navigate(R.id.contactoFragment)
-            }
-            R.id.nav_multimedia -> {
-                navController.navigate(R.id.multimediaFragment)
-            }
-            R.id.nav_magazine -> {
-                Toast.makeText(this, "nav_magazine clicked", Toast.LENGTH_SHORT).show()
+        navController.addOnDestinationChangedListener { _, destination, _ ->
+            when (destination.id) {
+                R.id.epocasFragment -> {
+                    drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNDEFINED)
+                }
+                else -> {
+                    drawer_layout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED)
+                }
             }
         }
-        drawer_layout.closeDrawer(GravityCompat.START)
-        return true
+
     }
 
     override fun onCreateOptionsMenu(menu: Menu?): Boolean {
@@ -117,7 +92,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 goToBrowser("http://www.cefmh.eu/", this)
             }
         }
-        return item.onNavDestinationSelected(findNavController(R.id.nav_host))
+        return item.onNavDestinationSelected(navController)
                 || super.onOptionsItemSelected(item)
     }
 

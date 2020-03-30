@@ -13,9 +13,9 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.fragment_multimedia.*
+import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
-
 
 class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewModel>() {
 
@@ -53,12 +53,12 @@ class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewMod
 
         })
 
-        viewModel.videoCase.observe(this, Observer { goToReproductor(it) })
+        viewModel.videoId.observe(this, Observer { goToPlayer(it) })
 
     }
 
-    private fun goToReproductor(videoId: String) {
-        val directions = MultimediaFragmentDirections.actionMultimediaFragmentToReproductorFragment(videoId)
+    private fun goToPlayer(videoId: String) {
+        val directions = MultimediaFragmentDirections.actionMultimediaFragmentToPlayerFragment(videoId)
         findNavController().navigate(directions)
     }
 
