@@ -8,33 +8,25 @@ import android.view.View
 import android.widget.ImageView
 import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.CenterCrop
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
-import com.google.android.youtube.player.YouTubeInitializationResult
-import com.google.android.youtube.player.YouTubePlayer
 import kotlinx.android.synthetic.main.fragment_multimedia.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
 
-class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewModel>(), YouTubePlayer.OnInitializedListener {
+class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewModel>() {
 
     override val viewModel: InternoViewModel by viewModel()
     override fun getLayoutResId() = R.layout.fragment_multimedia
 
     override fun init(view: View) {
 
-//        yt_pv.initialize(BuildConfig.YOU, this)
+        // Bind
+        bindingObject.viewModel = viewModel
 
-        // Bind viewmodel
-//        bindingObject.viewModel = viewModel
-
-//        val youTubePlayerFragment = findFragmentById(R.id.official_player_view) as YouTubePlayerSupportFragment?
-//        youTubePlayerFragment?.initialize("YOUR_API_KEY", this)
-
-        // Oberve
         viewModel.interno.observe(this, Observer { result ->
 
             when(result.status) {
@@ -48,7 +40,12 @@ class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewMod
                 }
                 else -> {
                     hideProgress()
+
+                    // Binding
                     val interno = result.data
+                    bindingObject.interno = interno
+
+                    // Observers
                     interno?.imagen_video?.let { setImageRounded(it.Url, imTop) }
                     interno?.imagen_audio_visual?.let { setImageRounded(it.Url, imBottom) }
                 }
@@ -56,6 +53,13 @@ class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewMod
 
         })
 
+        viewModel.videoCase.observe(this, Observer { goToReproductor(it) })
+
+    }
+
+    private fun goToReproductor(videoId: String) {
+        val directions = MultimediaFragmentDirections.actionMultimediaFragmentToReproductorFragment(videoId)
+        findNavController().navigate(directions)
     }
 
     private fun setImageRounded(url: String, imageView: ImageView) {
@@ -65,24 +69,6 @@ class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewMod
                 .centerCrop()
                 .apply(RequestOptions.bitmapTransform(RoundedCorners(24)))
                 .into(imageView)
-        }
-    }
-
-    override fun onInitializationSuccess(provider: YouTubePlayer.Provider?, player: YouTubePlayer?, wasRestored: Boolean) {
-        if (!wasRestored) {
-            player?.cueVideo("wKJ9KzGQq0w");
-        }
-    }
-
-    override fun onInitializationFailure(provider: YouTubePlayer.Provider,youTubeInitializationResult: YouTubeInitializationResult) {
-        if (youTubeInitializationResult.isUserRecoverableError) {
-//            youTubeInitializationResult.getErrorDialog(this, RECOVERY_DIALOG_REQUEST).show()
-        } else {
-            val errorMessage = String.format(
-                "There was an error initializing the YouTubePlayer (%1\$s)",
-                youTubeInitializationResult.toString()
-            )
-            Timber.e(errorMessage)
         }
     }
 

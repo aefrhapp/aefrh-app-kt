@@ -85,7 +85,7 @@
     <string name="verRevista">Ver revista de la Asociación Española de Fiestas y Recreaciones Históricas.</string>
     <string name="reproducir">Reproducir</string>
     <string name="ir">Ir a revista</string>
-    <string name="reproductor">Reproductor</string>
+    <string name="video_player">Video Player</string>
 
     <!--POP UP FILTAR-->
     <string name="seleccionaEpoca">Selecciona la época</string>
@@ -103,6 +103,9 @@
     <!--IMAGE-->
     <string name="image">Fotografías</string>
     <string name="contact_by_email">Contáctanos por correo electrónico</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 
 
 </resources>

@@ -83,6 +83,25 @@
         android:id="@+id/multimediaFragment"
         android:name="aefrh.es.aefrh.presentation.interno.MultimediaFragment"
         android:label="@string/multimedia"
-        tools:layout="@layout/fragment_multimedia" />
+        tools:layout="@layout/fragment_multimedia" >
+        <action
+            android:id="@+id/action_multimediaFragment_to_reproductorFragment"
+            app:destination="@id/reproductorFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right"
+            app:popUpToInclusive="false" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/reproductorFragment"
+        android:name="aefrh.es.aefrh.presentation.interno.ReproductorFragment"
+        android:label="@string/video_player"
+        tools:layout="@layout/fragment_reproductor">
+        <argument
+            android:name="VIDEO_ID"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

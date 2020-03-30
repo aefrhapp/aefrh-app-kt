@@ -25,6 +25,10 @@ class InternoViewModel(
     val email : LiveData<String>
         get() = _email
 
+    private val _videoCase = MutableLiveData<String>()
+    val videoCase : LiveData<String>
+        get() = _videoCase
+
     init {
         _interno.value = Result.loading()
         viewModelScope.launch {
@@ -39,6 +43,10 @@ class InternoViewModel(
 
     fun onSendEmail(email: String) {
         _email.value = email
+    }
+
+    fun onGoToReproductor(videoId: String) {
+        _videoCase.value = videoId
     }
 
 }
