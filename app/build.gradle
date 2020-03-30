@@ -15,7 +15,7 @@ android {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
         versionCode version_code
-        versionName "1.0.1"
+        versionName version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -23,6 +23,7 @@ android {
         buildConfigField "String", "PARSE_API_URL", PARSE_API_URL
         buildConfigField "String", "PARSE_API_ID", PARSE_API_ID
         buildConfigField "String", "PARSE_REST_API_ID", PARSE_REST_API_ID
+        buildConfigField "String", "YOUTUBE_API_ID", YOUTUBE_API_ID
     }
 
     buildTypes {
@@ -83,7 +84,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // Maps
-    implementation "com.google.android.gms:play-services-maps:17.0.0"
+    implementation "com.google.android.gms:play-services-maps:$google_play_services_version"
 
     // Firebase
     implementation "com.google.firebase:firebase-analytics:$firebase_analytics_version"
@@ -92,6 +93,7 @@ dependencies {
     // Externals
     implementation "com.jakewharton.timber:timber:$timberVersion"
     implementation "io.github.ivanespitiac:imageslider:$image_slider_version"
+    implementation "com.pierfrancescosoffritti.androidyoutubeplayer:core:$youtube_version"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"

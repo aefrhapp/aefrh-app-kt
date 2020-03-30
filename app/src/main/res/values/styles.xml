@@ -104,6 +104,12 @@
         <item name="android:layout_centerVertical">true</item>
         <item name="android:textSize">@dimen/text_size_14</item>
     </style>
+
+    <style name="TextMultimedia" parent="@style/TextTitle">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">wrap_content</item>
+        <item name="android:gravity">center</item>
+    </style>
     <!--********************************** TEXT VIEWS **********************************-->
 
     <!--********************************** BUTTONS **********************************-->
@@ -158,6 +164,19 @@
         <item name="android:layout_width">@dimen/size_100</item>
         <item name="android:layout_height">@dimen/size_32</item>
         <item name="tint">@color/colorMainText</item>
+    </style>
+
+    <style name="ImageMultimedia">
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">0dp</item>
+        <item name="android:layout_marginTop">@dimen/size_32</item>
+    </style>
+
+    <style name="ImagePlay">
+        <item name="android:layout_width">@dimen/size_62</item>
+        <item name="android:layout_height">@dimen/size_62</item>
+        <item name="android:src">@drawable/ic_play</item>
+        <item name="android:tint">@android:color/white</item>
     </style>
     <!--********************************** IMAGES **********************************-->
 

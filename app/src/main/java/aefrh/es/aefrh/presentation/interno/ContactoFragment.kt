@@ -21,6 +21,7 @@ class ContactoFragment: BaseFragment<FragmentContactoBinding, InternoViewModel>(
 
         // Bind viewmodel
         bindingObject.viewModel = viewModel
+        viewModel.getInterno()
 
         // Oberve
         viewModel.interno.observe(this, Observer { result ->
