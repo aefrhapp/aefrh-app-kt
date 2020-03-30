@@ -13,7 +13,6 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 import kotlinx.android.synthetic.main.fragment_multimedia.*
-import org.koin.android.viewmodel.ext.android.sharedViewModel
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -46,8 +45,8 @@ class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewMod
                     bindingObject.interno = interno
 
                     // Observers
-                    interno?.imagen_video?.let { setImageRounded(it.Url, imTop) }
-                    interno?.imagen_audio_visual?.let { setImageRounded(it.Url, imBottom) }
+                    interno?.imagen_video?.let { setImageRounded(it.url, imTop) }
+                    interno?.imagen_audio_visual?.let { setImageRounded(it.url, imBottom) }
                 }
             }
 

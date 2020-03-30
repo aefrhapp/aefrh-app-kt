@@ -8,5 +8,5 @@ data class Imagen(
     @SerializedName("name")
     val name: String,
     @SerializedName("url")
-    val Url: String
+    val url: String
 )

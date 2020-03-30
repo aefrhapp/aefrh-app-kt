@@ -44,7 +44,7 @@ class FiestaDetailsFragment : BaseFragment<FragmentFiestaDetailsBinding, Fiestas
                     // Show images in slider
                     slider_details.apply {
                         if (fiesta != null) {
-                            setItems(fiesta.imagenes.map { it.Url })
+                            setItems(fiesta.imagenes.map { it.url })
                             addTimerToSlide(5000)
                         }
                     }

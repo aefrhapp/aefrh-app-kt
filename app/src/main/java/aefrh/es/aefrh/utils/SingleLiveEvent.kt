@@ -16,7 +16,6 @@ package aefrh.es.aefrh.utils
  *  limitations under the License.
  */
 
-import android.util.Log
 import androidx.annotation.MainThread
 import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.MutableLiveData

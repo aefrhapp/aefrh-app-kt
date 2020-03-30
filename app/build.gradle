@@ -15,7 +15,7 @@ android {
         minSdkVersion min_sdk_version
         targetSdkVersion target_sdk_version
         versionCode version_code
-        versionName "2.0.0"
+        versionName version_name
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         multiDexEnabled true
@@ -85,7 +85,7 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:$nav_version"
 
     // Maps
-    implementation "com.google.android.gms:play-services-maps:17.0.0"
+    implementation "com.google.android.gms:play-services-maps:$google_play_services_version"
 
     // Firebase
     implementation "com.google.firebase:firebase-analytics:$firebase_analytics_version"
