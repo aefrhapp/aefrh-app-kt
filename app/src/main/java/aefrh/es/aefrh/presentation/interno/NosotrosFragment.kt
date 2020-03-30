@@ -17,6 +17,7 @@ class NosotrosFragment: BaseFragment<FragmentNosotrosBinding, InternoViewModel>(
 
     override fun init(view: View) {
 
+        viewModel.getInterno()
         viewModel.interno.observe(this, Observer { result ->
 
             when(result.status) {

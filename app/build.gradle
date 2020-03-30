@@ -55,7 +55,6 @@ dependencies {
 
     // Outer project
     implementation project(':core')
-    implementation files('libs/YouTubeAndroidPlayerApi.jar')
 
     // Dex
     implementation 'com.android.support:multidex:1.0.3'
@@ -94,6 +93,7 @@ dependencies {
     // Externals
     implementation "com.jakewharton.timber:timber:$timberVersion"
     implementation "io.github.ivanespitiac:imageslider:$image_slider_version"
+    implementation "com.pierfrancescosoffritti.androidyoutubeplayer:core:$youtube_version"
 
     // Glide
     implementation "com.github.bumptech.glide:glide:$glide_version"

@@ -25,6 +25,7 @@ class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewMod
 
         // Bind
         bindingObject.viewModel = viewModel
+        viewModel.getInterno()
 
         viewModel.interno.observe(this, Observer { result ->
 

@@ -30,7 +30,7 @@ class InternoViewModel(
     val videoId : LiveData<String>
         get() = _videoId
 
-    init {
+    fun getInterno() {
         _interno.value = Result.loading()
         viewModelScope.launch {
             val result = internoUseCase.invoke()
