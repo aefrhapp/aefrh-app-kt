@@ -92,7 +92,7 @@ class MainActivity: AppCompatActivity(), NavigationView.OnNavigationItemSelected
                 navController.navigate(R.id.contactoFragment)
             }
             R.id.nav_multimedia -> {
-                Toast.makeText(this, "nav_multimedia clicked", Toast.LENGTH_SHORT).show()
+                navController.navigate(R.id.multimediaFragment)
             }
             R.id.nav_magazine -> {
                 Toast.makeText(this, "nav_magazine clicked", Toast.LENGTH_SHORT).show()

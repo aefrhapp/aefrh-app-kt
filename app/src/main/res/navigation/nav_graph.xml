@@ -79,4 +79,10 @@
         android:label="@string/contacto"
         tools:layout="@layout/fragment_contacto" />
 
+    <fragment
+        android:id="@+id/multimediaFragment"
+        android:name="aefrh.es.aefrh.presentation.interno.MultimediaFragment"
+        android:label="@string/multimedia"
+        tools:layout="@layout/fragment_multimedia" />
+
 </navigation>

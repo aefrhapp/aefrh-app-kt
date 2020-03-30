@@ -23,6 +23,7 @@ android {
         buildConfigField "String", "PARSE_API_URL", PARSE_API_URL
         buildConfigField "String", "PARSE_API_ID", PARSE_API_ID
         buildConfigField "String", "PARSE_REST_API_ID", PARSE_REST_API_ID
+        buildConfigField "String", "YOUTUBE_API_ID", YOUTUBE_API_ID
     }
 
     buildTypes {
@@ -54,6 +55,7 @@ dependencies {
 
     // Outer project
     implementation project(':core')
+    compile files('libs/YouTubeAndroidPlayerApi.jar')
 
     // Dex
     implementation 'com.android.support:multidex:1.0.3'

@@ -80,8 +80,8 @@
     <string name="info">Información</string>
 
     <!--MULTIMEDIA-->
-    <string name="verVideo">Vídeo promocional.</string>
-    <string name="verAudioVisual">Audio Visual.</string>
+    <string name="verVideo">Vídeo promocional</string>
+    <string name="verAudioVisual">Audio Visual</string>
     <string name="verRevista">Ver revista de la Asociación Española de Fiestas y Recreaciones Históricas.</string>
     <string name="reproducir">Reproducir</string>
     <string name="ir">Ir a revista</string>
