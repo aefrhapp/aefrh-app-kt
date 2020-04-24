@@ -104,8 +104,9 @@
     <string name="image">Fotografías</string>
     <string name="contact_by_email">Contáctanos por correo electrónico</string>
 
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <!-- URL -->
+    <string name="spain_url">https://www.fiestashistoricas.es/</string>
+    <string name="europe_url">http://www.cefmh.eu/</string>
 
 
 </resources>

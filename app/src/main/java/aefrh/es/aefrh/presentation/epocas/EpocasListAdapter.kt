@@ -23,6 +23,7 @@ class EpocasListAdapter: ListAdapter<Epoca, EpocasListAdapter.ViewHolder>(VideoD
         )
     }
 
+//    todo click ??
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         getItem(position).let { epoca ->
             with(holder) {

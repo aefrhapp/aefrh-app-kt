@@ -44,9 +44,6 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
                     hideProgress()
                     val result = it.data
                     result?.forEach { fiesta ->
-
-                        Timber.e(fiesta.localizacion.toString())
-
                         mMap.addMarker(
                             MarkerOptions().position(LatLng(fiesta.localizacion.latitude, fiesta.localizacion.longitude))
                                 .title(String.format("%s\n%s", fiesta.nombre, fiesta.id))

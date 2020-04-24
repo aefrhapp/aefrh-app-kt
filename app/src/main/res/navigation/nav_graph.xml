@@ -13,7 +13,7 @@
         tools:layout="@layout/fragment_epocas">
         <action
             android:id="@+id/action_fragmentEpocas_to_fragmentFiestaList"
-            app:destination="@id/fiestaListfragment"
+            app:destination="@id/fiestaListFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -21,7 +21,7 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fiestaListfragment"
+        android:id="@+id/fiestaListFragment"
         android:name="aefrh.es.aefrh.presentation.fiestas.list.FiestaListFragment"
         android:label="@string/fiestas"
         tools:layout="@layout/fragment_fiesta_list">
@@ -30,7 +30,7 @@
             app:argType="string" />
         <action
             android:id="@+id/action_fragmentFiestaList_to_fragmentFiestaDetails"
-            app:destination="@id/fiestaDetailsfragment"
+            app:destination="@id/fiestaDetailsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"
@@ -38,10 +38,27 @@
     </fragment>
 
     <fragment
-        android:id="@+id/fiestaDetailsfragment"
+        android:id="@+id/fiestaDetailsFragment"
         android:name="aefrh.es.aefrh.presentation.fiestas.details.FiestaDetailsFragment"
         android:label="@string/historia"
         tools:layout="@layout/fragment_fiesta_details">
+        <argument
+            android:name="FIESTA_ID"
+            app:argType="string" />
+        <action
+            android:id="@+id/action_fiestaDetailsfragment_to_fiestaInformationFragment"
+            app:destination="@id/fiestaInformationFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/fiestaInformationFragment"
+        android:name="aefrh.es.aefrh.presentation.fiestas.information.FiestaInformationFragment"
+        android:label="@string/informacion"
+        tools:layout="@layout/fragment_fiesta_information">
         <argument
             android:name="FIESTA_ID"
             app:argType="string" />
@@ -57,7 +74,7 @@
             app:argType="string" />
         <action
             android:id="@+id/action_mapaFragment_to_fiestaDetailsfragment"
-            app:destination="@id/fiestaDetailsfragment"
+            app:destination="@id/fiestaDetailsFragment"
             app:enterAnim="@anim/slide_in_right"
             app:exitAnim="@anim/slide_out_left"
             app:popEnterAnim="@anim/slide_in_left"

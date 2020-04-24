@@ -14,6 +14,7 @@ class Bootstrap : Application() {
 
     override fun onCreate() {
         super.onCreate()
+        instance = this
 
         if (BuildConfig.DEBUG) {
             Timber.plant(Timber.DebugTree())
@@ -26,6 +27,11 @@ class Bootstrap : Application() {
             modules(listOf(retrofitModule, repositoryModule, useCaseModule, viewModelModule))
         }
 
+    }
+
+    companion object {
+        lateinit var instance: Bootstrap
+            private set
     }
 
 }

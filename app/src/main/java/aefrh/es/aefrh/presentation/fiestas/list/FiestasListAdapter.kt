@@ -2,19 +2,17 @@ package aefrh.es.aefrh.presentation.fiestas.list
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FiestaItemBinding
+import aefrh.es.aefrh.diffUtils.DiffCallbackFiesta
 import aefrh.es.aefrh.domain.Fiesta
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.navigation.findNavController
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class FiestasListAdapter: ListAdapter<Fiesta, FiestasListAdapter.ViewHolder>(
-    VideoDiffCallback()
-) {
+class FiestasListAdapter: ListAdapter<Fiesta, FiestasListAdapter.ViewHolder>(DiffCallbackFiesta()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -53,13 +51,4 @@ class FiestasListAdapter: ListAdapter<Fiesta, FiestasListAdapter.ViewHolder>(
         }
     }
 
-}
-
-private class VideoDiffCallback : DiffUtil.ItemCallback<Fiesta>() {
-    override fun areItemsTheSame(oldItem: Fiesta, newItem: Fiesta): Boolean {
-        return oldItem.id == newItem.id
-    }
-    override fun areContentsTheSame(oldItem: Fiesta, newItem: Fiesta): Boolean {
-        return oldItem == newItem
-    }
 }

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="informacion"
+            type="aefrh.es.aefrh.domain.InformacionItem"/>
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="@dimen/size_8"
+        android:paddingBottom="@dimen/size_8">
+
+        <TextView
+            android:id="@+id/tvLeft"
+            style="@style/TextDescription"
+            android:text="@{informacion.key}"
+            android:layout_width="0dp"
+            android:layout_marginEnd="@dimen/size_8"
+            app:layout_constraintEnd_toStartOf="@id/tvRight"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/tvRight"
+            style="@style/TextDescription"
+            android:textStyle="bold"
+            android:text="@{informacion.value}"
+            android:layout_width="0dp"
+            android:layout_marginStart="@dimen/size_8"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_weight="1"
+            app:layout_constraintStart_toEndOf="@id/tvLeft"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

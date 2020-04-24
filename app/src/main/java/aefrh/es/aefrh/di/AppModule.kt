@@ -5,7 +5,7 @@ import aefrh.es.aefrh.data.parse.ParseApi
 import aefrh.es.aefrh.data.parse.ParseRepository
 import aefrh.es.aefrh.data.parse.ParseRepositoryImpl
 import aefrh.es.aefrh.presentation.epocas.EpocasViewModel
-import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
+import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
 import aefrh.es.aefrh.presentation.interno.InternoViewModel
 import aefrh.es.aefrh.presentation.mapa.MapaViewModel
 import aefrh.es.aefrh.usecases.EpocasUseCase
@@ -45,7 +45,7 @@ val useCaseModule = module {
 
 val viewModelModule = module {
     viewModel { EpocasViewModel(epocaUseCase = get()) }
-    viewModel { FiestasViewModel(fiestaUseCase = get()) }
+    viewModel { FiestaViewModel(fiestaUseCase = get()) }
     viewModel { MapaViewModel(mapaUseCase = get()) }
     viewModel { InternoViewModel(internoUseCase = get()) }
 }

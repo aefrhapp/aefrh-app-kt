@@ -5,7 +5,6 @@ import aefrh.es.aefrh.databinding.FragmentContactoBinding
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.goToBrowser
-import aefrh.es.aefrh.utils.sendEmail
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -45,11 +44,11 @@ class ContactoFragment: BaseFragment<FragmentContactoBinding, InternoViewModel>(
         })
 
         viewModel.redesLink.observe(this, Observer {
-            context?.let { context -> goToBrowser(it, context) }
+            context?.goToBrowser(it)
         })
 
         viewModel.email.observe(this, Observer {
-            context?.let { context -> sendEmail(it, context) }
+            context?.goToBrowser(it)
         })
 
     }

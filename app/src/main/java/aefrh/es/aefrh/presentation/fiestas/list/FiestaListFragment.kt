@@ -4,7 +4,7 @@ import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentFiestaListBinding
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
-import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
+import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
 import android.view.View
 import android.widget.Toast
 import androidx.lifecycle.Observer
@@ -12,9 +12,9 @@ import kotlinx.android.synthetic.main.fragment_fiesta_list.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
-class FiestaListFragment : BaseFragment<FragmentFiestaListBinding, FiestasViewModel>() {
+class FiestaListFragment : BaseFragment<FragmentFiestaListBinding, FiestaViewModel>() {
 
-    override val viewModel: FiestasViewModel by viewModel()
+    override val viewModel: FiestaViewModel by viewModel()
     override fun getLayoutResId() = R.layout.fragment_fiesta_list
 
     private var safeArgs: FiestaListFragmentArgs? = null
