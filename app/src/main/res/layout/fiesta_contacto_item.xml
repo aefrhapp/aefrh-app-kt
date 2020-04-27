@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<layout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+        <variable
+            name="contacto"
+            type="aefrh.es.aefrh.domain.ContactoItem"/>
+        <variable
+            name="viewModel"
+            type="aefrh.es.aefrh.presentation.fiestas.FiestaViewModel"/>
+    </data>
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:layout_marginTop="@dimen/size_8"
+        android:text="@{contacto.text}"
+        app:onSingleClick="@{() -> viewModel.onGoToContact(contacto)}"
+        loadDrawable="@{contacto.drawable}"
+        style="@style/ButtonContact"/>
+
+</layout>

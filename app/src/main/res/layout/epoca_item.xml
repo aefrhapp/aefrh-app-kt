@@ -5,17 +5,18 @@
 
     <data>
         <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener"/>
-        <variable
             name="epoca"
             type="aefrh.es.aefrh.domain.Epoca"/>
+        <variable
+            name="viewModel"
+            type="aefrh.es.aefrh.presentation.epocas.EpocasViewModel"/>
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/EpocaContainer"
+        app:onSingleClick="@{() -> viewModel.onGoToFiestasByEppoca(epoca.id)}"
         android:layout_marginBottom="16dp">
 
         <androidx.constraintlayout.widget.ConstraintLayout

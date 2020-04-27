@@ -5,13 +5,12 @@ import aefrh.es.aefrh.data.parse.ParseApi
 import aefrh.es.aefrh.data.parse.ParseRepository
 import aefrh.es.aefrh.data.parse.ParseRepositoryImpl
 import aefrh.es.aefrh.presentation.epocas.EpocasViewModel
-import aefrh.es.aefrh.presentation.fiestas.FiestasViewModel
+import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
 import aefrh.es.aefrh.presentation.interno.InternoViewModel
 import aefrh.es.aefrh.presentation.mapa.MapaViewModel
 import aefrh.es.aefrh.usecases.EpocasUseCase
 import aefrh.es.aefrh.usecases.FiestasUseCase
 import aefrh.es.aefrh.usecases.InternoUseCase
-import aefrh.es.aefrh.usecases.MapaUseCase
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import org.koin.android.viewmodel.dsl.viewModel
@@ -39,14 +38,13 @@ val repositoryModule = module {
 val useCaseModule = module {
     single { EpocasUseCase(parseRepository = get()) }
     single { FiestasUseCase(parseRepository = get()) }
-    single { MapaUseCase(parseRepository = get()) }
     single { InternoUseCase(parseRepository = get()) }
 }
 
 val viewModelModule = module {
     viewModel { EpocasViewModel(epocaUseCase = get()) }
-    viewModel { FiestasViewModel(fiestaUseCase = get()) }
-    viewModel { MapaViewModel(mapaUseCase = get()) }
+    viewModel { FiestaViewModel(fiestaUseCase = get()) }
+    viewModel { MapaViewModel(fiestaUseCase = get()) }
     viewModel { InternoViewModel(internoUseCase = get()) }
 }
 

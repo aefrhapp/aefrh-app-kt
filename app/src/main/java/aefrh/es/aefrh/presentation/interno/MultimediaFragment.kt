@@ -6,7 +6,6 @@ import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import android.view.View
 import android.widget.ImageView
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import com.bumptech.glide.Glide
@@ -34,8 +33,7 @@ class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewMod
                     showProgress()
                 }
                 Status.ERROR -> {
-                    hideProgress()
-                    Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                    displayErrorInt(R.string.error2)
                     Timber.e(result.message)
                 }
                 else -> {

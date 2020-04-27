@@ -5,9 +5,7 @@ import aefrh.es.aefrh.databinding.FragmentContactoBinding
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.goToBrowser
-import aefrh.es.aefrh.utils.sendEmail
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -31,8 +29,7 @@ class ContactoFragment: BaseFragment<FragmentContactoBinding, InternoViewModel>(
                     showProgress()
                 }
                 Status.ERROR -> {
-                    hideProgress()
-                    Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                    displayErrorInt(R.string.error2)
                     Timber.e(result.message)
                 }
                 else -> {
@@ -45,11 +42,11 @@ class ContactoFragment: BaseFragment<FragmentContactoBinding, InternoViewModel>(
         })
 
         viewModel.redesLink.observe(this, Observer {
-            context?.let { context -> goToBrowser(it, context) }
+            context?.goToBrowser(it)
         })
 
         viewModel.email.observe(this, Observer {
-            context?.let { context -> sendEmail(it, context) }
+            context?.goToBrowser(it)
         })
 
     }

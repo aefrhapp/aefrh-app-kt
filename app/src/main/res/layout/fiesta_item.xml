@@ -5,18 +5,18 @@
 
     <data>
         <variable
-            name="clickListener"
-            type="android.view.View.OnClickListener"/>
-        <variable
             name="fiesta"
             type="aefrh.es.aefrh.domain.Fiesta"/>
+        <variable
+            name="viewModel"
+            type="aefrh.es.aefrh.presentation.fiestas.FiestaViewModel"/>
     </data>
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         style="@style/FiestaContainer"
-        android:onClick="@{clickListener}">
+        app:onSingleClick="@{() -> viewModel.onGoToFiestaDetail(fiesta.id)}">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"

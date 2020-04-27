@@ -33,7 +33,7 @@ class InternoViewModel(
     fun getInterno() {
         _interno.value = Result.loading()
         viewModelScope.launch {
-            val result = internoUseCase.invoke()
+            val result = internoUseCase.getInterno()
             _interno.value = result
         }
     }

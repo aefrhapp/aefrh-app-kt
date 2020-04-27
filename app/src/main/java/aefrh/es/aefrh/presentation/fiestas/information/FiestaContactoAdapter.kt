@@ -1,22 +1,23 @@
-package aefrh.es.aefrh.presentation.epocas
+package aefrh.es.aefrh.presentation.fiestas.information
 
 import aefrh.es.aefrh.R
-import aefrh.es.aefrh.databinding.EpocaItemBinding
-import aefrh.es.aefrh.diffUtils.DiffCallbackEpoca
-import aefrh.es.aefrh.domain.Epoca
+import aefrh.es.aefrh.databinding.FiestaContactoItemBinding
+import aefrh.es.aefrh.diffUtils.DiffCallbackContacto
+import aefrh.es.aefrh.domain.ContactoItem
+import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class EpocasListAdapter(private val viewModel: EpocasViewModel): ListAdapter<Epoca, EpocasListAdapter.ViewHolder>(DiffCallbackEpoca()) {
+class FiestaContactoAdapter(private val viewModel: FiestaViewModel): ListAdapter<ContactoItem, FiestaContactoAdapter.ViewHolder>(DiffCallbackContacto()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.epoca_item, parent, false
+                R.layout.fiesta_contacto_item, parent, false
             )
         )
     }
@@ -30,9 +31,9 @@ class EpocasListAdapter(private val viewModel: EpocasViewModel): ListAdapter<Epo
         }
     }
 
-    class ViewHolder(private val binding: EpocaItemBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(value: Epoca, viewModel: EpocasViewModel) {
-            binding.epoca = value
+    class ViewHolder(private val binding: FiestaContactoItemBinding): RecyclerView.ViewHolder(binding.root) {
+        fun bind(value: ContactoItem, viewModel: FiestaViewModel) {
+            binding.contacto = value
             binding.viewModel = viewModel
         }
     }

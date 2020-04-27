@@ -79,10 +79,10 @@ class MainActivity: AppCompatActivity() {
 
         when (item.itemId) {
             R.id.action_espana -> {
-                goToBrowser("https://www.fiestashistoricas.es/", this)
+                goToBrowser(getString(R.string.spain_url))
             }
             R.id.action_europa -> {
-                goToBrowser("http://www.cefmh.eu/", this)
+                goToBrowser(getString(R.string.europe_url))
             }
         }
         return item.onNavDestinationSelected(navController)
