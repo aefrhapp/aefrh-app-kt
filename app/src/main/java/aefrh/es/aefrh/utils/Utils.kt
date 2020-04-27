@@ -47,7 +47,7 @@ fun Context.sendEmail(recipient: String) {
         startActivity(Intent.createChooser(mIntent, "Enviar correo..."))
     } catch (e: Exception){
         Timber.e(e)
-        Toast.makeText(this, "Lo siento, no hay gestores de correo instalados.", Toast.LENGTH_SHORT).show()
+        Toast.makeText(this, getString(R.string.no_email_instalado), Toast.LENGTH_SHORT).show()
     }
 
 }

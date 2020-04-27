@@ -2,17 +2,15 @@ package aefrh.es.aefrh.presentation.epocas
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.EpocaItemBinding
+import aefrh.es.aefrh.diffUtils.DiffCallbackEpoca
 import aefrh.es.aefrh.domain.Epoca
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
-import androidx.navigation.findNavController
-import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
 
-class EpocasListAdapter: ListAdapter<Epoca, EpocasListAdapter.ViewHolder>(VideoDiffCallback()) {
+class EpocasListAdapter(private val viewModel: EpocasViewModel): ListAdapter<Epoca, EpocasListAdapter.ViewHolder>(DiffCallbackEpoca()) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         return ViewHolder(
@@ -23,39 +21,20 @@ class EpocasListAdapter: ListAdapter<Epoca, EpocasListAdapter.ViewHolder>(VideoD
         )
     }
 
-//    todo click ??
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        getItem(position).let { epoca ->
+        getItem(position).let {
             with(holder) {
-                itemView.tag = epoca
-                bind(createOnClickListener(epoca.id), epoca)
+                itemView.tag = it
+                bind(it, viewModel)
             }
-        }
-    }
-
-    private fun createOnClickListener(epocaId: String): View.OnClickListener {
-        return View.OnClickListener {
-            val directions = EpocasFragmentDirections.actionFragmentEpocasToFragmentFiestaList(epocaId)
-            it.findNavController().navigate(directions)
         }
     }
 
     class ViewHolder(private val binding: EpocaItemBinding): RecyclerView.ViewHolder(binding.root) {
-        fun bind(listener: View.OnClickListener, value: Epoca) {
-            with(binding) {
-                this.epoca = value
-                executePendingBindings()
-            }
-            binding.root.setOnClickListener(listener)
+        fun bind(value: Epoca, viewModel: EpocasViewModel) {
+            binding.epoca = value
+            binding.viewModel = viewModel
         }
     }
-}
 
-private class VideoDiffCallback : DiffUtil.ItemCallback<Epoca>() {
-    override fun areItemsTheSame(oldItem: Epoca, newItem: Epoca): Boolean {
-        return oldItem.id == newItem.id
-    }
-    override fun areContentsTheSame(oldItem: Epoca, newItem: Epoca): Boolean {
-        return oldItem == newItem
-    }
 }

@@ -107,6 +107,7 @@
     <!-- URL -->
     <string name="spain_url">https://www.fiestashistoricas.es/</string>
     <string name="europe_url">http://www.cefmh.eu/</string>
+    <string name="no_email_instalado">Lo siento, no hay gestores de correo instalados.</string>
 
 
 </resources>

@@ -13,8 +13,8 @@ import aefrh.es.aefrh.utils.goToBrowser
 import aefrh.es.aefrh.utils.makePhoneCall
 import aefrh.es.aefrh.utils.sendEmail
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.navArgs
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_fiesta_information.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -24,9 +24,12 @@ class FiestaInformationFragment : BaseFragment<FragmentFiestaInformationBinding,
 
     override val viewModel: FiestaViewModel by viewModel()
     override fun getLayoutResId() = R.layout.fragment_fiesta_information
+    private val args: FiestaInformationFragmentArgs by navArgs()
 
     override fun init(view: View) {
-        viewModel.getFiestaById("2OjHkEvZhD")
+
+        // Get fiesta Id
+        viewModel.getFiestaById(args.fiestaId)
 
         // Set views
         bindingObject.viewModel = viewModel
@@ -60,8 +63,7 @@ class FiestaInformationFragment : BaseFragment<FragmentFiestaInformationBinding,
                 showProgress()
             }
             Status.ERROR -> {
-                hideProgress()
-                Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                displayErrorInt(R.string.error2)
                 Timber.e(result.message)
             }
             else -> {
@@ -74,9 +76,7 @@ class FiestaInformationFragment : BaseFragment<FragmentFiestaInformationBinding,
     private fun initInfoItems() {
         val adapter = FiestaInformacionAdapter()
         rv_info.apply {
-            // set a LinearLayoutManager to handle Android
             layoutManager = LinearLayoutManager(activity)
-            // set the custom adapter to the RecyclerView
             this.adapter = adapter
         }
 
@@ -90,9 +90,7 @@ class FiestaInformationFragment : BaseFragment<FragmentFiestaInformationBinding,
     private fun initContactItems() {
         val adapter = FiestaContactoAdapter(viewModel)
         rv_contacto.apply {
-            // set a LinearLayoutManager to handle Android
             layoutManager = LinearLayoutManager(activity)
-            // set the custom adapter to the RecyclerView
             this.adapter = adapter
         }
 

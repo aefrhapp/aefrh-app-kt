@@ -6,9 +6,9 @@ import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.getEpocaIcon
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import com.google.android.gms.maps.CameraUpdateFactory
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.OnMapReadyCallback
@@ -21,7 +21,9 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
 
     override val viewModel: MapaViewModel by viewModel()
     override fun getLayoutResId() = R.layout.fragment_mapa
+
     private lateinit var mMap: GoogleMap
+    private val args: MapaFragmentArgs by navArgs()
 
     override fun init(view: View) {
 
@@ -29,6 +31,47 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
         val mapFragment = childFragmentManager.findFragmentById(R.id.map_view) as SupportMapFragment
         mapFragment.getMapAsync(this)
 
+        // Get id
+        if(args.fiestaId == GET_ALL) {
+            viewModel.onGetAllFiestas()
+            onObserveAllFiestas()
+        } else {
+            viewModel.onGetSingleFiesta(args.fiestaId)
+            onObserveSingleFiesta()
+        }
+
+    }
+
+    private fun onObserveSingleFiesta() {
+        viewModel.fiesta.observe(this, Observer {
+
+            when(it.status) {
+                Status.LOADING -> {
+                    showProgress()
+                }
+                Status.ERROR -> {
+                    displayErrorInt(R.string.error2)
+                    Timber.e(it.message)
+                }
+                else -> {
+                    hideProgress()
+                    val fiesta = it.data
+                    if(fiesta != null) {
+                        mMap.addMarker(
+                            MarkerOptions().position(LatLng(fiesta.localizacion.latitude, fiesta.localizacion.longitude))
+                                .title(String.format("%s\n%s", fiesta.nombre, fiesta.id))
+                                .snippet(fiesta.epoca)
+                                .icon(BitmapDescriptorFactory.fromResource(getEpocaIcon(fiesta.epoca)))
+                        )
+                    }
+                }
+            }
+
+        })
+
+    }
+
+    private fun onObserveAllFiestas() {
         viewModel.fiestas.observe(this, Observer {
 
             when(it.status) {
@@ -36,8 +79,7 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
                     showProgress()
                 }
                 Status.ERROR -> {
-                    hideProgress()
-                    Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                    displayErrorInt(R.string.error2)
                     Timber.e(it.message)
                 }
                 else -> {
@@ -70,10 +112,12 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
 
         // Set info window
         mMap.setInfoWindowAdapter(context?.let { MarkerInfoView(it) })
-        mMap.setOnInfoWindowClickListener { marker ->
-            val fiestaId = marker.title?.substringAfter('\n').toString()
-            val directions = MapaFragmentDirections.actionMapaFragmentToFiestaDetailsfragment(fiestaId)
-            findNavController().navigate(directions)
+        if(args.fiestaId == GET_ALL) {
+            mMap.setOnInfoWindowClickListener { marker ->
+                val fiestaId = marker.title?.substringAfter('\n').toString()
+                val directions = MapaFragmentDirections.actionMapaFragmentToFiestaDetailsfragment(fiestaId)
+                findNavController().navigate(directions)
+            }
         }
 
         // Center map in Spain
@@ -83,6 +127,10 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
             .build()
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
+    }
+
+    companion object {
+        const val GET_ALL: String = "GET_ALL"
     }
 
 }

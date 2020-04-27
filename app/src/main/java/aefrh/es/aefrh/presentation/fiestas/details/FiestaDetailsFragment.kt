@@ -7,9 +7,14 @@ import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
 import aefrh.es.aefrh.utils.Result
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.fragment.navArgs
 import kotlinx.android.synthetic.main.fragment_fiesta_details.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -18,11 +23,15 @@ class FiestaDetailsFragment : BaseFragment<FragmentFiestaDetailsBinding, FiestaV
 
     override val viewModel: FiestaViewModel by viewModel()
     override fun getLayoutResId() = R.layout.fragment_fiesta_details
-    private var safeArgs: FiestaDetailsFragmentArgs? = null
+    private val args: FiestaDetailsFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun init(view: View) {
-        arguments?.let { safeArgs = FiestaDetailsFragmentArgs.fromBundle(it) }
-        viewModel.getFiestaById(safeArgs?.fiestaid)
+        viewModel.getFiestaById(args.fiestaId)
         viewModel.fiesta.observe(this, Observer { bindFiesta(it) })
     }
 
@@ -32,8 +41,7 @@ class FiestaDetailsFragment : BaseFragment<FragmentFiestaDetailsBinding, FiestaV
                 showProgress()
             }
             Status.ERROR -> {
-                hideProgress()
-                Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                displayErrorInt(R.string.error2)
                 Timber.e(result.message)
             }
             else -> {
@@ -52,6 +60,36 @@ class FiestaDetailsFragment : BaseFragment<FragmentFiestaDetailsBinding, FiestaV
             }
         }
 
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+        inflater.inflate(R.menu.menu_fiesta, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_info -> {
+                onGoToInfo()
+                true
+            }
+            R.id.action_map -> {
+                onGoToMap()
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+    private fun onGoToInfo() {
+        val directions = FiestaDetailsFragmentDirections.actionFiestaDetailsfragmentToFiestaInformationFragment(args.fiestaId)
+        findNavController().navigate(directions)
+    }
+
+    private fun onGoToMap() {
+        val directions = FiestaDetailsFragmentDirections.actionFiestaDetailsFragmentToMapaFragment(args.fiestaId)
+        findNavController().navigate(directions)
     }
 
 }

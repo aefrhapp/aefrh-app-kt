@@ -6,7 +6,6 @@ import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.goToBrowser
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -30,8 +29,7 @@ class ContactoFragment: BaseFragment<FragmentContactoBinding, InternoViewModel>(
                     showProgress()
                 }
                 Status.ERROR -> {
-                    hideProgress()
-                    Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                    displayErrorInt(R.string.error2)
                     Timber.e(result.message)
                 }
                 else -> {

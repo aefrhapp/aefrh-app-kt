@@ -6,6 +6,7 @@ import aefrh.es.aefrh.domain.*
 import aefrh.es.aefrh.presentation.base.BaseViewModel
 import aefrh.es.aefrh.usecases.FiestasUseCase
 import aefrh.es.aefrh.utils.Result
+import aefrh.es.aefrh.utils.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
@@ -39,20 +40,24 @@ class FiestaViewModel(
     val contacto : LiveData<ContactoItem>
         get() = _contacto
 
-    fun getFiestas(epocaId: String?) {
+    private val _fiestaStr = SingleLiveEvent<String>()
+    val fiestaStr : LiveData<String>
+        get() = _fiestaStr
+
+    fun getFiestas(epocaId: String) {
         _fiestas.value = Result.loading()
         viewModelScope.launch {
-            _fiestas.value = epocaId?.let { fiestaUseCase.invoke(it) }
+            _fiestas.value = epocaId.let { fiestaUseCase.getFiestasByEpocaId(it) }
         }
     }
 
-    fun getFiestaById(fiestaId: String?) {
+    fun getFiestaById(fiestaId: String) {
         _fiesta.value = Result.loading()
         viewModelScope.launch {
-            val result = fiestaId?.let { fiestaUseCase.getFiestaById(it) }
+            val result = fiestaId.let { fiestaUseCase.getFiestaById(it) }
             _fiesta.value = result
-            extractInformacionItem(result?.data?.informacion)
-            extractContactoItem(result?.data?.informacion)
+            extractInformacionItem(result.data?.informacion)
+            extractContactoItem(result.data?.informacion)
         }
     }
 
@@ -115,6 +120,10 @@ class FiestaViewModel(
 
     fun onGoToContact(contactoItem: ContactoItem) {
         _contacto.value = contactoItem
+    }
+
+    fun onGoToFiestaDetail(fiestaId: String) {
+        _fiestaStr.value = fiestaId
     }
 
 }

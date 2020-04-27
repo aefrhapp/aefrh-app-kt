@@ -6,8 +6,8 @@ import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.SpanningLinearLayoutManager
 import android.view.View
-import android.widget.Toast
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import kotlinx.android.synthetic.main.fragment_epocas.*
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -20,26 +20,21 @@ class EpocasFragment: BaseFragment<FragmentEpocasBinding, EpocasViewModel>() {
 
     override fun init(view: View) {
 
-        val adapter = EpocasListAdapter()
+        // Init View
+        val adapter = EpocasListAdapter(viewModel)
         rv_epocas.apply {
-            this.adapter = adapter
             layoutManager = SpanningLinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
-            postponeEnterTransition()
-            viewTreeObserver.addOnPreDrawListener {
-                startPostponedEnterTransition()
-                true
-            }
+            this.adapter = adapter
         }
 
+        // On get epocas observe
         viewModel.epocas.observe(this, Observer {
-
             when(it.status) {
                 Status.LOADING -> {
                     showProgress()
                 }
                 Status.ERROR -> {
-                    hideProgress()
-                    Toast.makeText(context, R.string.error2, Toast.LENGTH_SHORT).show()
+                    displayErrorInt(R.string.error2)
                     Timber.e(it.message)
                 }
                 else -> {
@@ -48,10 +43,16 @@ class EpocasFragment: BaseFragment<FragmentEpocasBinding, EpocasViewModel>() {
                     if (!result.isNullOrEmpty()) adapter.submitList(result)
                 }
             }
-
         })
 
+        // Observe click
+        viewModel.epoca.observe(this, Observer { onGoToFiestasByEppoca(it) })
 
+    }
+
+    private fun onGoToFiestasByEppoca(epocaId: String) {
+        val directions = EpocasFragmentDirections.actionFragmentEpocasToFragmentFiestaList(epocaId)
+        findNavController().navigate(directions)
     }
 
 }
