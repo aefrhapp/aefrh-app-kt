@@ -38,11 +38,10 @@ android {
 dependencies {
     // Ui
     implementation "androidx.appcompat:appcompat:$app_compat_version"
+    implementation "androidx.recyclerview:recyclerview:$recycler_version"
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
-    implementation "androidx.recyclerview:recyclerview:$recycler_version"
 
     // Koin for Kotlin apps
     implementation "org.koin:koin-core:$koin_version"
@@ -50,10 +49,6 @@ dependencies {
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
-//    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
-
-    implementation "com.squareup.retrofit2:converter-jaxb:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-simplexml:$retrofit_version"
 
     // Externals

@@ -1,10 +1,10 @@
 package aefrh.es.aefrh.data.noticias
 
-import aefrh.es.aefrh.domain.RssFeedAll
+import aefrh.es.aefrh.domain.RssFeed
 import kotlinx.coroutines.Deferred
 import retrofit2.http.GET
 
 interface NoticiasApi {
     @GET("rss")
-    fun getNoticias(): Deferred<RssFeedAll>
+    fun getNoticias(): Deferred<RssFeed>
 }

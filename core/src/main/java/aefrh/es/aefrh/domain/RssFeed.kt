@@ -1,20 +1,23 @@
 package aefrh.es.aefrh.domain
 
-import javax.xml.bind.annotation.XmlElement
-import javax.xml.bind.annotation.XmlRootElement
+import org.simpleframework.xml.Element
+import org.simpleframework.xml.ElementList
+import org.simpleframework.xml.Root
 
-@XmlRootElement(name = "rss")
-data class RssFeed(
+@Root(name = "rss", strict = false)
+class RssFeed {
+    @field:Element(name = "channel")
+    var channel: FeedChannel? = null
+    override fun toString(): String {
+        return "$channel"
+    }
+}
 
-//    @field:XmlAttribute(name = "version")
-//    val version: String,
-
-//    val title: String
-//
-//    @field:XmlAttribute(name = "title")
-//val title: String
-
-    @get:XmlElement(name = "channel")
-    val channel: RssChannel
-
-)
+@Root(name = "channel", strict = false)
+class FeedChannel {
+    @field:ElementList(entry = "item", inline = true)
+    var itemList: List<Noticia>? = null
+    override fun toString(): String {
+        return "$itemList"
+    }
+}

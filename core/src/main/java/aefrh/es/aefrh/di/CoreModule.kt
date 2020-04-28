@@ -14,9 +14,7 @@ import aefrh.es.aefrh.usecases.NoticiasUseCase
 import com.jakewharton.retrofit2.adapter.kotlin.coroutines.CoroutineCallAdapterFactory
 import okhttp3.OkHttpClient
 import org.koin.dsl.module
-import retrofit2.CallAdapter
 import retrofit2.Retrofit
-import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.converter.simplexml.SimpleXmlConverterFactory
 import java.util.concurrent.TimeUnit
@@ -25,13 +23,11 @@ val retrofitModule = module {
     single {
         createWebService<ParseApi>(
             okHttpClient = createParseHttpClient(),
-            factory = RxJava2CallAdapterFactory.create(),
             baseUrl = BuildConfig.PARSE_API_URL
         )
     }
     single {
         createWordpressClient<NoticiasApi>(
-            factory = RxJava2CallAdapterFactory.create(),
             baseUrl = BuildConfig.WORDPRESS_URL
         )
     }
@@ -52,14 +48,12 @@ val useCaseModule = module {
 /* function to build our Retrofit service */
 inline fun <reified T> createWebService(
     okHttpClient: OkHttpClient,
-    factory: CallAdapter.Factory,
     baseUrl: String
 ): T {
     val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
         .addConverterFactory(GsonConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
-        .addCallAdapterFactory(factory)
         .client(okHttpClient)
         .build()
     return retrofit.create(T::class.java)
@@ -82,22 +76,13 @@ fun createParseHttpClient(): OkHttpClient {
 }
 
 inline fun <reified T> createWordpressClient(
-    baseUrl: String,
-    factory: CallAdapter.Factory
+    baseUrl: String
 ): T {
-
-//    val tikxml = TikXml.Builder().exceptionOnUnreadXml(false).build()
-
     val retrofit = Retrofit.Builder()
         .baseUrl(baseUrl)
-//        .addConverterFactory(JaxbConverterFactory.create())
-//        .addConverterFactory(TikXmlConverterFactory.create(tikxml))
-//        .addConverterFactory(SimpleXmlConverterFactory.create())
         .addConverterFactory(SimpleXmlConverterFactory.create())
         .addCallAdapterFactory(CoroutineCallAdapterFactory())
-//        .addCallAdapterFactory(factory)
         .client(OkHttpClient.Builder().build())
         .build()
-
     return retrofit.create(T::class.java)
 }
