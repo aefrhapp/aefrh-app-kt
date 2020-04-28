@@ -2,8 +2,8 @@ package aefrh.es.aefrh.presentation.fiestas.information
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.ItemFiestaInformacionBinding
-import aefrh.es.aefrh.diffUtils.DiffCallbackInformacion
 import aefrh.es.aefrh.domain.InformacionItem
+import aefrh.es.aefrh.utils.diffUtils.DiffCallbackInformacion
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil

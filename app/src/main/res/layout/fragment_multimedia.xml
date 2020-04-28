@@ -31,6 +31,7 @@
             android:id="@+id/imTop"
             style="@style/ImageMultimedia"
             android:layout_marginBottom="@dimen/size_32"
+            app:imageRounded="@{interno.imagen_video.url}"
             app:onSingleClick="@{() -> viewModel.onGoToPlayer(interno.video)}"
             app:layout_constraintBottom_toTopOf="@+id/guideline"
             app:layout_constraintEnd_toEndOf="parent"
@@ -56,6 +57,7 @@
         <ImageView
             android:id="@+id/imBottom"
             style="@style/ImageMultimedia"
+            app:imageRounded="@{interno.imagen_audio_visual.url}"
             app:onSingleClick="@{() -> viewModel.onGoToPlayer(interno.audioVisual)}"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"

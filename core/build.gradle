@@ -1,5 +1,6 @@
 apply plugin: 'com.android.library'
 apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
 
 android {
     compileSdkVersion compile_sdk_version
@@ -13,6 +14,12 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
         consumerProguardFiles 'consumer-rules.pro'
+
+        buildConfigField "String", "PARSE_API_URL", PARSE_API_URL
+        buildConfigField "String", "PARSE_API_ID", PARSE_API_ID
+        buildConfigField "String", "PARSE_REST_API_ID", PARSE_REST_API_ID
+        buildConfigField "String", "YOUTUBE_API_ID", YOUTUBE_API_ID
+        buildConfigField "String", "WORDPRESS_URL", WORDPRESS_URL
     }
 
     buildTypes {
@@ -22,17 +29,38 @@ android {
         }
     }
 
+    dataBinding {
+        enabled = true
+    }
+
 }
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    // Ui
+    implementation "androidx.appcompat:appcompat:$app_compat_version"
 
     // Kotlin
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation "org.jetbrains.kotlinx:kotlinx-coroutines-android:$coroutines_android_version"
     implementation "androidx.recyclerview:recyclerview:$recycler_version"
 
+    // Koin for Kotlin apps
+    implementation "org.koin:koin-core:$koin_version"
+
     // Retrofit
     implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
     implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+    implementation "com.squareup.retrofit2:adapter-rxjava2:$retrofit_version"
+//    implementation "com.squareup.retrofit2:converter-gson:$retrofit_version"
+
+    implementation "com.squareup.retrofit2:converter-jaxb:$retrofit_version"
+    implementation "com.squareup.retrofit2:converter-simplexml:$retrofit_version"
+
+    // Externals
+    implementation "com.jakewharton.timber:timber:$timberVersion"
+    implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutines_adapter_version"
+
+    // Glide
+    kapt "com.github.bumptech.glide:compiler:$glide_version"
+    implementation "com.github.bumptech.glide:glide:$glide_version"
 }

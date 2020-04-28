@@ -1,4 +1,4 @@
-package aefrh.es.aefrh.diffUtils
+package aefrh.es.aefrh.utils.diffUtils
 
 import aefrh.es.aefrh.domain.InformacionItem
 import androidx.recyclerview.widget.DiffUtil

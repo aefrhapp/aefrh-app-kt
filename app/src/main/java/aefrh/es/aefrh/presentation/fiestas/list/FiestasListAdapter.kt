@@ -2,9 +2,9 @@ package aefrh.es.aefrh.presentation.fiestas.list
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.ItemFiestaBinding
-import aefrh.es.aefrh.diffUtils.DiffCallbackFiesta
 import aefrh.es.aefrh.domain.Fiesta
 import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
+import aefrh.es.aefrh.utils.diffUtils.DiffCallbackFiesta
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil

@@ -17,7 +17,7 @@
         android:layout_marginTop="@dimen/size_8"
         android:text="@{contacto.text}"
         app:onSingleClick="@{() -> viewModel.onGoToContact(contacto)}"
-        loadDrawable="@{contacto.drawable}"
+        app:loadDrawable="@{contacto.drawable}"
         style="@style/ButtonContact"/>
 
 </layout>
