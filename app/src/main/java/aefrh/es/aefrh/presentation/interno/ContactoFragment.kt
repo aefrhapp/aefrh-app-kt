@@ -5,6 +5,7 @@ import aefrh.es.aefrh.databinding.FragmentContactoBinding
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.goToBrowser
+import aefrh.es.aefrh.utils.sendEmail
 import android.view.View
 import androidx.lifecycle.Observer
 import org.koin.android.viewmodel.ext.android.viewModel
@@ -46,7 +47,7 @@ class ContactoFragment: BaseFragment<FragmentContactoBinding, InternoViewModel>(
         })
 
         viewModel.email.observe(this, Observer {
-            context?.goToBrowser(it)
+            context?.sendEmail(it)
         })
 
     }
