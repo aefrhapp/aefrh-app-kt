@@ -1,7 +1,7 @@
 package aefrh.es.aefrh.presentation.epocas
 
 import aefrh.es.aefrh.R
-import aefrh.es.aefrh.databinding.EpocaItemBinding
+import aefrh.es.aefrh.databinding.ItemEpocaBinding
 import aefrh.es.aefrh.diffUtils.DiffCallbackEpoca
 import aefrh.es.aefrh.domain.Epoca
 import android.view.LayoutInflater
@@ -16,7 +16,7 @@ class EpocasListAdapter(private val viewModel: EpocasViewModel): ListAdapter<Epo
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.epoca_item, parent, false
+                R.layout.item_epoca, parent, false
             )
         )
     }
@@ -30,7 +30,7 @@ class EpocasListAdapter(private val viewModel: EpocasViewModel): ListAdapter<Epo
         }
     }
 
-    class ViewHolder(private val binding: EpocaItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemEpocaBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(value: Epoca, viewModel: EpocasViewModel) {
             binding.epoca = value
             binding.viewModel = viewModel

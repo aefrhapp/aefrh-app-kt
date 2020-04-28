@@ -7,7 +7,7 @@ import android.view.View
 import com.google.android.gms.maps.GoogleMap
 import com.google.android.gms.maps.model.Marker
 import kotlinx.android.synthetic.main.custom_info_window.view.*
-import kotlinx.android.synthetic.main.epoca_item.view.tvName
+import kotlinx.android.synthetic.main.item_epoca.view.tvName
 
 class MarkerInfoView(val context: Context) : GoogleMap.InfoWindowAdapter {
 

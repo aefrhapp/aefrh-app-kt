@@ -7,7 +7,7 @@
     <group>
 
         <item
-            android:id="@+id/nav_news"
+            android:id="@+id/noticiasFragment"
             android:title="@string/noticias" />
 
         <item

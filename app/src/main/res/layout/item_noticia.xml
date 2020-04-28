@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+<!--        <data>-->
+<!--                <variable-->
+<!--                    name="viewModel"-->
+<!--                    type="aefrh.es.aefrh.presentation.fiestas.FiestaViewModel"/>-->
+<!--        </data>-->
+
+        <androidx.cardview.widget.CardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/FiestaContainer">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/imNoticia"
+                            style="@style/ImageDetails"
+                            app:layout_constraintTop_toTopOf="parent"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/tvTitle"
+                            app:layout_constraintVertical_chainStyle="packed" />
+
+                        <TextView
+                            android:id="@+id/tvTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_16"
+                            android:layout_marginStart="@dimen/size_16"
+                            android:layout_marginEnd="@dimen/size_16"
+                            style="@style/TextTitle"
+                            app:layout_constraintTop_toBottomOf="@+id/imNoticia"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toTopOf="@+id/tvSubTitle" />
+
+                        <TextView
+                            android:id="@+id/tvSubTitle"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/size_8"
+                            android:layout_marginStart="@dimen/size_16"
+                            android:layout_marginEnd="@dimen/size_16"
+                            android:layout_marginBottom="@dimen/size_16"
+                            style="@style/TextDescription"
+                            app:layout_constraintTop_toBottomOf="@+id/tvTitle"
+                            app:layout_constraintStart_toStartOf="parent"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintBottom_toBottomOf="parent"/>
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </androidx.cardview.widget.CardView>
+
+</layout>

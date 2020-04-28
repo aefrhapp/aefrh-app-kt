@@ -131,4 +131,10 @@
 
     </navigation>
 
+    <fragment
+        android:id="@+id/noticiasFragment"
+        android:name="aefrh.es.aefrh.presentation.noticias.NoticiasFragment"
+        android:label="@string/noticias"
+        tools:layout="@layout/fragment_noticias" />
+
 </navigation>
