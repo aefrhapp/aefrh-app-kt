@@ -5,6 +5,7 @@ import aefrh.es.aefrh.domain.Fiesta
 import aefrh.es.aefrh.domain.Interno
 import aefrh.es.aefrh.domain.ParseObject
 import aefrh.es.aefrh.utils.Result
+import timber.log.Timber
 
 class ParseRepositoryImpl(private val parseApi: ParseApi): ParseRepository {
 
@@ -13,6 +14,7 @@ class ParseRepositoryImpl(private val parseApi: ParseApi): ParseRepository {
             val result = parseApi.getEpocas().await()
             Result.success(result.result)
         } catch (ex: Exception) {
+            Timber.e(ex)
             Result.error(ex)
         }
     }
@@ -23,6 +25,7 @@ class ParseRepositoryImpl(private val parseApi: ParseApi): ParseRepository {
             val result = parseApi.getFiestaByEpocaId(jsonString).await()
             Result.success(result.result)
         } catch (ex: Exception) {
+            Timber.e(ex)
             Result.error(ex)
         }
     }
@@ -32,6 +35,7 @@ class ParseRepositoryImpl(private val parseApi: ParseApi): ParseRepository {
             val result = parseApi.getFiestaById(fiestaId).await()
             Result.success(result)
         } catch (ex: Exception) {
+            Timber.e(ex)
             Result.error(ex)
         }
     }
@@ -41,6 +45,7 @@ class ParseRepositoryImpl(private val parseApi: ParseApi): ParseRepository {
             val result = parseApi.getFiestas().await()
             Result.success(result.result)
         } catch (ex: Exception) {
+            Timber.e(ex)
             Result.error(ex)
         }
     }
@@ -50,6 +55,7 @@ class ParseRepositoryImpl(private val parseApi: ParseApi): ParseRepository {
             val result = parseApi.getInterno().await()
             Result.success(result)
         } catch (ex: Exception) {
+            Timber.e(ex)
             Result.error(ex)
         }
     }

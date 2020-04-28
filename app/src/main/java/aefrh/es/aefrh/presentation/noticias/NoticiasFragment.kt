@@ -1,20 +1,39 @@
 package aefrh.es.aefrh.presentation.noticias
 
 import aefrh.es.aefrh.R
-import android.os.Bundle
-import android.view.LayoutInflater
+import aefrh.es.aefrh.databinding.FragmentNoticiasBinding
+import aefrh.es.aefrh.domain.Status
+import aefrh.es.aefrh.presentation.base.BaseFragment
 import android.view.View
-import android.view.ViewGroup
-import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import org.koin.android.viewmodel.ext.android.viewModel
+import timber.log.Timber
 
-class NoticiasFragment : Fragment() {
+class NoticiasFragment: BaseFragment<FragmentNoticiasBinding, NoticiasViewModel>() {
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_noticias, container, false)
+    override val viewModel: NoticiasViewModel by viewModel()
+    override fun getLayoutResId() = R.layout.fragment_noticias
+
+    override fun init(view: View) {
+
+        viewModel.noticias.observe(viewLifecycleOwner, Observer {
+
+            when(it.status) {
+                Status.LOADING -> {
+                    showProgress()
+                }
+                Status.ERROR -> {
+                    displayErrorInt(R.string.error2)
+                    Timber.e(it.message)
+                }
+                else -> {
+                    val result = it.data
+                    Timber.e(result.toString())
+                }
+            }
+
+        })
+
     }
 
 }

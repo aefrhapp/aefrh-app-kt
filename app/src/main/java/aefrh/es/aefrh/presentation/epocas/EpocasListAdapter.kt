@@ -2,8 +2,8 @@ package aefrh.es.aefrh.presentation.epocas
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.ItemEpocaBinding
-import aefrh.es.aefrh.diffUtils.DiffCallbackEpoca
 import aefrh.es.aefrh.domain.Epoca
+import aefrh.es.aefrh.utils.diffUtils.DiffCallbackEpoca
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
