@@ -1,5 +1,6 @@
 package aefrh.es.aefrh.utils
 
+import aefrh.es.aefrh.domain.Noticia
 import android.content.Context
 import android.content.Intent
 import android.content.res.Resources
@@ -45,3 +46,31 @@ val Int.dp: Int
 
 val Int.px: Int
     get() = (this * Resources.getSystem().displayMetrics.density).toInt()
+
+fun Noticia.reformatNoticia(): String {
+    return String.format(
+        styleHtml,
+        this.title,
+        this.getSingleDate(),
+        this.content
+    )
+}
+
+const val styleHtml =
+    """
+        <head>
+        	<link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
+            <style>
+        		body{margin: 24px; text-align:left; font-size:15px; font-family:"Poppins"; color:#444444;}
+                h1{font-size:22px;}
+                h2, h3, h6{font-size:15px;}
+                img{display: block; max-width: 100%%;}
+                a{color:#001A46;}
+            </style>
+        </head>
+        <body>
+            <h1>%1${'$'}s</h1>
+            <h2>%2${'$'}s</h2>
+            <br>%3${'$'}s</br>
+        </body>
+    """

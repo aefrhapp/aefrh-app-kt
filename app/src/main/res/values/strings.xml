@@ -111,5 +111,6 @@
 
     <!-- NOTICIAS -->
     <string name="dateFormat">Publicado el %s</string>
+    <string name="noticia">Noticia</string>
 
 </resources>

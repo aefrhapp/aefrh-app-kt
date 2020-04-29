@@ -135,12 +135,38 @@
         android:id="@+id/noticiasFragment"
         android:name="aefrh.es.aefrh.presentation.noticias.NoticiasFragment"
         android:label="@string/noticias"
-        tools:layout="@layout/fragment_noticias" />
+        tools:layout="@layout/fragment_noticias" >
+        <action
+            android:id="@+id/action_noticiasFragment_to_noticiaDetailFragment"
+            app:destination="@id/noticiaDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
 
     <fragment
         android:id="@+id/magazineFragment"
         android:name="aefrh.es.aefrh.presentation.noticias.MagazineFragment"
         android:label="@string/taxiMagazine"
-        tools:layout="@layout/fragment_magazine" />
+        tools:layout="@layout/fragment_magazine" >
+        <action
+            android:id="@+id/action_magazineFragment_to_noticiaDetailFragment"
+            app:destination="@id/noticiaDetailFragment"
+            app:enterAnim="@anim/slide_in_right"
+            app:exitAnim="@anim/slide_out_left"
+            app:popEnterAnim="@anim/slide_in_left"
+            app:popExitAnim="@anim/slide_out_right" />
+    </fragment>
+
+    <fragment
+        android:id="@+id/noticiaDetailFragment"
+        android:name="aefrh.es.aefrh.presentation.noticias.NoticiaDetailFragment"
+        android:label="@string/noticia"
+        tools:layout="@layout/fragment_noticia_detail" >
+        <argument
+            android:name="noticiaId"
+            app:argType="string" />
+    </fragment>
 
 </navigation>

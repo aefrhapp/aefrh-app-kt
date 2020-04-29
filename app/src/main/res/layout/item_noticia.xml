@@ -16,6 +16,7 @@
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            app:onSingleClick="@{() -> viewModel.onGoToNoticiaDetail(noticia.id)}"
             style="@style/FiestaContainer">
 
                 <androidx.constraintlayout.widget.ConstraintLayout
@@ -55,7 +56,7 @@
                             android:layout_marginEnd="@dimen/size_16"
                             android:layout_marginBottom="@dimen/size_16"
                             style="@style/TextDescription"
-                            android:text="@{@string/dateFormat(noticia.date)}"
+                            android:text="@{@string/dateFormat(noticia.listDate)}"
                             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"

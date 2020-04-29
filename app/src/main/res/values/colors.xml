@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-
     <color name="colorPrimary">#001A46</color>
     <color name="colorPrimaryDark">#000B1D</color>
     <color name="colorAccent">#AE2722</color>
@@ -14,5 +13,4 @@
 
     <color name="backgroundCard">#FFF6E1</color>
     <color name="backgroundToolbar">#001A46</color>
-
 </resources>

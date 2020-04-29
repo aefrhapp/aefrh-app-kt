@@ -8,17 +8,19 @@ import java.util.regex.Pattern
 
 @Root(name = "item", strict = false)
 data class Noticia(
-    @field:Element(name = "post-id")
+    @field:Element(name = "post-id", required = false)
     var id: String = "",
-    @field:Element(name = "title")
+    @field:Element(name = "title", required = true)
     var title: String = "",
-    @field:Element(name = "link")
+    @field:Element(name = "link", required = true)
     var link: String = "",
-    @field:Element(name = "pubDate")
+    @field:Element(name = "pubDate", required = false)
     var pubDate: String = "",
-    @field:Element(name = "description")
+    @field:Element(name = "date", required = false)
+    var date: String = "",
+    @field:Element(name = "description", required = true)
     var description: String = "",
-    @field:Element(name = "encoded")
+    @field:Element(name = "encoded", required = true)
     var content: String = ""
 ) {
 
@@ -47,8 +49,13 @@ data class Noticia(
         return result
     }
 
-    fun getDate(): String {
+    fun getListDate(): String {
         val date = SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss z", Locale.US).parse(this.pubDate)
+        return SimpleDateFormat("dd MMMM yyyy", Locale("es", "ES")).format(date)
+    }
+
+    fun getSingleDate(): String {
+        val date = SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss'Z'", Locale.US).parse(this.date)
         return SimpleDateFormat("dd MMMM yyyy", Locale("es", "ES")).format(date)
     }
 

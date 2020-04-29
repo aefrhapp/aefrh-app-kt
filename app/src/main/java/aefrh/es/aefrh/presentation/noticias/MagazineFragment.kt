@@ -6,6 +6,7 @@ import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import android.view.View
 import androidx.lifecycle.Observer
+import androidx.navigation.fragment.findNavController
 import kotlinx.android.synthetic.main.fragment_magazine.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
@@ -27,7 +28,7 @@ class MagazineFragment: BaseFragment<FragmentMagazineBinding, NoticiasViewModel>
         }
 
         // On get Noticias observe
-        viewModel.noticias.observe(viewLifecycleOwner, Observer {
+        viewModel.noticias.observe(this, Observer {
             when(it.status) {
                 Status.LOADING -> {
                     showProgress()
@@ -44,6 +45,14 @@ class MagazineFragment: BaseFragment<FragmentMagazineBinding, NoticiasViewModel>
             }
         })
 
+        // Observe click
+        viewModel.noticiaId.observe(this, Observer { onGoToNoticiaDetail(it) })
+
+    }
+
+    private fun onGoToNoticiaDetail(noticiaId: String) {
+        val directions = MagazineFragmentDirections.actionMagazineFragmentToNoticiaDetailFragment(noticiaId)
+        findNavController().navigate(directions)
     }
 
 }
