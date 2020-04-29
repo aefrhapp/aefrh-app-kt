@@ -1,6 +1,6 @@
 package aefrh.es.aefrh.utils
 
-import android.graphics.drawable.Drawable
+import aefrh.es.aefrh.R
 import android.widget.ImageView
 import androidx.annotation.DrawableRes
 import androidx.appcompat.widget.AppCompatButton
@@ -9,11 +9,11 @@ import com.bumptech.glide.Glide
 import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 
-@BindingAdapter(value = ["imageUrl", "placeholder"], requireAll = false)
-fun ImageView.loadImage(imageUrl: String?, placeholder: Drawable? = null) {
+@BindingAdapter("imageUrl")
+fun ImageView.loadImage(imageUrl: String) {
     Glide.with(context)
         .load(imageUrl)
-        .error(placeholder)
+        .error(R.drawable.logo_espana)
         .into(this)
 }
 
@@ -24,12 +24,12 @@ fun AppCompatButton.loadDrawable(@DrawableRes drawableInt: Int) {
     setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
 }
 
-@BindingAdapter(value = ["imageRounded", "placeholder"], requireAll = false)
-fun ImageView.setImageRounded(url: String?, placeholder: Drawable? = null) {
+@BindingAdapter("imageRounded")
+fun ImageView.setImageRounded(url: String) {
     Glide.with(context)
         .load(url)
         .centerCrop()
-        .error(placeholder)
+        .error(R.drawable.logo_espana)
         .apply(RequestOptions.bitmapTransform(RoundedCorners(24)))
         .into(this)
 }

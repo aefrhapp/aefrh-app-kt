@@ -3,11 +3,15 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-<!--        <data>-->
-<!--                <variable-->
-<!--                    name="viewModel"-->
-<!--                    type="aefrh.es.aefrh.presentation.fiestas.FiestaViewModel"/>-->
-<!--        </data>-->
+        <data>
+                <variable
+                    name="noticia"
+                    type="aefrh.es.aefrh.domain.Noticia"/>
+
+                <variable
+                    name="viewModel"
+                    type="aefrh.es.aefrh.presentation.noticias.NoticiasViewModel"/>
+        </data>
 
         <androidx.cardview.widget.CardView
             android:layout_width="match_parent"
@@ -21,6 +25,7 @@
                         <ImageView
                             android:id="@+id/imNoticia"
                             style="@style/ImageDetails"
+                            app:imageUrl="@{noticia.image}"
                             app:layout_constraintTop_toTopOf="parent"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -35,6 +40,7 @@
                             android:layout_marginStart="@dimen/size_16"
                             android:layout_marginEnd="@dimen/size_16"
                             style="@style/TextTitle"
+                            android:text="@{noticia.title}"
                             app:layout_constraintTop_toBottomOf="@+id/imNoticia"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"
@@ -44,11 +50,12 @@
                             android:id="@+id/tvSubTitle"
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="@dimen/size_8"
+                            android:layout_marginTop="@dimen/size_16"
                             android:layout_marginStart="@dimen/size_16"
                             android:layout_marginEnd="@dimen/size_16"
                             android:layout_marginBottom="@dimen/size_16"
                             style="@style/TextDescription"
+                            android:text="@{@string/dateFormat(noticia.date)}"
                             app:layout_constraintTop_toBottomOf="@+id/tvTitle"
                             app:layout_constraintStart_toStartOf="parent"
                             app:layout_constraintEnd_toEndOf="parent"

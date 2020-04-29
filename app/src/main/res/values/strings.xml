@@ -109,4 +109,7 @@
     <string name="europe_url">http://www.cefmh.eu/</string>
     <string name="no_email_instalado">Lo siento, no hay gestores de correo instalados.</string>
 
+    <!-- NOTICIAS -->
+    <string name="dateFormat">Publicado el %s</string>
+
 </resources>
