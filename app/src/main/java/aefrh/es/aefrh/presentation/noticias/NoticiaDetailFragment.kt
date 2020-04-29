@@ -7,8 +7,13 @@ import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.Result
 import aefrh.es.aefrh.utils.reformatNoticia
+import aefrh.es.aefrh.utils.shareNoticia
 import android.annotation.SuppressLint
 import android.net.http.SslError
+import android.os.Bundle
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
 import android.webkit.SslErrorHandler
 import android.webkit.WebChromeClient
@@ -25,6 +30,11 @@ class NoticiaDetailFragment: BaseFragment<FragmentNoticiaDetailBinding, Noticias
     override val viewModel: NoticiasViewModel by viewModel()
     override fun getLayoutResId() = R.layout.fragment_noticia_detail
     private val args: NoticiaDetailFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun init(view: View) {
         initWebView()
@@ -45,10 +55,7 @@ class NoticiaDetailFragment: BaseFragment<FragmentNoticiaDetailBinding, Noticias
             else -> {
                 val res = result.data?.item
                 val xmlHtml = res?.reformatNoticia()
-                Timber.e(xmlHtml)
                 xmlHtml?.let { loadUrl(it, res.link) }
-
-//                val fin = res?.reformatNoticia()?.let { loadUrl(it, res.link) }
             }
         }
     }
@@ -82,6 +89,25 @@ class NoticiaDetailFragment: BaseFragment<FragmentNoticiaDetailBinding, Noticias
                     hideProgress()
                 }
             }
+        }
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+        super.onCreateOptionsMenu(menu, inflater)
+        menu.clear()
+        inflater.inflate(R.menu.menu_noticia, menu)
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return when (item.itemId) {
+            R.id.action_share -> {
+                val noticia = viewModel.noticia.value?.data?.item
+                if(noticia != null) {
+                    context?.shareNoticia(noticia.title, noticia.link)
+                }
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
         }
     }
 

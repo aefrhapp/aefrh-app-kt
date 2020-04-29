@@ -21,7 +21,7 @@ class MapaViewModel(
     val fiesta : LiveData<Result<Fiesta>>
         get() = _fiesta
 
-    var firstTime = true
+    private var firstTime = true
 
     fun onGetAllFiestas() {
         if(firstTime) {

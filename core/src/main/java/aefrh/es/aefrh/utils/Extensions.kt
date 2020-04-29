@@ -41,6 +41,22 @@ fun Context.makePhoneCall(number: String) {
     }
 }
 
+fun Context.shareNoticia(title: String, link: String) {
+
+    val mIntent = Intent(Intent.ACTION_SEND)
+    mIntent.type = "text/plain"
+    mIntent.putExtra(Intent.EXTRA_SUBJECT, "[AEFRH][APP] Te comparte esta noticia")
+    mIntent.putExtra(Intent.EXTRA_TEXT, """$title $link""")
+
+    try {
+        startActivity(Intent.createChooser(mIntent, "Compartir..."))
+    } catch (e: Exception){
+        Timber.e(e)
+        Toast.makeText(this, "Lo siento, ha ocurrido un error.", Toast.LENGTH_SHORT).show()
+    }
+
+}
+
 val Int.dp: Int
     get() = (this / Resources.getSystem().displayMetrics.density).toInt()
 

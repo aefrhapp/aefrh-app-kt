@@ -44,7 +44,7 @@ class FiestaViewModel(
     val fiestaStr : LiveData<String>
         get() = _fiestaStr
 
-    var firstTime = true
+    private var firstTime = true
 
     fun getFiestas(epocaId: String) {
         if(firstTime) {

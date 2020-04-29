@@ -25,7 +25,7 @@ class NoticiasViewModel(private val noticiasUseCase: NoticiasUseCase): BaseViewM
     val noticiaId : LiveData<String>
         get() = _noticiaId
 
-    var firstTime = true
+    private var firstTime = true
 
     fun onGetNoticias() {
         if(firstTime) {
