@@ -5,4 +5,5 @@ import aefrh.es.aefrh.utils.Result
 
 interface NoticiasRepository {
     suspend fun getAllNoticias(): Result<RssFeed>
+    suspend fun getAllMagazine(): Result<RssFeed>
 }

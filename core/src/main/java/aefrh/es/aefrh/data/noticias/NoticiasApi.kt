@@ -6,5 +6,7 @@ import retrofit2.http.GET
 
 interface NoticiasApi {
     @GET("rss")
-    fun getNoticias(): Deferred<RssFeed>
+    fun getAllNoticias(): Deferred<RssFeed>
+    @GET("category/taxi_magazine_publica/rss")
+    fun getAllMagazine(): Deferred<RssFeed>
 }

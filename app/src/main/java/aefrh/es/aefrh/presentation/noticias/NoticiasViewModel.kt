@@ -15,10 +15,17 @@ class NoticiasViewModel(private val noticiasUseCase: NoticiasUseCase): BaseViewM
     val noticias : LiveData<Result<RssFeed>>
         get() = _noticias
 
-    init {
+    fun onGetNoticias() {
         _noticias.value = Result.loading()
         viewModelScope.launch {
-            _noticias.value = noticiasUseCase.invoke()
+            _noticias.value = noticiasUseCase.getAllNoticias()
+        }
+    }
+
+    fun onGetMagazine() {
+        _noticias.value = Result.loading()
+        viewModelScope.launch {
+            _noticias.value = noticiasUseCase.getAllMagazine()
         }
     }
 

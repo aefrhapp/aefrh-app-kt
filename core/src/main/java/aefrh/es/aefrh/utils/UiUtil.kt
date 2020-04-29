@@ -10,7 +10,7 @@ import com.bumptech.glide.load.resource.bitmap.RoundedCorners
 import com.bumptech.glide.request.RequestOptions
 
 @BindingAdapter("imageUrl")
-fun ImageView.loadImage(imageUrl: String) {
+fun ImageView.loadImage(imageUrl: String?) {
     Glide.with(context)
         .load(imageUrl)
         .error(R.drawable.logo_espana)
@@ -18,14 +18,14 @@ fun ImageView.loadImage(imageUrl: String) {
 }
 
 @BindingAdapter("loadDrawable")
-fun AppCompatButton.loadDrawable(@DrawableRes drawableInt: Int) {
-    val drawable = context.getDrawable(drawableInt)
+fun AppCompatButton.loadDrawable(@DrawableRes drawableInt: Int?) {
+    val drawable = drawableInt?.let { context.getDrawable(it) }
     drawable?.setTint(androidx.core.content.ContextCompat.getColor(context, android.R.color.white))
     setCompoundDrawablesWithIntrinsicBounds(drawable, null, null, null)
 }
 
 @BindingAdapter("imageRounded")
-fun ImageView.setImageRounded(url: String) {
+fun ImageView.setImageRounded(url: String?) {
     Glide.with(context)
         .load(url)
         .centerCrop()
