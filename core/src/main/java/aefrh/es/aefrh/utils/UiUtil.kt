@@ -11,10 +11,11 @@ import com.bumptech.glide.request.RequestOptions
 
 @BindingAdapter("imageUrl")
 fun ImageView.loadImage(imageUrl: String?) {
-    Glide.with(context)
-        .load(imageUrl)
-        .error(R.drawable.logo_espana)
-        .into(this)
+    if(imageUrl != null)
+        Glide.with(context)
+            .load(imageUrl)
+            .apply(RequestOptions.placeholderOf(R.drawable.logo_espana).error(R.drawable.logo_espana))
+            .into(this)
 }
 
 @BindingAdapter("loadDrawable")
@@ -25,11 +26,11 @@ fun AppCompatButton.loadDrawable(@DrawableRes drawableInt: Int?) {
 }
 
 @BindingAdapter("imageRounded")
-fun ImageView.setImageRounded(url: String?) {
-    Glide.with(context)
-        .load(url)
-        .centerCrop()
-        .error(R.drawable.logo_espana)
-        .apply(RequestOptions.bitmapTransform(RoundedCorners(24)))
-        .into(this)
+fun ImageView.setImageRounded(imageUrl: String?) {
+    if(imageUrl != null)
+        Glide.with(context)
+            .load(imageUrl)
+            .centerCrop()
+            .apply(RequestOptions.bitmapTransform(RoundedCorners(24)).placeholder(R.drawable.logo_espana).error(R.drawable.logo_espana))
+            .into(this)
 }
