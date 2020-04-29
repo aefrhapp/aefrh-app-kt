@@ -30,19 +30,19 @@
     </style>
 
     <style name="Text_Bold" parent="@style/Text_Base">
-        <item name="android:fontFamily">@font/font_black</item>
+        <item name="android:fontFamily">@font/poppins_bold</item>
     </style>
 
     <style name="Text_Regular" parent="@style/Text_Base">
-        <item name="android:fontFamily">@font/font_regular</item>
+        <item name="android:fontFamily">@font/poppins_regular</item>
     </style>
 
     <style name="Text_Light" parent="@style/Text_Base">
-        <item name="android:fontFamily">@font/font_light</item>
+        <item name="android:fontFamily">@font/poppins_light</item>
     </style>
 
     <style name="Text_Italic" parent="@style/Text_Base">
-        <item name="android:fontFamily">@font/font_italic</item>
+        <item name="android:fontFamily">@font/poppins_italic</item>
     </style>
     <!--********************************** FONTS **********************************-->
 
