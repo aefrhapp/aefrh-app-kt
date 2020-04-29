@@ -5,13 +5,8 @@ import aefrh.es.aefrh.databinding.FragmentMultimediaBinding
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import android.view.View
-import android.widget.ImageView
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
-import com.bumptech.glide.Glide
-import com.bumptech.glide.load.resource.bitmap.RoundedCorners
-import com.bumptech.glide.request.RequestOptions
-import kotlinx.android.synthetic.main.fragment_multimedia.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
@@ -38,14 +33,8 @@ class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewMod
                 }
                 else -> {
                     hideProgress()
-
-                    // Binding
                     val interno = result.data
                     bindingObject.interno = interno
-
-                    // Observers
-                    interno?.imagen_video?.let { setImageRounded(it.url, imTop) }
-                    interno?.imagen_audio_visual?.let { setImageRounded(it.url, imBottom) }
                 }
             }
 
@@ -58,16 +47,6 @@ class MultimediaFragment: BaseFragment<FragmentMultimediaBinding, InternoViewMod
     private fun goToPlayer(videoId: String) {
         val directions = MultimediaFragmentDirections.actionMultimediaFragmentToPlayerFragment(videoId)
         findNavController().navigate(directions)
-    }
-
-    private fun setImageRounded(url: String, imageView: ImageView) {
-        context?.let {
-            Glide.with(it)
-                .load(url)
-                .centerCrop()
-                .apply(RequestOptions.bitmapTransform(RoundedCorners(24)))
-                .into(imageView)
-        }
     }
 
 }

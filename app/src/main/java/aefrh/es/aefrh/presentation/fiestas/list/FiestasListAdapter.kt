@@ -1,10 +1,10 @@
 package aefrh.es.aefrh.presentation.fiestas.list
 
 import aefrh.es.aefrh.R
-import aefrh.es.aefrh.databinding.FiestaItemBinding
-import aefrh.es.aefrh.diffUtils.DiffCallbackFiesta
+import aefrh.es.aefrh.databinding.ItemFiestaBinding
 import aefrh.es.aefrh.domain.Fiesta
 import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
+import aefrh.es.aefrh.utils.diffUtils.DiffCallbackFiesta
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -17,7 +17,7 @@ class FiestasListAdapter(private val viewModel: FiestaViewModel): ListAdapter<Fi
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.fiesta_item, parent, false
+                R.layout.item_fiesta, parent, false
             )
         )
     }
@@ -31,7 +31,7 @@ class FiestasListAdapter(private val viewModel: FiestaViewModel): ListAdapter<Fi
         }
     }
 
-    class ViewHolder(private val binding: FiestaItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemFiestaBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(value: Fiesta, viewModel: FiestaViewModel) {
             binding.fiesta = value
             binding.viewModel = viewModel

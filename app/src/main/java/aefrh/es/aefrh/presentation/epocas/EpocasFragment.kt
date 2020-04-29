@@ -23,7 +23,11 @@ class EpocasFragment: BaseFragment<FragmentEpocasBinding, EpocasViewModel>() {
         // Init View
         val adapter = EpocasListAdapter(viewModel)
         rv_epocas.apply {
-            layoutManager = SpanningLinearLayoutManager(context, LinearLayoutManager.VERTICAL, false)
+            layoutManager = SpanningLinearLayoutManager(
+                context,
+                LinearLayoutManager.VERTICAL,
+                false
+            )
             this.adapter = adapter
         }
 

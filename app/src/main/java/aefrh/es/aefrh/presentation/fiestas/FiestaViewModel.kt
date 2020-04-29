@@ -44,10 +44,15 @@ class FiestaViewModel(
     val fiestaStr : LiveData<String>
         get() = _fiestaStr
 
+    private var firstTime = true
+
     fun getFiestas(epocaId: String) {
-        _fiestas.value = Result.loading()
-        viewModelScope.launch {
-            _fiestas.value = epocaId.let { fiestaUseCase.getFiestasByEpocaId(it) }
+        if(firstTime) {
+            _fiestas.value = Result.loading()
+            viewModelScope.launch {
+                _fiestas.value = epocaId.let { fiestaUseCase.getFiestasByEpocaId(it) }
+            }
+            firstTime = false
         }
     }
 

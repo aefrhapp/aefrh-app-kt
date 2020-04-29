@@ -1,10 +1,10 @@
 package aefrh.es.aefrh.presentation.fiestas.information
 
 import aefrh.es.aefrh.R
-import aefrh.es.aefrh.databinding.FiestaContactoItemBinding
-import aefrh.es.aefrh.diffUtils.DiffCallbackContacto
+import aefrh.es.aefrh.databinding.ItemFiestaContactoBinding
 import aefrh.es.aefrh.domain.ContactoItem
 import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
+import aefrh.es.aefrh.utils.diffUtils.DiffCallbackContacto
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -17,7 +17,7 @@ class FiestaContactoAdapter(private val viewModel: FiestaViewModel): ListAdapter
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.fiesta_contacto_item, parent, false
+                R.layout.item_fiesta_contacto, parent, false
             )
         )
     }
@@ -31,7 +31,7 @@ class FiestaContactoAdapter(private val viewModel: FiestaViewModel): ListAdapter
         }
     }
 
-    class ViewHolder(private val binding: FiestaContactoItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemFiestaContactoBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(value: ContactoItem, viewModel: FiestaViewModel) {
             binding.contacto = value
             binding.viewModel = viewModel

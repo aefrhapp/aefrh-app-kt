@@ -21,17 +21,25 @@ class MapaViewModel(
     val fiesta : LiveData<Result<Fiesta>>
         get() = _fiesta
 
+    private var firstTime = true
+
     fun onGetAllFiestas() {
-        _fiestas.value = Result.loading()
-        viewModelScope.launch {
-            _fiestas.value = fiestaUseCase.getAllFiestas()
+        if(firstTime) {
+            _fiestas.value = Result.loading()
+            viewModelScope.launch {
+                _fiestas.value = fiestaUseCase.getAllFiestas()
+            }
+            firstTime = false
         }
     }
 
     fun onGetSingleFiesta(fiestaId: String) {
-        _fiesta.value = Result.loading()
-        viewModelScope.launch {
-            _fiesta.value = fiestaUseCase.getFiestaById(fiestaId)
+        if(firstTime) {
+            _fiesta.value = Result.loading()
+            viewModelScope.launch {
+                _fiesta.value = fiestaUseCase.getFiestaById(fiestaId)
+            }
+            firstTime = false
         }
     }
 

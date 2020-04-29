@@ -1,9 +1,9 @@
 package aefrh.es.aefrh.presentation.fiestas.information
 
 import aefrh.es.aefrh.R
-import aefrh.es.aefrh.databinding.FiestaInformacionItemBinding
-import aefrh.es.aefrh.diffUtils.DiffCallbackInformacion
+import aefrh.es.aefrh.databinding.ItemFiestaInformacionBinding
 import aefrh.es.aefrh.domain.InformacionItem
+import aefrh.es.aefrh.utils.diffUtils.DiffCallbackInformacion
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil
@@ -16,7 +16,7 @@ class FiestaInformacionAdapter: ListAdapter<InformacionItem, FiestaInformacionAd
         return ViewHolder(
             DataBindingUtil.inflate(
                 LayoutInflater.from(parent.context),
-                R.layout.fiesta_informacion_item, parent, false
+                R.layout.item_fiesta_informacion, parent, false
             )
         )
     }
@@ -30,7 +30,7 @@ class FiestaInformacionAdapter: ListAdapter<InformacionItem, FiestaInformacionAd
         }
     }
 
-    class ViewHolder(private val binding: FiestaInformacionItemBinding): RecyclerView.ViewHolder(binding.root) {
+    class ViewHolder(private val binding: ItemFiestaInformacionBinding): RecyclerView.ViewHolder(binding.root) {
         fun bind(value: InformacionItem) {
             binding.informacion = value
         }
