@@ -6,11 +6,7 @@ import aefrh.es.aefrh.domain.Fiesta
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.getEpocaIcon
-import aefrh.es.aefrh.utils.shareNoticia
 import android.os.Bundle
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -22,6 +18,7 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
+
 
 class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapReadyCallback {
 
@@ -95,8 +92,8 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
         mMap.addMarker(
             MarkerOptions().position(LatLng(fiesta.localizacion.latitude, fiesta.localizacion.longitude))
                 .title(String.format("%s\n%s", fiesta.nombre, fiesta.id))
-                .snippet(fiesta.epoca)
-                .icon(BitmapDescriptorFactory.fromResource(getEpocaIcon(fiesta.epoca)))
+                .snippet(fiesta.tipo)
+                .icon(BitmapDescriptorFactory.fromResource(getEpocaIcon(fiesta.tipo)))
         )
     }
 
@@ -129,22 +126,20 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
 
     }
 
-    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
-        super.onCreateOptionsMenu(menu, inflater)
-        menu.clear()
-        inflater.inflate(R.menu.menu_map, menu)
-    }
-
-    override fun onOptionsItemSelected(item: MenuItem): Boolean {
-        return when (item.itemId) {
-            R.id.action_share -> {
-
-
-                true
-            }
-            else -> super.onOptionsItemSelected(item)
-        }
-    }
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        menu.clear()
+//        inflater.inflate(R.menu.menu_map, menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.action_share -> {
+//                true
+//            }
+//            else -> super.onOptionsItemSelected(item)
+//        }
+//    }
 
     companion object {
         const val GET_ALL: String = "GET_ALL"

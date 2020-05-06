@@ -20,5 +20,5 @@ data class Fiesta(
     @SerializedName("Localizacion")
     val localizacion: GeoPoint,
     @SerializedName("Tipo")
-    val epoca: String
+    val tipo: String
 )
