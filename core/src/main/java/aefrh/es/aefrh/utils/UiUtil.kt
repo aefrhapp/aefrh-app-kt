@@ -14,7 +14,7 @@ fun ImageView.loadImage(imageUrl: String?) {
     if(imageUrl != null)
         Glide.with(context)
             .load(imageUrl)
-            .apply(RequestOptions.placeholderOf(R.drawable.logo_espana).error(R.drawable.logo_espana))
+            .error(R.drawable.logo_espana)
             .into(this)
 }
 
@@ -31,6 +31,5 @@ fun ImageView.setImageRounded(imageUrl: String?) {
         Glide.with(context)
             .load(imageUrl)
             .centerCrop()
-            .apply(RequestOptions.bitmapTransform(RoundedCorners(24)).placeholder(R.drawable.logo_espana).error(R.drawable.logo_espana))
             .into(this)
 }

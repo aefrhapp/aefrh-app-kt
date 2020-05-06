@@ -2,9 +2,11 @@ package aefrh.es.aefrh.presentation.mapa
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentMapaBinding
+import aefrh.es.aefrh.domain.Fiesta
 import aefrh.es.aefrh.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.getEpocaIcon
+import android.os.Bundle
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
@@ -17,6 +19,7 @@ import com.google.android.gms.maps.model.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
 
+
 class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapReadyCallback {
 
     override val viewModel: MapaViewModel by viewModel()
@@ -24,6 +27,11 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
 
     private lateinit var mMap: GoogleMap
     private val args: MapaFragmentArgs by navArgs()
+
+    override fun onCreate(savedInstanceState: Bundle?) {
+        setHasOptionsMenu(true)
+        super.onCreate(savedInstanceState)
+    }
 
     override fun init(view: View) {
 
@@ -43,61 +51,50 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
     }
 
     private fun onObserveSingleFiesta() {
-        viewModel.fiesta.observe(this, Observer {
-
-            when(it.status) {
+        viewModel.fiesta.observe(this, Observer { result ->
+            when(result.status) {
                 Status.LOADING -> {
                     showProgress()
                 }
                 Status.ERROR -> {
                     displayErrorInt(R.string.error2)
-                    Timber.e(it.message)
+                    Timber.e(result.message)
                 }
                 else -> {
                     hideProgress()
-                    val fiesta = it.data
-                    if(fiesta != null) {
-                        mMap.addMarker(
-                            MarkerOptions().position(LatLng(fiesta.localizacion.latitude, fiesta.localizacion.longitude))
-                                .title(String.format("%s\n%s", fiesta.nombre, fiesta.id))
-                                .snippet(fiesta.epoca)
-                                .icon(BitmapDescriptorFactory.fromResource(getEpocaIcon(fiesta.epoca)))
-                        )
-                    }
+                    val fiesta = result.data
+                    fiesta?.let { setMarker(it) }
                 }
             }
-
         })
-
     }
 
     private fun onObserveAllFiestas() {
-        viewModel.fiestas.observe(this, Observer {
-
-            when(it.status) {
+        viewModel.fiestas.observe(this, Observer { result ->
+            when(result.status) {
                 Status.LOADING -> {
                     showProgress()
                 }
                 Status.ERROR -> {
                     displayErrorInt(R.string.error2)
-                    Timber.e(it.message)
+                    Timber.e(result.message)
                 }
                 else -> {
+                    val data = result.data
+                    data?.forEach { setMarker(it) }
                     hideProgress()
-                    val result = it.data
-                    result?.forEach { fiesta ->
-                        mMap.addMarker(
-                            MarkerOptions().position(LatLng(fiesta.localizacion.latitude, fiesta.localizacion.longitude))
-                                .title(String.format("%s\n%s", fiesta.nombre, fiesta.id))
-                                .snippet(fiesta.epoca)
-                                .icon(BitmapDescriptorFactory.fromResource(getEpocaIcon(fiesta.epoca)))
-                        )
-                    }
                 }
             }
-
         })
+    }
 
+    private fun setMarker(fiesta: Fiesta) {
+        mMap.addMarker(
+            MarkerOptions().position(LatLng(fiesta.localizacion.latitude, fiesta.localizacion.longitude))
+                .title(String.format("%s\n%s", fiesta.nombre, fiesta.id))
+                .snippet(fiesta.tipo)
+                .icon(BitmapDescriptorFactory.fromResource(getEpocaIcon(fiesta.tipo)))
+        )
     }
 
     override fun onMapReady(googleMap: GoogleMap?) {
@@ -128,6 +125,21 @@ class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapRea
         mMap.animateCamera(CameraUpdateFactory.newCameraPosition(cameraPosition))
 
     }
+
+//    override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+//        super.onCreateOptionsMenu(menu, inflater)
+//        menu.clear()
+//        inflater.inflate(R.menu.menu_map, menu)
+//    }
+//
+//    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+//        return when (item.itemId) {
+//            R.id.action_share -> {
+//                true
+//            }
+//            else -> super.onOptionsItemSelected(item)
+//        }
+//    }
 
     companion object {
         const val GET_ALL: String = "GET_ALL"
