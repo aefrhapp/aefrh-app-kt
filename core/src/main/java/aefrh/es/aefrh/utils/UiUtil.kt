@@ -31,5 +31,7 @@ fun ImageView.setImageRounded(imageUrl: String?) {
         Glide.with(context)
             .load(imageUrl)
             .centerCrop()
+            .apply(RequestOptions.bitmapTransform(RoundedCorners(24)))
+            .error(R.drawable.logo_espana)
             .into(this)
 }
