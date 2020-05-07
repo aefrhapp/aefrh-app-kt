@@ -2,8 +2,8 @@ package aefrh.es.aefrh.presentation.mapa
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentMapaBinding
-import aefrh.es.aefrh.domain.Fiesta
-import aefrh.es.aefrh.domain.Status
+import aefrh.es.core.domain.Fiesta
+import aefrh.es.core.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.utils.getEpocaIcon
 import android.os.Bundle
@@ -18,7 +18,6 @@ import com.google.android.gms.maps.SupportMapFragment
 import com.google.android.gms.maps.model.*
 import org.koin.android.viewmodel.ext.android.viewModel
 import timber.log.Timber
-
 
 class MapaFragment: BaseFragment<FragmentMapaBinding, MapaViewModel>(), OnMapReadyCallback {
 

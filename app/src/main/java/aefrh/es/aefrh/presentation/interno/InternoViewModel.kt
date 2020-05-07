@@ -1,10 +1,10 @@
 package aefrh.es.aefrh.presentation.interno
 
-import aefrh.es.aefrh.domain.Interno
+import aefrh.es.core.domain.Interno
 import aefrh.es.aefrh.presentation.base.BaseViewModel
-import aefrh.es.aefrh.usecases.InternoUseCase
-import aefrh.es.aefrh.utils.Result
-import aefrh.es.aefrh.utils.SingleLiveEvent
+import aefrh.es.core.usecases.InternoUseCase
+import aefrh.es.core.utils.Result
+import aefrh.es.core.utils.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

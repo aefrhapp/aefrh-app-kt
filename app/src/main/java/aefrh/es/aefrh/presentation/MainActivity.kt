@@ -2,7 +2,7 @@ package aefrh.es.aefrh.presentation
 
 import aefrh.es.aefrh.BuildConfig
 import aefrh.es.aefrh.R
-import aefrh.es.aefrh.utils.goToBrowser
+import aefrh.es.core.utils.goToBrowser
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuItem

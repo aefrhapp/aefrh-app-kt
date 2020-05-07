@@ -8,7 +8,7 @@
     <data>
         <variable
             name="interno"
-            type="aefrh.es.aefrh.domain.Interno"/>
+            type="aefrh.es.core.domain.Interno"/>
     </data>
 
     <androidx.core.widget.NestedScrollView

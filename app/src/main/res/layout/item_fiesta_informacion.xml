@@ -7,7 +7,7 @@
     <data>
         <variable
             name="informacion"
-            type="aefrh.es.aefrh.domain.InformacionItem"/>
+            type="aefrh.es.core.domain.InformacionItem"/>
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

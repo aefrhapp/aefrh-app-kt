@@ -7,7 +7,7 @@
     <data>
         <variable
             name="contacto"
-            type="aefrh.es.aefrh.domain.ContactoItem"/>
+            type="aefrh.es.core.domain.ContactoItem"/>
         <variable
             name="viewModel"
             type="aefrh.es.aefrh.presentation.fiestas.FiestaViewModel"/>

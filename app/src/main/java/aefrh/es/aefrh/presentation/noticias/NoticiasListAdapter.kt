@@ -2,8 +2,8 @@ package aefrh.es.aefrh.presentation.noticias
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.ItemNoticiaBinding
-import aefrh.es.aefrh.domain.Noticia
-import aefrh.es.aefrh.utils.diffUtils.DiffCallbackNoticia
+import aefrh.es.core.domain.Noticia
+import aefrh.es.core.utils.diffUtils.DiffCallbackNoticia
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.databinding.DataBindingUtil

@@ -6,7 +6,7 @@
     <data>
         <variable
             name="epoca"
-            type="aefrh.es.aefrh.domain.Epoca"/>
+            type="aefrh.es.core.domain.Epoca"/>
         <variable
             name="viewModel"
             type="aefrh.es.aefrh.presentation.epocas.EpocasViewModel"/>

@@ -2,7 +2,7 @@ package aefrh.es.aefrh.presentation.fiestas.list
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentFiestaListBinding
-import aefrh.es.aefrh.domain.Status
+import aefrh.es.core.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
 import android.view.View

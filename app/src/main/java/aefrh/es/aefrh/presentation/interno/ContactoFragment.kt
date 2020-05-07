@@ -2,10 +2,10 @@ package aefrh.es.aefrh.presentation.interno
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentContactoBinding
-import aefrh.es.aefrh.domain.Status
+import aefrh.es.core.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
-import aefrh.es.aefrh.utils.goToBrowser
-import aefrh.es.aefrh.utils.sendEmail
+import aefrh.es.core.utils.goToBrowser
+import aefrh.es.core.utils.sendEmail
 import android.view.View
 import androidx.lifecycle.Observer
 import org.koin.android.viewmodel.ext.android.viewModel

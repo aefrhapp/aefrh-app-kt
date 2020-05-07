@@ -2,7 +2,7 @@ package aefrh.es.aefrh.presentation.interno
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentNosotrosBinding
-import aefrh.es.aefrh.domain.Status
+import aefrh.es.core.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import android.view.View
 import androidx.lifecycle.Observer
