@@ -1,9 +1,9 @@
 package aefrh.es.aefrh.presentation.mapa
 
-import aefrh.es.aefrh.domain.Fiesta
+import aefrh.es.core.domain.Fiesta
 import aefrh.es.aefrh.presentation.base.BaseViewModel
-import aefrh.es.aefrh.usecases.FiestasUseCase
-import aefrh.es.aefrh.utils.Result
+import aefrh.es.core.usecases.FiestasUseCase
+import aefrh.es.core.utils.Result
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

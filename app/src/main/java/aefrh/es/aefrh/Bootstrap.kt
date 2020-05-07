@@ -1,8 +1,8 @@
 package aefrh.es.aefrh
 
-import aefrh.es.aefrh.di.repositoryModule
-import aefrh.es.aefrh.di.retrofitModule
-import aefrh.es.aefrh.di.useCaseModule
+import aefrh.es.core.di.repositoryModule
+import aefrh.es.core.di.retrofitModule
+import aefrh.es.core.di.useCaseModule
 import aefrh.es.aefrh.di.viewModelModule
 import android.app.Application
 import org.koin.android.ext.koin.androidContext

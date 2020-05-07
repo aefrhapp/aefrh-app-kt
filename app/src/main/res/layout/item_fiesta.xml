@@ -6,7 +6,7 @@
     <data>
         <variable
             name="fiesta"
-            type="aefrh.es.aefrh.domain.Fiesta"/>
+            type="aefrh.es.core.domain.Fiesta"/>
         <variable
             name="viewModel"
             type="aefrh.es.aefrh.presentation.fiestas.FiestaViewModel"/>

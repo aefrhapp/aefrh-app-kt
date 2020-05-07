@@ -2,9 +2,9 @@ package aefrh.es.aefrh.presentation.epocas
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentEpocasBinding
-import aefrh.es.aefrh.domain.Status
+import aefrh.es.core.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
-import aefrh.es.aefrh.utils.SpanningLinearLayoutManager
+import aefrh.es.core.utils.SpanningLinearLayoutManager
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController

@@ -2,11 +2,11 @@ package aefrh.es.aefrh.presentation.fiestas
 
 import aefrh.es.aefrh.Bootstrap
 import aefrh.es.aefrh.R
-import aefrh.es.aefrh.domain.*
+import aefrh.es.core.domain.*
 import aefrh.es.aefrh.presentation.base.BaseViewModel
-import aefrh.es.aefrh.usecases.FiestasUseCase
-import aefrh.es.aefrh.utils.Result
-import aefrh.es.aefrh.utils.SingleLiveEvent
+import aefrh.es.core.usecases.FiestasUseCase
+import aefrh.es.core.utils.Result
+import aefrh.es.core.utils.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

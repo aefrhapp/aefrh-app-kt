@@ -2,12 +2,12 @@ package aefrh.es.aefrh.presentation.noticias
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentNoticiaDetailBinding
-import aefrh.es.aefrh.domain.RssFeedSingle
-import aefrh.es.aefrh.domain.Status
+import aefrh.es.core.domain.RssFeedSingle
+import aefrh.es.core.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
-import aefrh.es.aefrh.utils.Result
-import aefrh.es.aefrh.utils.reformatNoticia
-import aefrh.es.aefrh.utils.shareNoticia
+import aefrh.es.core.utils.Result
+import aefrh.es.core.utils.reformatNoticia
+import aefrh.es.core.utils.shareNoticia
 import android.annotation.SuppressLint
 import android.net.http.SslError
 import android.os.Bundle

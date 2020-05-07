@@ -7,7 +7,7 @@
     <data>
         <variable
             name="fiesta"
-            type="aefrh.es.aefrh.domain.Fiesta"/>
+            type="aefrh.es.core.domain.Fiesta"/>
     </data>
 
     <androidx.core.widget.NestedScrollView

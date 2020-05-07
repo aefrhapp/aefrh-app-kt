@@ -1,11 +1,11 @@
 package aefrh.es.aefrh.presentation.noticias
 
-import aefrh.es.aefrh.domain.RssFeed
-import aefrh.es.aefrh.domain.RssFeedSingle
+import aefrh.es.core.domain.RssFeed
+import aefrh.es.core.domain.RssFeedSingle
 import aefrh.es.aefrh.presentation.base.BaseViewModel
-import aefrh.es.aefrh.usecases.NoticiasUseCase
-import aefrh.es.aefrh.utils.Result
-import aefrh.es.aefrh.utils.SingleLiveEvent
+import aefrh.es.core.usecases.NoticiasUseCase
+import aefrh.es.core.utils.Result
+import aefrh.es.core.utils.SingleLiveEvent
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope

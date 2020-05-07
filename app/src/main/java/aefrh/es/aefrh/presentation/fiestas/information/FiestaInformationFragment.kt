@@ -2,16 +2,16 @@ package aefrh.es.aefrh.presentation.fiestas.information
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentFiestaInformationBinding
-import aefrh.es.aefrh.domain.ContactoCase
-import aefrh.es.aefrh.domain.ContactoItem
-import aefrh.es.aefrh.domain.Fiesta
-import aefrh.es.aefrh.domain.Status
+import aefrh.es.core.domain.ContactoCase
+import aefrh.es.core.domain.ContactoItem
+import aefrh.es.core.domain.Fiesta
+import aefrh.es.core.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
-import aefrh.es.aefrh.utils.Result
-import aefrh.es.aefrh.utils.goToBrowser
-import aefrh.es.aefrh.utils.makePhoneCall
-import aefrh.es.aefrh.utils.sendEmail
+import aefrh.es.core.utils.Result
+import aefrh.es.core.utils.goToBrowser
+import aefrh.es.core.utils.makePhoneCall
+import aefrh.es.core.utils.sendEmail
 import android.view.View
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.navArgs

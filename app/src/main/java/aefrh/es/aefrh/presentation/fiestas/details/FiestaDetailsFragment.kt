@@ -2,11 +2,11 @@ package aefrh.es.aefrh.presentation.fiestas.details
 
 import aefrh.es.aefrh.R
 import aefrh.es.aefrh.databinding.FragmentFiestaDetailsBinding
-import aefrh.es.aefrh.domain.Fiesta
-import aefrh.es.aefrh.domain.Status
+import aefrh.es.core.domain.Fiesta
+import aefrh.es.core.domain.Status
 import aefrh.es.aefrh.presentation.base.BaseFragment
 import aefrh.es.aefrh.presentation.fiestas.FiestaViewModel
-import aefrh.es.aefrh.utils.Result
+import aefrh.es.core.utils.Result
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
