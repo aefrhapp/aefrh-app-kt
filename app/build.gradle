@@ -36,7 +36,7 @@ android {
     }
 
     kotlinOptions {
-        jvmTarget = JavaVersion.VERSION_1_8.toString()
+        jvmTarget = JavaVersion.VERSION_1_8
     }
 
     compileOptions {
@@ -50,19 +50,13 @@ dependencies {
     implementation project(':core')
 
     // Kotlin
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"
     implementation "androidx.core:core-ktx:$ktx_core"
 
     // Ui
-    implementation "androidx.appcompat:appcompat:$app_compat_version"
     implementation "androidx.constraintlayout:constraintlayout:$constraint_version"
 
     // Koin for Kotlin apps
-    implementation "org.koin:koin-core:$koin_version"
     implementation "org.koin:koin-android-viewmodel:$koin_version"
-
-    // Retrofit
-    implementation "com.squareup.retrofit2:retrofit:$retrofit_version"
 
     // Kotlin
     implementation "androidx.navigation:navigation-fragment-ktx:$nav_version"
@@ -76,12 +70,10 @@ dependencies {
     implementation "com.google.firebase:firebase-crashlytics:$firebase_crashlitics_version"
 
     // Externals
-    implementation "com.jakewharton.timber:timber:$timberVersion"
     implementation "io.github.ivanespitiac:imageslider:$image_slider_version"
     implementation "com.pierfrancescosoffritti.androidyoutubeplayer:core:$youtube_version"
 
     // Test
-    implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation "junit:junit:$junit_version"
     androidTestImplementation "androidx.test.ext:junit:$junit_android_version"
 }

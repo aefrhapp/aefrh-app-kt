@@ -52,7 +52,7 @@ dependencies {
     implementation "com.squareup.retrofit2:converter-simplexml:$retrofit_version"
 
     // Externals
-    implementation "com.jakewharton.timber:timber:$timberVersion"
+    api "com.jakewharton.timber:timber:$timberVersion"
     implementation "com.jakewharton.retrofit:retrofit2-kotlin-coroutines-adapter:$coroutines_adapter_version"
 
     // Glide
